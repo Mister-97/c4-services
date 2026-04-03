@@ -193,18 +193,25 @@ footer{background:var(--dark);padding:52px 28px 28px}
   .nav-logo-text{font-size:20px}
   #hero{height:480px}
   .hero-title{font-size:clamp(44px,10vw,72px)}
-  .gigs-grid{grid-template-columns:repeat(2,1fr)}
   .trust-pillars{grid-template-columns:1fr}
   .trust-stat-bar{grid-template-columns:repeat(2,1fr)}
   .howto-steps{flex-direction:column;align-items:center;gap:28px}
   .howto-connector{display:none}
+  .reviews-grid{grid-template-columns:1fr}
 }
 @media(max-width:540px){
-  .gigs-grid{grid-template-columns:1fr}
   .footer-top{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;text-align:center}
   .hero-search-bar{flex-direction:column;border-radius:16px;padding:12px;gap:8px}
   .hero-search-bar button{width:100%;border-radius:10px}
+}
+@media(max-width:768px){
+  .gigs-grid{display:flex;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:14px;padding-bottom:12px;scrollbar-width:none}
+  .gigs-grid::-webkit-scrollbar{display:none}
+  .gig-card{flex:0 0 78vw;max-width:300px;scroll-snap-align:start}
+  .browse-filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+  .browse-filters::-webkit-scrollbar{display:none}
+  .filter-pill{flex-shrink:0}
 }
 </style>
 </head>
