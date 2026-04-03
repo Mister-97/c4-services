@@ -47,6 +47,8 @@ nav{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid va
 .btn-nav-book:hover{background:var(--red2)}
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0}
 .hamburger span{width:20px;height:2px;background:var(--dark);border-radius:2px;display:block}
+.nav-ig-btn{display:none;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;padding:4px;text-decoration:none;color:var(--dark);flex-shrink:0}
+.nav-ig-btn svg{width:22px;height:22px}
 .mobile-nav{display:none;position:fixed;inset:0;background:#fff;z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:28px}
 .mobile-nav.open{display:flex}
 .mobile-nav a{color:var(--dark);text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:.08em}
@@ -122,7 +124,14 @@ nav{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid va
 .howto-step-body{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.65;max-width:180px}
 
 /* ─── TRUST SECTION ─── */
-#trust{background:#f0f0f0;padding:80px 28px}
+#trust{
+  background-color:#cecece;
+  background-image:
+    radial-gradient(ellipse 65% 55% at 50% 44%,rgba(255,255,255,0.92) 0%,rgba(255,255,255,0) 68%),
+    radial-gradient(ellipse 52% 32% at 50% 58%,rgba(255,255,255,0.68) 0%,rgba(255,255,255,0) 65%),
+    linear-gradient(180deg,#c6c6c6 0%,#d2d2d2 46%,#f6f6f6 50%,#cdcdcd 54%,#c2c2c2 100%);
+  padding:80px 28px;
+}
 .trust-inner{max-width:1200px;margin:0 auto}
 .trust-top-row{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-bottom:12px}
 .trust-big-card{background:var(--red);border-radius:22px;padding:52px 48px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:320px}
@@ -202,6 +211,13 @@ footer{background:var(--dark);padding:52px 28px 28px}
 .anim{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}
 .anim.visible{opacity:1;transform:none}
 
+/* ─── CAROUSEL HINT + DOTS ─── */
+.carousel-hint{display:none}
+.scroll-dots{display:none;gap:5px;justify-content:center;margin-top:16px}
+.scroll-dots span{width:6px;height:6px;border-radius:50%;background:var(--border);transition:background .25s,width .2s}
+.scroll-dots span.dot-active{background:var(--red);width:16px;border-radius:3px}
+@keyframes nudgeR{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+
 /* ─── HIDDEN (filter) ─── */
 .gig-card.hidden{display:none}
 
@@ -215,7 +231,11 @@ footer{background:var(--dark);padding:52px 28px 28px}
 @media(max-width:768px){
   .nav-links,.btn-nav-book,.nav-search{display:none}
   .hamburger{display:flex}
-  .nav-logo-text{font-size:20px}
+  .nav-ig-btn{display:flex}
+  .nav-inner{position:relative}
+  .nav-logo{position:absolute;left:50%;transform:translateX(-50%);pointer-events:auto}
+  .nav-logo img{display:none}
+  .nav-logo-text{font-size:18px;letter-spacing:.08em}
   #hero{height:480px}
   .hero-title{font-size:clamp(44px,10vw,72px)}
   .trust-top-row{grid-template-columns:1fr}
@@ -231,9 +251,12 @@ footer{background:var(--dark);padding:52px 28px 28px}
   .hero-search-bar button{width:100%;border-radius:10px}
 }
 @media(max-width:768px){
-  .gigs-grid{display:flex;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:14px;padding-bottom:12px;scrollbar-width:none}
+  .carousel-hint{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:12px}
+  .carousel-hint svg{stroke:var(--muted);animation:nudgeR 1.3s ease-in-out infinite}
+  .scroll-dots{display:flex}
+  .gigs-grid{display:flex;flex-direction:row;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:14px;padding-bottom:4px;scrollbar-width:none;touch-action:pan-x}
   .gigs-grid::-webkit-scrollbar{display:none}
-  .gig-card{flex:0 0 78vw;max-width:300px;scroll-snap-align:start}
+  .gig-card{flex:0 0 82vw;max-width:310px;scroll-snap-align:start;touch-action:pan-x}
   .browse-filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
   .browse-filters::-webkit-scrollbar{display:none}
   .filter-pill{flex-shrink:0}
@@ -245,9 +268,12 @@ footer{background:var(--dark);padding:52px 28px 28px}
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
+    <a href="https://instagram.com" class="nav-ig-btn" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
     <a href="index.html" class="nav-logo">
       <img src="./c4-logo.png" alt="C4 Services">
-      <div class="nav-logo-text">Services</div>
+      <div class="nav-logo-text"><em>C4</em> Services</div>
     </a>
     <div class="nav-search">
       <input type="text" id="navSearchInput" placeholder="Search services..." autocomplete="off">
@@ -335,6 +361,10 @@ footer{background:var(--dark);padding:52px 28px 28px}
       <div class="browse-count" id="browseCount">10 services available</div>
     </div>
 
+    <div class="carousel-hint">
+      <span>Swipe to explore</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </div>
     <div class="gigs-grid" id="gigsGrid">
 
       <!-- Landscaping -->
@@ -538,6 +568,7 @@ footer{background:var(--dark);padding:52px 28px 28px}
       </a>
 
     </div>
+    <div class="scroll-dots" id="scrollDots"></div>
   </div>
 </section>
 
@@ -852,6 +883,50 @@ function doSearch() {
 
 document.getElementById('heroSearchInput')?.addEventListener('keydown', e => { if(e.key==='Enter') doSearch() })
 document.getElementById('navSearchInput')?.addEventListener('keydown', e => { if(e.key==='Enter') doSearch() })
+
+// Carousel dots + horizontal lock
+(function(){
+  const grid = document.getElementById('gigsGrid');
+  const dotsWrap = document.getElementById('scrollDots');
+  if(!grid || !dotsWrap) return;
+
+  function buildDots(){
+    const cards = Array.from(grid.querySelectorAll('.gig-card:not(.hidden)'));
+    dotsWrap.innerHTML = '';
+    cards.forEach((_,i)=>{
+      const s = document.createElement('span');
+      if(i===0) s.classList.add('dot-active');
+      dotsWrap.appendChild(s);
+    });
+  }
+
+  function updateDots(){
+    const cards = Array.from(grid.querySelectorAll('.gig-card:not(.hidden)'));
+    const cardW = grid.clientWidth * 0.82;
+    const idx = Math.min(Math.round(grid.scrollLeft / (cardW + 14)), cards.length - 1);
+    dotsWrap.querySelectorAll('span').forEach((d,i)=>d.classList.toggle('dot-active', i===idx));
+  }
+
+  if(window.innerWidth <= 768){
+    buildDots();
+    grid.addEventListener('scroll', updateDots, {passive:true});
+  }
+
+  // Horizontal-only lock — prevent page scroll when dragging the carousel
+  let startX = 0, startY = 0, isHoriz = false;
+  grid.addEventListener('touchstart', e=>{
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    isHoriz = false;
+  }, {passive:true});
+  grid.addEventListener('touchmove', e=>{
+    const dx = Math.abs(e.touches[0].clientX - startX);
+    const dy = Math.abs(e.touches[0].clientY - startY);
+    if(!isHoriz && dy > dx) return; // vertical intent — let page scroll
+    isHoriz = true;
+    e.preventDefault(); // lock to horizontal
+  }, {passive:false});
+})();
 
 // Scroll animations
 const animObs = new IntersectionObserver((entries) => {
