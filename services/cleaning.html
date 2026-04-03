@@ -2,10 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta property="og:title" content="Cleaning Services — C4 Services">
-<meta property="og:image" content="https://mister-97.github.io/c4-services/og-image.png">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cleaning Services — C4 Services</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,195 +9,97 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--red:#c41e3a;--red2:#a01830;--dark:#1a1a1a}
-html,body{height:100%;background:var(--dark);font-family:'Inter',sans-serif;overflow:hidden}
+:root{--red:#c41e3a;--red2:#a01830;--dark:#1a1a1a;--muted:#717171;--border:#e8e8e8;--bg2:#f7f7f7}
+html,body{height:100%;background:#fff;font-family:'Inter',sans-serif}
 
-.redirect-wrap{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:32px 24px;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-}
+body{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:24px}
 
-/* Background glow */
-.redirect-wrap::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(ellipse 70% 50% at 50% 60%, rgba(196,30,58,0.18) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 30% at 20% 20%, rgba(196,30,58,0.08) 0%, transparent 60%);
-  pointer-events:none;
-}
+/* Top nav strip */
+.top-bar{position:fixed;top:0;left:0;right:0;height:60px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center}
+.top-bar-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.06em;color:var(--dark);text-decoration:none}
+.top-bar-logo em{color:var(--red);font-style:normal}
 
-/* Big watermark */
-.redirect-wrap::after{
-  content:'C4';
-  position:absolute;
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(240px,40vw,480px);
-  color:rgba(255,255,255,0.025);
-  line-height:1;
-  pointer-events:none;
-  user-select:none;
-  bottom:-60px;
-  right:-20px;
-}
+/* Main card */
+.card{width:100%;max-width:480px;text-align:center}
 
-.brand-tag{
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,0.35);
-  margin-bottom:32px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.brand-tag::before,.brand-tag::after{content:'';flex:1;max-width:40px;height:1px;background:rgba(255,255,255,0.15)}
+/* Partner badge */
+.partner-badge{display:inline-flex;align-items:center;gap:8px;background:var(--bg2);border:1.5px solid var(--border);border-radius:100px;padding:6px 16px;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.04em;margin-bottom:36px}
+.partner-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;flex-shrink:0;box-shadow:0 0 0 3px rgba(34,197,94,.2)}
 
-.redirect-heading{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(36px,6vw,72px);
-  letter-spacing:.04em;
-  color:#fff;
-  line-height:1;
-  margin-bottom:12px;
-}
-.redirect-heading em{color:var(--red);font-style:normal}
+/* Heading */
+.heading{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,8vw,58px);letter-spacing:.04em;color:var(--dark);line-height:.95;margin-bottom:10px}
+.heading em{color:var(--red);font-style:normal}
+.subtext{font-size:14px;color:var(--muted);margin-bottom:40px;line-height:1.6}
 
-.redirect-sub{
-  font-size:16px;
-  color:rgba(255,255,255,0.45);
-  margin-bottom:48px;
-  line-height:1.6;
-}
+/* Discount box */
+.discount-box{background:var(--dark);border-radius:20px;padding:36px 40px;margin-bottom:36px;position:relative;overflow:hidden}
+.discount-box::before{content:'C4';position:absolute;right:-12px;bottom:-32px;font-family:'Bebas Neue',sans-serif;font-size:160px;color:rgba(255,255,255,0.04);line-height:1;pointer-events:none}
+.discount-eyebrow{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px}
+.discount-code{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,10vw,76px);letter-spacing:.06em;color:#fff;line-height:1;margin-bottom:14px}
+.discount-pill{display:inline-flex;align-items:center;gap:8px;background:var(--red);border-radius:100px;padding:8px 20px}
+.discount-pill svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.discount-pill span{font-size:13px;font-weight:700;color:#fff;letter-spacing:.03em}
 
-/* Discount code box */
-.code-box{
-  background:var(--red);
-  border-radius:18px;
-  padding:32px 48px;
-  margin-bottom:52px;
-  position:relative;
-  z-index:1;
-  box-shadow:0 0 60px rgba(196,30,58,0.35), 0 8px 32px rgba(0,0,0,0.4);
-  animation:pulse 2s ease-in-out infinite;
-}
-@keyframes pulse{0%,100%{box-shadow:0 0 60px rgba(196,30,58,0.35),0 8px 32px rgba(0,0,0,0.4)}50%{box-shadow:0 0 90px rgba(196,30,58,0.55),0 8px 32px rgba(0,0,0,0.4)}}
-
-.code-label{
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,0.65);
-  margin-bottom:10px;
-}
-.code-value{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(42px,7vw,72px);
-  letter-spacing:.08em;
-  color:#fff;
-  line-height:1;
-  margin-bottom:10px;
-}
-.code-desc{
-  font-size:14px;
-  font-weight:600;
-  color:rgba(255,255,255,0.8);
-  letter-spacing:.03em;
-}
+/* Divider */
+.divider{height:1px;background:var(--border);margin:0 0 32px}
 
 /* Countdown */
-.countdown-wrap{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:14px;
-  position:relative;
-  z-index:1;
-}
-.countdown-text{
-  font-size:13px;
-  color:rgba(255,255,255,0.35);
-  letter-spacing:.05em;
-}
-.countdown-num{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:48px;
-  color:rgba(255,255,255,0.6);
-  line-height:1;
-  width:60px;
-  text-align:center;
-}
-.progress-track{
-  width:220px;
-  height:3px;
-  background:rgba(255,255,255,0.1);
-  border-radius:100px;
-  overflow:hidden;
-}
-.progress-fill{
-  height:100%;
-  background:var(--red);
-  border-radius:100px;
-  width:100%;
-  transform-origin:left;
-  animation:drain 3s linear forwards;
-}
-@keyframes drain{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+.countdown-row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.counting-label{font-size:13px;color:var(--muted)}
+.counting-label strong{color:var(--dark)}
+.progress-track{flex:1;height:4px;background:var(--bg2);border-radius:100px;overflow:hidden}
+.progress-fill{height:100%;background:var(--red);border-radius:100px;animation:drain 3s linear forwards}
+@keyframes drain{from{width:100%}to{width:0%}}
 
-.destination{
-  font-size:12px;
-  color:rgba(255,255,255,0.2);
-  margin-top:8px;
-  letter-spacing:.03em;
-}
+.destination-row{margin-top:16px;font-size:12px;color:var(--muted);text-align:center}
+.destination-row a{color:var(--red);text-decoration:none;font-weight:600}
 
-@media(max-width:480px){
-  .code-box{padding:26px 32px;border-radius:14px}
-}
+@media(max-width:480px){.discount-box{padding:28px 24px;border-radius:16px}.card{max-width:100%}}
 </style>
 </head>
 <body>
 
-<div class="redirect-wrap">
-  <div class="brand-tag">C4 Services Partner</div>
+<div class="top-bar">
+  <a href="../index.html" class="top-bar-logo"><em>C4</em> Services</a>
+</div>
 
-  <h1 class="redirect-heading">CLEANING<br><em>SERVICES</em></h1>
-  <p class="redirect-sub">Taking you to our trusted cleaning partner.<br>Before you go — grab this exclusive deal.</p>
-
-  <div class="code-box">
-    <div class="code-label">Your Exclusive Discount Code</div>
-    <div class="code-value">C4MAGIC</div>
-    <div class="code-desc">Save 5% on your first cleaning order</div>
+<div class="card">
+  <div class="partner-badge">
+    <span class="partner-dot"></span>
+    C4 Partner — Magic Fresh Cleaning
   </div>
 
-  <div class="countdown-wrap">
-    <div class="countdown-text">Redirecting in</div>
-    <div class="countdown-num" id="countNum">3</div>
+  <h1 class="heading">EXCLUSIVE<br><em>DISCOUNT</em></h1>
+  <p class="subtext">Use this code when booking your cleaning service<br>to unlock your C4 partner discount.</p>
+
+  <div class="discount-box">
+    <div class="discount-eyebrow">Your discount code</div>
+    <div class="discount-code">C4MAGIC</div>
+    <div class="discount-pill">
+      <svg viewBox="0 0 24 24"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+      <span>5% off your first order</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="countdown-row">
+    <div class="counting-label">Taking you there in <strong id="countNum">3</strong>s</div>
     <div class="progress-track"><div class="progress-fill"></div></div>
-    <div class="destination">magicfresh.cleaning</div>
+  </div>
+
+  <div class="destination-row">
+    Redirecting to <a href="https://magicfresh.cleaning" target="_blank">magicfresh.cleaning</a>
   </div>
 </div>
 
 <script>
 let n = 3;
 const el = document.getElementById('countNum');
-const interval = setInterval(() => {
+const t = setInterval(() => {
   n--;
   el.textContent = n;
-  if (n <= 0) {
-    clearInterval(interval);
-    window.location.href = 'https://magicfresh.cleaning';
-  }
+  if (n <= 0) { clearInterval(t); window.location.href = 'https://magicfresh.cleaning'; }
 }, 1000);
 </script>
 </body>
