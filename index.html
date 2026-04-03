@@ -12,6 +12,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://mister-97.github.io/c4-services/og-image.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="./favicon.png">
 <title>C4 Services — Book Local Services Online</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +33,7 @@ nav{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid va
 .nav-inner{max-width:1400px;margin:0 auto;padding:0 28px;height:62px;display:flex;align-items:center;gap:20px}
 .nav-logo{display:flex;align-items:center;gap:4px;text-decoration:none;flex-shrink:0}
 .nav-logo img{height:38px;width:auto}
-.nav-logo-text{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.06em;color:var(--dark);line-height:1}
+.nav-logo-text{display:none;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.06em;color:var(--dark);line-height:1}
 .nav-logo-text em{color:var(--red);font-style:normal}
 .nav-search{flex:1;max-width:480px;position:relative;display:flex}
 .nav-search input{width:100%;background:var(--bg2);border:1.5px solid var(--border);border-radius:100px;padding:9px 44px 9px 18px;font-size:14px;color:var(--dark);font-family:'Inter',sans-serif;outline:none;transition:border-color .2s}
@@ -45,7 +46,7 @@ nav{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid va
 .nav-links a:hover{color:var(--dark);background:var(--bg2)}
 .btn-nav-book{background:var(--red);color:#fff;border:none;padding:9px 20px;border-radius:100px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;letter-spacing:.03em;transition:background .2s;white-space:nowrap;flex-shrink:0}
 .btn-nav-book:hover{background:var(--red2)}
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0;-webkit-appearance:none;appearance:none}
 .hamburger span{width:20px;height:2px;background:var(--dark);border-radius:2px;display:block}
 .nav-ig-btn{display:none;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;padding:4px;text-decoration:none;color:var(--dark);flex-shrink:0}
 .nav-ig-btn svg{width:22px;height:22px}
@@ -232,8 +233,7 @@ footer{background:var(--dark);padding:52px 28px 28px}
   .nav-ig-btn{display:flex}
   .nav-inner{position:relative;justify-content:flex-start}
   .nav-logo{position:absolute;left:50%;transform:translateX(-50%);pointer-events:auto}
-  .nav-logo img{display:none}
-  .nav-logo-text{font-size:24px;letter-spacing:.08em}
+  .nav-logo img{height:32px}
   #hero{height:480px}
   .hero-title{font-size:clamp(44px,10vw,72px)}
   .trust-top-row{grid-template-columns:1fr}
