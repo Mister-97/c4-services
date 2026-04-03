@@ -48,7 +48,7 @@ body{display:flex;flex-direction:column;align-items:center;justify-content:cente
 .counting-label{font-size:13px;color:var(--muted)}
 .counting-label strong{color:var(--dark)}
 .progress-track{flex:1;height:4px;background:var(--bg2);border-radius:100px;overflow:hidden}
-.progress-fill{height:100%;background:var(--red);border-radius:100px;animation:drain 3s linear forwards}
+.progress-fill{height:100%;background:var(--red);border-radius:100px;animation:drain 4s linear forwards}
 @keyframes drain{from{width:100%}to{width:0%}}
 
 .destination-row{margin-top:16px;font-size:12px;color:var(--muted);text-align:center}
@@ -84,7 +84,7 @@ body{display:flex;flex-direction:column;align-items:center;justify-content:cente
   <div class="divider"></div>
 
   <div class="countdown-row">
-    <div class="counting-label">Taking you there in <strong id="countNum">3</strong>s</div>
+    <div class="counting-label">Taking you there in <strong id="countNum">4</strong>s</div>
     <div class="progress-track"><div class="progress-fill"></div></div>
   </div>
 
@@ -94,7 +94,7 @@ body{display:flex;flex-direction:column;align-items:center;justify-content:cente
 </div>
 
 <script>
-let n = 3;
+let n = 4;
 const el = document.getElementById('countNum');
 const t = setInterval(() => {
   n--;
