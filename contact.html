@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — C4 Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#ffffff;--bg2:#f8f8f8;--bg3:#f2f2f2;--red:#c41e3a;--red2:#a01830;--dark:#111111;--text:#2a2a2a;--muted:#666666;--border:#e5e5e5;--radius:12px;}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--dark);font-family:'Inter',sans-serif;overflow-x:hidden}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo img{height:44px;width:auto}
+.nav-logo-text{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.06em;color:var(--dark);line-height:1}
+.nav-logo-text span{color:var(--red)}
+.nav-links{display:flex;gap:2px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;padding:6px 14px;border-radius:100px;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--dark);background:var(--bg2)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.btn-red{background:var(--red);color:#fff;border:none;padding:10px 22px;border-radius:100px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;letter-spacing:.04em;transition:background .2s,transform .15s;display:inline-block;text-transform:uppercase;font-family:'Inter',sans-serif}
+.btn-red:hover{background:var(--red2);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.hamburger span{width:22px;height:2px;background:var(--dark);border-radius:2px;display:block}
+.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:var(--dark);text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:38px;letter-spacing:.08em;transition:color .2s}
+.mobile-nav a:hover{color:var(--red)}
+.mobile-close{position:absolute;top:24px;right:28px;background:none;border:none;color:var(--muted);font-size:26px;cursor:pointer}
+
+.page-hero{background:var(--bg2);padding:72px 24px 64px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.page-hero-glow{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:500px;height:350px;border-radius:50%;background:radial-gradient(ellipse,rgba(196,30,58,0.08) 0%,transparent 70%);pointer-events:none}
+.page-hero-inner{position:relative;z-index:2}
+.section-tag{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:10px;display:block}
+.page-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,80px);letter-spacing:.04em;line-height:.9;margin-bottom:16px;color:var(--dark)}
+.page-title span{color:var(--red)}
+.page-sub{color:var(--muted);font-size:16px;line-height:1.75;max-width:480px;margin:0 auto}
+
+.contact-body{max-width:1000px;margin:0 auto;padding:72px 24px;display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:start}
+
+.contact-info-title{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:.05em;margin-bottom:8px;color:var(--dark)}
+.contact-info-sub{color:var(--muted);font-size:14px;line-height:1.75;margin-bottom:36px}
+.contact-item{display:flex;align-items:flex-start;gap:16px;margin-bottom:28px}
+.contact-item-icon{width:46px;height:46px;background:rgba(196,30,58,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-item-icon svg{width:22px;height:22px;stroke:var(--red);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.contact-item-label{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.contact-item-val{font-size:15px;font-weight:600;color:var(--dark)}
+.contact-item-note{font-size:13px;color:var(--muted);margin-top:2px}
+
+.services-quick{margin-top:40px}
+.services-quick-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dark);margin-bottom:14px}
+.services-quick-list{display:flex;flex-wrap:wrap;gap:8px}
+.services-quick-list a{font-size:12px;font-weight:600;color:var(--red);background:rgba(196,30,58,0.07);border:1px solid rgba(196,30,58,0.15);padding:5px 14px;border-radius:100px;text-decoration:none;transition:background .2s}
+.services-quick-list a:hover{background:rgba(196,30,58,0.14)}
+
+.contact-form-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:32px;position:sticky;top:88px}
+.form-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.05em;margin-bottom:6px;color:var(--dark)}
+.form-sub{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.55}
+.form-group{margin-bottom:16px}
+.form-label{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--dark);margin-bottom:6px;display:block}
+.form-input{width:100%;background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;padding:11px 14px;font-size:14px;color:var(--dark);font-family:'Inter',sans-serif;transition:border-color .2s;outline:none}
+.form-input:focus{border-color:var(--red)}
+.form-input::placeholder{color:#aaa}
+select.form-input{cursor:pointer}
+textarea.form-input{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn-submit{width:100%;background:var(--red);color:#fff;border:none;padding:15px;border-radius:100px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.05em;text-transform:uppercase;font-family:'Inter',sans-serif;transition:background .2s,transform .15s;margin-top:8px}
+.btn-submit:hover{background:var(--red2);transform:translateY(-1px)}
+.form-success{display:none;background:rgba(196,30,58,0.06);border:1px solid rgba(196,30,58,0.2);border-radius:12px;padding:24px;text-align:center}
+.form-success.show{display:block}
+.form-success-icon{font-size:32px;margin-bottom:10px}
+.form-success-title{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.05em;color:var(--red);margin-bottom:6px}
+.form-success-sub{font-size:14px;color:var(--muted);line-height:1.65}
+
+footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40px 24px 24px}
+.footer-bottom-simple{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.25);gap:16px;flex-wrap:wrap}
+.footer-bottom-simple a{color:rgba(255,255,255,0.4);text-decoration:none}
+.footer-bottom-simple a:hover{color:#fff}
+
+@media(max-width:1024px){.contact-body{grid-template-columns:1fr}.contact-form-card{position:static}}
+@media(max-width:768px){.nav-links,.btn-red.nav-btn{display:none}.hamburger{display:flex}.form-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="./c4-logo.png" alt="C4 Services" onerror="this.style.display='none'">
+      <div class="nav-logo-text"><span>C4</span> Services</div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#reviews">Reviews</a></li>
+      <li><a href="contact.html" class="active" style="color:var(--dark)">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="index.html#services" class="btn-red nav-btn">Book a Service</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" id="mobileClose">&#10005;</button>
+  <a href="index.html">Home</a>
+  <a href="index.html#services">Services</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-glow"></div>
+  <div class="page-hero-inner">
+    <span class="section-tag">Get In Touch</span>
+    <h1 class="page-title">LET'S <span>TALK.</span></h1>
+    <p class="page-sub">Questions, quotes, or anything else — we respond fast. Usually within a few hours.</p>
+  </div>
+</div>
+
+<div class="contact-body">
+  <div>
+    <div class="contact-info-title">We're Here for You</div>
+    <p class="contact-info-sub">Whether you want to ask about a service, get a custom quote, or just want to know more about C4 — reach out any time.</p>
+
+    <div class="contact-item">
+      <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.12 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.62a16 16 0 0 0 6 6l.93-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16c.1.31.17.63.19.95z"/></svg></div>
+      <div>
+        <div class="contact-item-label">Phone / Text</div>
+        <div class="contact-item-val">(555) 000-0000</div>
+        <div class="contact-item-note">Mon–Sat, 8am–8pm</div>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <div>
+        <div class="contact-item-label">Email</div>
+        <div class="contact-item-val">info@c4services.com</div>
+        <div class="contact-item-note">Replies within a few hours</div>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+      <div>
+        <div class="contact-item-label">Instagram</div>
+        <div class="contact-item-val">@c4services</div>
+        <div class="contact-item-note">DMs open</div>
+      </div>
+    </div>
+
+    <div class="services-quick">
+      <div class="services-quick-title">Ready to Book a Specific Service?</div>
+      <div class="services-quick-list">
+        <a href="services/landscaping.html">Landscaping</a>
+        <a href="services/bouncy-house.html">Bouncy House</a>
+        <a href="services/photography.html">Photography</a>
+        <a href="services/chairs-tables.html">Chair &amp; Table Rentals</a>
+        <a href="services/snowplowing.html">Snowplowing</a>
+        <a href="services/detailing.html">Mobile Detailing</a>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="contact-form-card">
+      <div class="form-title">Send a Message</div>
+      <p class="form-sub">We'll get back to you as soon as possible — usually within a few hours.</p>
+      <form id="contactForm">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="John" required></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Smith" required></div>
+        </div>
+        <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="you@email.com" required></div>
+        <div class="form-group"><label class="form-label">Phone (optional)</label><input class="form-input" type="tel" placeholder="(555) 000-0000"></div>
+        <div class="form-group">
+          <label class="form-label">Service of Interest</label>
+          <select class="form-input">
+            <option value="">Select a service...</option>
+            <option>Landscaping</option>
+            <option>Bouncy House Rental</option>
+            <option>Photography</option>
+            <option>Chair &amp; Table Rentals</option>
+            <option>Snowplowing</option>
+            <option>Mobile Detailing</option>
+            <option>General / Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" placeholder="Tell us what you need..." required></textarea></div>
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <div class="form-success-icon">&#10003;</div>
+        <div class="form-success-title">Message Sent!</div>
+        <p class="form-success-sub">We got your message and will be in touch shortly. Check your email for a confirmation.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom-simple">
+    <span>&copy; 2026 C4 Services</span>
+    <div style="display:flex;gap:20px"><a href="index.html">Home</a><a href="index.html#services">Services</a><a href="contact.html">Contact</a></div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileNav').classList.add('open'))
+document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open'))
+
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault()
+  this.style.display = 'none'
+  document.getElementById('formSuccess').classList.add('show')
+})
+</script>
+</body>
+</html>
