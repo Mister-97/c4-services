@@ -176,7 +176,8 @@ nav{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid va
 .trusted-logo-wrap:nth-child(6){animation:logoFloat 3.8s ease-in-out 2.0s infinite}
 .trusted-logo-wrap:nth-child(7){animation:logoFloat 3.8s ease-in-out 2.4s infinite}
 .trusted-logo-wrap:nth-child(8){animation:logoFloat 3.8s ease-in-out 2.8s infinite}
-.trusted-logo.blend{mix-blend-mode:multiply}
+.trusted-logo-wrap.lg{width:240px;height:120px}
+@media(max-width:640px){.trusted-logo-wrap.lg{width:160px;height:88px}}
 @keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 .trusted-logo{width:100%;height:100%;object-fit:contain;filter:none;opacity:1}
 @media(max-width:640px){.trusted-logos{gap:28px}.trusted-logo-wrap{width:130px;height:72px}}
@@ -252,9 +253,9 @@ footer{background:var(--dark);padding:52px 28px 28px}
   .carousel-hint{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:12px}
   .carousel-hint svg{stroke:var(--muted);animation:nudgeR 1.3s ease-in-out infinite}
   .scroll-dots{display:flex}
-  .gigs-grid{display:flex;flex-direction:row;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:14px;padding-left:20px;padding-right:20px;padding-bottom:4px;scrollbar-width:none;touch-action:pan-x;margin-left:-20px;margin-right:-20px;width:calc(100% + 40px)}
+  .gigs-grid{display:flex;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:14px;padding-left:20px;padding-right:20px;padding-bottom:4px;scrollbar-width:none;margin-left:-20px;margin-right:-20px;width:calc(100% + 40px)}
   .gigs-grid::-webkit-scrollbar{display:none}
-  .gig-card{flex:0 0 78vw;max-width:300px;scroll-snap-align:start;touch-action:pan-x}
+  .gig-card{flex:0 0 78vw;max-width:300px;scroll-snap-align:start}
   .browse-filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
   .browse-filters::-webkit-scrollbar{display:none}
   .filter-pill{flex-shrink:0}
@@ -673,8 +674,8 @@ footer{background:var(--dark);padding:52px 28px 28px}
   </div>
   <div class="trusted-logos">
     <div class="trusted-logo-wrap"><img class="trusted-logo" src="./logos/rujo.png" alt="Rujo Coffee"></div>
-    <div class="trusted-logo-wrap"><img class="trusted-logo" src="./logos/mahari.png" alt="Mahari"></div>
-    <div class="trusted-logo-wrap"><img class="trusted-logo" src="./logos/magicfresh.png" alt="Magic Fresh"></div>
+    <div class="trusted-logo-wrap lg"><img class="trusted-logo" src="./logos/mahari.png" alt="Mahari"></div>
+    <div class="trusted-logo-wrap lg"><img class="trusted-logo" src="./logos/magicfresh.png" alt="Magic Fresh"></div>
     <div class="trusted-logo-wrap"><img class="trusted-logo" src="./logos/pureplay.png" alt="Pure Play"></div>
     <div class="trusted-logo-wrap"><img class="trusted-logo" src="./logos/hgx.png" alt="HGX Transport"></div>
     <div class="trusted-logo-wrap"><img class="trusted-logo" src="./logos/97.png" alt="97"></div>
@@ -800,20 +801,6 @@ document.getElementById('navSearchInput')?.addEventListener('keydown', e => { if
     grid.addEventListener('scroll', updateDots, {passive:true});
   }
 
-  // Horizontal-only lock — prevent page scroll when dragging the carousel
-  let startX = 0, startY = 0, isHoriz = false;
-  grid.addEventListener('touchstart', e=>{
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-    isHoriz = false;
-  }, {passive:true});
-  grid.addEventListener('touchmove', e=>{
-    const dx = Math.abs(e.touches[0].clientX - startX);
-    const dy = Math.abs(e.touches[0].clientY - startY);
-    if(!isHoriz && dy > dx) return; // vertical intent — let page scroll
-    isHoriz = true;
-    e.preventDefault(); // lock to horizontal
-  }, {passive:false});
 })();
 
 // Scroll animations
