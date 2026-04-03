@@ -113,27 +113,52 @@ nav{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid va
 .howto-step-body{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.65;max-width:180px}
 
 /* ─── TRUST SECTION ─── */
-#trust{background:var(--dark);padding:80px 28px;position:relative;overflow:hidden}
-#trust::before{content:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:800px;height:500px;border-radius:50%;background:radial-gradient(ellipse,rgba(196,30,58,0.12) 0%,transparent 70%);pointer-events:none}
+#trust{background:var(--bg);padding:80px 28px;position:relative;overflow:hidden}
+#trust::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:900px;height:500px;border-radius:50%;background:radial-gradient(ellipse,rgba(196,30,58,0.06) 0%,transparent 70%);pointer-events:none}
 .trust-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
 .trust-top{text-align:center;margin-bottom:60px}
 .trust-eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:14px;display:block}
-.trust-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5.5vw,72px);letter-spacing:.03em;color:#fff;line-height:.95;margin-bottom:18px}
+.trust-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5.5vw,72px);letter-spacing:.03em;color:var(--dark);line-height:.95;margin-bottom:18px}
 .trust-headline em{color:var(--red);font-style:normal}
-.trust-sub{font-size:16px;color:rgba(255,255,255,0.5);max-width:520px;margin:0 auto;line-height:1.75}
-.trust-pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-bottom:2px}
-.trust-pillar{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:40px 36px;position:relative;overflow:hidden;transition:background .3s}
-.trust-pillar:hover{background:rgba(255,255,255,0.05)}
-.trust-pillar::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--red);opacity:0;transition:opacity .3s}
-.trust-pillar:hover::before{opacity:1}
-.trust-pillar-icon{width:52px;height:52px;border-radius:12px;background:rgba(196,30,58,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:22px}
+.trust-sub{font-size:16px;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.75}
+.trust-pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:16px}
+.trust-pillar{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:36px;position:relative;overflow:hidden;transition:box-shadow .3s,transform .3s,border-color .3s}
+.trust-pillar:hover{box-shadow:0 8px 32px rgba(196,30,58,0.1);transform:translateY(-3px);border-color:rgba(196,30,58,0.3)}
+.trust-pillar::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--red)}
+.trust-pillar-icon{width:52px;height:52px;border-radius:12px;background:rgba(196,30,58,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
 .trust-pillar-icon svg{width:26px;height:26px;stroke:var(--red);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.trust-pillar-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.04em;color:#fff;margin-bottom:12px;line-height:1}
-.trust-pillar-body{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.8;max-width:340px}
-.trust-stat-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
-.trust-stat{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:28px 24px;text-align:center}
-.trust-stat-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4vw,52px);color:var(--red);letter-spacing:.02em;line-height:1;margin-bottom:6px}
-.trust-stat-label{font-size:12px;color:rgba(255,255,255,0.4);font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+.trust-pillar-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.04em;color:var(--dark);margin-bottom:12px;line-height:1}
+.trust-pillar-body{font-size:14px;color:var(--muted);line-height:1.8;max-width:340px}
+.trust-stat-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.trust-stat{background:var(--red);border-radius:var(--radius);padding:28px 24px;text-align:center}
+.trust-stat-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4vw,52px);color:#fff;letter-spacing:.02em;line-height:1;margin-bottom:6px}
+.trust-stat-label{font-size:12px;color:rgba(255,255,255,0.75);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+
+/* ─── REVIEWS ─── */
+#reviews{padding:80px 28px;background:var(--bg)}
+.reviews-inner{max-width:1200px;margin:0 auto}
+.reviews-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;gap:16px;flex-wrap:wrap}
+.reviews-left-head{display:flex;flex-direction:column;gap:6px}
+.reviews-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.reviews-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,4.5vw,52px);letter-spacing:.04em;color:var(--dark);line-height:1}
+.reviews-rating-badge{display:flex;align-items:center;gap:12px;background:var(--bg2);border:1.5px solid var(--border);border-radius:100px;padding:10px 20px}
+.reviews-rating-num{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--red);line-height:1;letter-spacing:.02em}
+.reviews-rating-right{display:flex;flex-direction:column;gap:3px}
+.reviews-stars{display:flex;gap:3px}
+.reviews-stars svg{width:13px;height:13px;fill:var(--red)}
+.reviews-count{font-size:11px;color:var(--muted);font-weight:500}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.review-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;gap:16px;transition:box-shadow .25s,transform .25s}
+.review-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.07);transform:translateY(-2px)}
+.review-top{display:flex;align-items:center;gap:12px}
+.review-avatar{width:40px;height:40px;border-radius:50%;background:var(--dark);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;flex-shrink:0;letter-spacing:.03em}
+.review-meta{flex:1}
+.review-name{font-size:14px;font-weight:700;color:var(--dark);line-height:1.2}
+.review-service{font-size:11px;color:var(--muted);margin-top:2px}
+.review-stars-sm{display:flex;gap:2px}
+.review-stars-sm svg{width:12px;height:12px;fill:var(--red)}
+.review-quote{font-size:14px;color:var(--text);line-height:1.75;flex:1}
+.review-quote::before{content:'\201C';font-size:32px;line-height:0;vertical-align:-.6em;color:var(--red);margin-right:2px;font-family:'Bebas Neue',sans-serif}
 
 /* ─── FOOTER ─── */
 footer{background:var(--dark);padding:52px 28px 28px}
@@ -572,6 +597,135 @@ footer{background:var(--dark);padding:52px 28px 28px}
       <div class="trust-stat">
         <div class="trust-stat-num">&lt;2hr</div>
         <div class="trust-stat-label">Response Time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="reviews-inner">
+    <div class="reviews-top">
+      <div class="reviews-left-head">
+        <span class="reviews-eyebrow">Real Clients. Real Results.</span>
+        <h2 class="reviews-title">WHAT PEOPLE ARE SAYING</h2>
+      </div>
+      <div class="reviews-rating-badge">
+        <div class="reviews-rating-num">4.9</div>
+        <div class="reviews-rating-right">
+          <div class="reviews-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="reviews-count">Based on 357 reviews</div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">TM</div>
+          <div class="review-meta">
+            <div class="review-name">Tanya M.</div>
+            <div class="review-service">Bouncy House Rental</div>
+          </div>
+          <div class="review-stars-sm">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+        </div>
+        <p class="review-quote">Booked the bouncy house for my son's birthday. C4 showed up on time, set everything up, and came back to break it all down. Easiest party setup ever.</p>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">DJ</div>
+          <div class="review-meta">
+            <div class="review-name">Darius J.</div>
+            <div class="review-service">Landscaping</div>
+          </div>
+          <div class="review-stars-sm">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+        </div>
+        <p class="review-quote">My yard looks incredible. Full cleanup and mulching in a couple hours. Tried 3 other landscapers before C4 — none came close.</p>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">KR</div>
+          <div class="review-meta">
+            <div class="review-name">Keisha R.</div>
+            <div class="review-service">Photography + Rentals</div>
+          </div>
+          <div class="review-stars-sm">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+        </div>
+        <p class="review-quote">Used C4 for event photos AND chair/table rentals for the same party. One company handling everything made the whole day stress-free.</p>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">ML</div>
+          <div class="review-meta">
+            <div class="review-name">Marcus L.</div>
+            <div class="review-service">Mobile Detailing</div>
+          </div>
+          <div class="review-stars-sm">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+        </div>
+        <p class="review-quote">They came to my driveway and detailed my truck in 2 hours. Looked brand new inside and out. Already booked them again for next month.</p>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">SB</div>
+          <div class="review-meta">
+            <div class="review-name">Simone B.</div>
+            <div class="review-service">Snowplowing</div>
+          </div>
+          <div class="review-stars-sm">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+        </div>
+        <p class="review-quote">First big snowfall of the year and my driveway was clear before I even woke up. Had them on a seasonal plan — worth every penny.</p>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">JW</div>
+          <div class="review-meta">
+            <div class="review-name">James W.</div>
+            <div class="review-service">SEO &amp; Google Setup</div>
+          </div>
+          <div class="review-stars-sm">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+        </div>
+        <p class="review-quote">My business went from invisible on Google to showing up in the top 3 local results in 6 weeks. The ROI on this was immediate.</p>
       </div>
     </div>
   </div>
