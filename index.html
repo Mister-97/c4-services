@@ -160,21 +160,23 @@ nav{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid va
 .trust-feat-body{font-size:13px;color:var(--muted);line-height:1.75}
 
 /* ─── TRUSTED BY ─── */
-#trusted{background:var(--dark);padding:72px 0 68px;overflow:hidden}
-.trusted-head{max-width:1200px;margin:0 auto;padding:0 28px;text-align:center;margin-bottom:52px}
-.trusted-eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:14px;display:block}
-.trusted-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,4vw,54px);letter-spacing:.04em;color:#fff;line-height:1}
+#trusted{background:#fff;padding:80px 28px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.trusted-head{max-width:1100px;margin:0 auto;text-align:center;margin-bottom:56px}
+.trusted-eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:block}
+.trusted-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,4vw,54px);letter-spacing:.04em;color:var(--dark);line-height:1}
 .trusted-title em{color:var(--red);font-style:normal}
-.trusted-sub{font-size:15px;color:rgba(255,255,255,0.4);margin-top:12px;line-height:1.6}
-.trusted-marquee{position:relative;overflow:hidden}
-.trusted-marquee::before,.trusted-marquee::after{content:'';position:absolute;top:0;bottom:0;width:180px;z-index:2;pointer-events:none}
-.trusted-marquee::before{left:0;background:linear-gradient(to right,var(--dark),transparent)}
-.trusted-marquee::after{right:0;background:linear-gradient(to left,var(--dark),transparent)}
-.trusted-track{display:flex;align-items:center;gap:72px;width:max-content;animation:logoScroll 24s linear infinite;padding:0 36px}
-.trusted-track:hover{animation-play-state:paused}
-@keyframes logoScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.trusted-logo{height:48px;width:auto;max-width:140px;object-fit:contain;filter:grayscale(1) brightness(10);opacity:0.22;transition:opacity .35s,filter .35s;flex-shrink:0;cursor:default}
-.trusted-logo:hover{filter:grayscale(0) brightness(1);opacity:1}
+.trusted-sub{font-size:15px;color:var(--muted);margin-top:12px;line-height:1.6}
+.trusted-logos{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:52px;flex-wrap:wrap}
+.trusted-logo-wrap{width:140px;height:64px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.trusted-logo-wrap:nth-child(1){animation:logoFloat 3.8s ease-in-out infinite}
+.trusted-logo-wrap:nth-child(2){animation:logoFloat 3.8s ease-in-out .4s infinite}
+.trusted-logo-wrap:nth-child(3){animation:logoFloat 3.8s ease-in-out .8s infinite}
+.trusted-logo-wrap:nth-child(4){animation:logoFloat 3.8s ease-in-out 1.2s infinite}
+.trusted-logo-wrap:nth-child(5){animation:logoFloat 3.8s ease-in-out 1.6s infinite}
+@keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.trusted-logo{width:100%;height:100%;object-fit:contain;filter:grayscale(1);opacity:0.45;transition:opacity .3s,filter .3s}
+.trusted-logo:hover{filter:grayscale(0);opacity:1}
+@media(max-width:640px){.trusted-logos{gap:32px}.trusted-logo-wrap{width:100px;height:48px}}
 
 /* ─── FOOTER ─── */
 footer{background:var(--dark);padding:52px 28px 28px}
@@ -666,19 +668,12 @@ footer{background:var(--dark);padding:52px 28px 28px}
     <h2 class="trusted-title">Brands That <em>Count On</em> C4</h2>
     <p class="trusted-sub">From local startups to established names — C4 delivers every time.</p>
   </div>
-  <div class="trusted-marquee">
-    <div class="trusted-track">
-      <img class="trusted-logo" src="./logos/rujo.png" alt="Rujo Coffee">
-      <img class="trusted-logo" src="./logos/mahari.png" alt="Mahari">
-      <img class="trusted-logo" src="./logos/97.png" alt="97">
-      <img class="trusted-logo" src="./logos/mappa.png" alt="Mappa">
-      <img class="trusted-logo" src="./logos/fiverr.png" alt="Fiverr">
-      <img class="trusted-logo" src="./logos/rujo.png" alt="Rujo Coffee">
-      <img class="trusted-logo" src="./logos/mahari.png" alt="Mahari">
-      <img class="trusted-logo" src="./logos/97.png" alt="97">
-      <img class="trusted-logo" src="./logos/mappa.png" alt="Mappa">
-      <img class="trusted-logo" src="./logos/fiverr.png" alt="Fiverr">
-    </div>
+  <div class="trusted-logos">
+    <div class="trusted-logo-wrap"><img class="trusted-logo" src="./logos/rujo.png" alt="Rujo Coffee"></div>
+    <div class="trusted-logo-wrap"><img class="trusted-logo" src="./logos/mahari.png" alt="Mahari"></div>
+    <div class="trusted-logo-wrap"><img class="trusted-logo" src="./logos/97.png" alt="97"></div>
+    <div class="trusted-logo-wrap"><img class="trusted-logo" src="./logos/mappa.png" alt="Mappa"></div>
+    <div class="trusted-logo-wrap"><img class="trusted-logo" src="./logos/fiverr.png" alt="Fiverr"></div>
   </div>
 </section>
 
