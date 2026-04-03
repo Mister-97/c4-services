@@ -113,26 +113,33 @@ nav{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid va
 .howto-step-body{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.65;max-width:180px}
 
 /* ─── TRUST SECTION ─── */
-#trust{background:var(--bg);padding:80px 28px;position:relative;overflow:hidden}
-#trust::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:900px;height:500px;border-radius:50%;background:radial-gradient(ellipse,rgba(196,30,58,0.06) 0%,transparent 70%);pointer-events:none}
-.trust-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
-.trust-top{text-align:center;margin-bottom:60px}
-.trust-eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:14px;display:block}
-.trust-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5.5vw,72px);letter-spacing:.03em;color:var(--dark);line-height:.95;margin-bottom:18px}
-.trust-headline em{color:var(--red);font-style:normal}
-.trust-sub{font-size:16px;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.75}
-.trust-pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:16px}
-.trust-pillar{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:36px;position:relative;overflow:hidden;transition:box-shadow .3s,transform .3s,border-color .3s}
-.trust-pillar:hover{box-shadow:0 8px 32px rgba(196,30,58,0.1);transform:translateY(-3px);border-color:rgba(196,30,58,0.3)}
-.trust-pillar::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--red)}
-.trust-pillar-icon{width:52px;height:52px;border-radius:12px;background:rgba(196,30,58,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
-.trust-pillar-icon svg{width:26px;height:26px;stroke:var(--red);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.trust-pillar-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.04em;color:var(--dark);margin-bottom:12px;line-height:1}
-.trust-pillar-body{font-size:14px;color:var(--muted);line-height:1.8;max-width:340px}
-.trust-stat-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.trust-stat{background:var(--red);border-radius:var(--radius);padding:28px 24px;text-align:center}
-.trust-stat-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4vw,52px);color:#fff;letter-spacing:.02em;line-height:1;margin-bottom:6px}
-.trust-stat-label{font-size:12px;color:rgba(255,255,255,0.75);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+#trust{background:#f0f0f0;padding:80px 28px}
+.trust-inner{max-width:1200px;margin:0 auto}
+.trust-top-row{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-bottom:12px}
+.trust-big-card{background:var(--red);border-radius:22px;padding:52px 48px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:320px}
+.trust-big-card::after{content:'C4';position:absolute;right:-16px;bottom:-48px;font-family:'Bebas Neue',sans-serif;font-size:240px;color:rgba(255,255,255,0.05);line-height:1;pointer-events:none;letter-spacing:-.02em}
+.trust-big-eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:18px;display:block}
+.trust-big-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,4.5vw,64px);color:#fff;line-height:.93;letter-spacing:.03em;margin-bottom:32px}
+.trust-guarantee{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.22);border-radius:100px;padding:10px 22px;width:fit-content}
+.trust-guarantee svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.trust-guarantee span{font-size:13px;font-weight:700;color:#fff;letter-spacing:.03em}
+.trust-rating-card{background:var(--dark);border-radius:22px;padding:40px 36px;display:flex;flex-direction:column;justify-content:space-between}
+.trust-rating-stars{display:flex;gap:4px;margin-bottom:10px}
+.trust-rating-stars svg{width:15px;height:15px;fill:var(--red)}
+.trust-rating-num{font-family:'Bebas Neue',sans-serif;font-size:88px;color:#fff;line-height:.9;letter-spacing:.02em;margin-bottom:6px}
+.trust-rating-num span{color:var(--red)}
+.trust-rating-sub{font-size:11px;color:rgba(255,255,255,0.35);font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.trust-rating-divider{height:1px;background:rgba(255,255,255,0.08);margin:24px 0}
+.trust-jobs-num{font-family:'Bebas Neue',sans-serif;font-size:44px;color:#fff;line-height:1;letter-spacing:.03em;margin-bottom:4px}
+.trust-jobs-label{font-size:11px;color:rgba(255,255,255,0.35);font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.trust-features{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.trust-feat{background:#fff;border-radius:22px;padding:32px 26px 28px;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.trust-feat:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,0.08)}
+.trust-feat-num{position:absolute;top:-8px;right:12px;font-family:'Bebas Neue',sans-serif;font-size:110px;color:rgba(0,0,0,0.035);line-height:1;pointer-events:none;letter-spacing:-.02em}
+.trust-feat-icon{width:46px;height:46px;border-radius:12px;background:rgba(196,30,58,0.07);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.trust-feat-icon svg{width:22px;height:22px;stroke:var(--red);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.trust-feat-title{font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:.04em;color:var(--dark);margin-bottom:10px;line-height:1.1}
+.trust-feat-body{font-size:13px;color:var(--muted);line-height:1.75}
 
 /* ─── REVIEWS ─── */
 #reviews{padding:80px 28px;background:var(--bg)}
@@ -193,8 +200,8 @@ footer{background:var(--dark);padding:52px 28px 28px}
   .nav-logo-text{font-size:20px}
   #hero{height:480px}
   .hero-title{font-size:clamp(44px,10vw,72px)}
-  .trust-pillars{grid-template-columns:1fr}
-  .trust-stat-bar{grid-template-columns:repeat(2,1fr)}
+  .trust-top-row{grid-template-columns:1fr}
+  .trust-features{grid-template-columns:repeat(2,1fr)}
   .howto-steps{flex-direction:column;align-items:center;gap:28px}
   .howto-connector{display:none}
   .reviews-grid{grid-template-columns:1fr}
@@ -315,7 +322,7 @@ footer{background:var(--dark);padding:52px 28px 28px}
       <!-- Landscaping -->
       <a href="services/landscaping.html" class="gig-card" data-cat="outdoor" data-name="landscaping yard mowing trimming cleanup">
         <div class="gig-thumb">
-          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80&fit=crop" alt="Landscaping">
+          <img src="https://images.pexels.com/photos/6728919/pexels-photo-6728919.jpeg?w=600&h=400&fit=crop" alt="Landscaping">
           <span class="gig-cat-badge">Outdoor</span>
         </div>
         <div class="gig-body">
@@ -335,7 +342,7 @@ footer{background:var(--dark);padding:52px 28px 28px}
       <!-- Bouncy House -->
       <a href="services/bouncy-house.html" class="gig-card" data-cat="events" data-name="bouncy house inflatable party rental birthday">
         <div class="gig-thumb">
-          <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80&fit=crop" alt="Bouncy House Rental">
+          <img src="https://images.pexels.com/photos/35649390/pexels-photo-35649390.jpeg?w=600&h=400&fit=crop" alt="Bouncy House Rental">
           <span class="gig-cat-badge">Events</span>
         </div>
         <div class="gig-body">
@@ -355,7 +362,7 @@ footer{background:var(--dark);padding:52px 28px 28px}
       <!-- Photography -->
       <a href="services/photography.html" class="gig-card" data-cat="creative" data-name="photography photos portraits events real estate">
         <div class="gig-thumb">
-          <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&q=80&fit=crop" alt="Photography">
+          <img src="https://images.pexels.com/photos/30697993/pexels-photo-30697993.jpeg?w=600&h=400&fit=crop" alt="Photography">
           <span class="gig-cat-badge">Creative</span>
         </div>
         <div class="gig-body">
@@ -395,7 +402,7 @@ footer{background:var(--dark);padding:52px 28px 28px}
       <!-- Snowplowing -->
       <a href="services/snowplowing.html" class="gig-card" data-cat="seasonal" data-name="snowplowing snow removal driveway winter plowing">
         <div class="gig-thumb">
-          <img src="https://images.unsplash.com/photo-1547754980-3df97fed72a8?w=600&q=80&fit=crop" alt="Snowplowing">
+          <img src="https://images.pexels.com/photos/27306437/pexels-photo-27306437.jpeg?w=600&h=400&fit=crop" alt="Snowplowing">
           <span class="gig-cat-badge">Seasonal</span>
         </div>
         <div class="gig-body">
@@ -415,7 +422,7 @@ footer{background:var(--dark);padding:52px 28px 28px}
       <!-- Mobile Detailing -->
       <a href="services/detailing.html" class="gig-card" data-cat="auto" data-name="mobile detailing car wash interior exterior detail">
         <div class="gig-thumb">
-          <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=600&q=80&fit=crop" alt="Mobile Detailing">
+          <img src="https://images.pexels.com/photos/4870702/pexels-photo-4870702.jpeg?w=600&h=400&fit=crop" alt="Mobile Detailing">
           <span class="gig-cat-badge">Auto</span>
         </div>
         <div class="gig-body">
@@ -435,7 +442,7 @@ footer{background:var(--dark);padding:52px 28px 28px}
       <!-- SEO / Google My Business -->
       <a href="services/seo.html" class="gig-card" data-cat="digital" data-name="seo google my business local search ranking optimization">
         <div class="gig-thumb">
-          <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efbc07?w=600&q=80&fit=crop" alt="SEO and Google My Business">
+          <img src="https://images.pexels.com/photos/13628541/pexels-photo-13628541.jpeg?w=600&h=400&fit=crop" alt="SEO and Google My Business">
           <span class="gig-cat-badge">Digital</span>
         </div>
         <div class="gig-body">
@@ -495,7 +502,7 @@ footer{background:var(--dark);padding:52px 28px 28px}
       <!-- Ecommerce Setup -->
       <a href="services/ecom.html" class="gig-card" data-cat="digital" data-name="ecommerce shopify online store setup website shop">
         <div class="gig-thumb">
-          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&q=80&fit=crop" alt="E-Commerce Setup">
+          <img src="https://images.pexels.com/photos/7054753/pexels-photo-7054753.jpeg?w=600&h=400&fit=crop" alt="E-Commerce Setup">
           <span class="gig-cat-badge">Digital</span>
         </div>
         <div class="gig-body">
@@ -553,57 +560,58 @@ footer{background:var(--dark);padding:52px 28px 28px}
 <!-- TRUST SECTION -->
 <section id="trust">
   <div class="trust-inner">
-    <div class="trust-top">
-      <span class="trust-eyebrow">Why C4</span>
-      <h2 class="trust-headline">WE DON'T JUST SHOW UP.<br><em>WE SHOW OUT.</em></h2>
-      <p class="trust-sub">Other companies cancel, ghost, or send randoms. C4 is built different. Same crew, same standard, every single time.</p>
-    </div>
-    <div class="trust-pillars">
-      <div class="trust-pillar">
-        <div class="trust-pillar-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <div class="trust-pillar-title">ON TIME. EVERY TIME.</div>
-        <p class="trust-pillar-body">You'll get a confirmation 24 hours before your job. We show up when we say. No waiting around, no last-minute excuses. Your time is valuable and we treat it that way.</p>
-      </div>
-      <div class="trust-pillar">
-        <div class="trust-pillar-icon">
+    <div class="trust-top-row">
+      <div class="trust-big-card">
+        <span class="trust-big-eyebrow">Why C4</span>
+        <h2 class="trust-big-headline">WE DON'T JUST<br>SHOW UP.<br>WE SHOW OUT.</h2>
+        <div class="trust-guarantee">
           <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>100% Satisfaction Guaranteed</span>
         </div>
-        <div class="trust-pillar-title">SATISFACTION GUARANTEED.</div>
-        <p class="trust-pillar-body">If the job isn't done right, we come back and fix it. No charge, no argument. We stand behind every single service we deliver. That's not a policy, that's a promise.</p>
       </div>
-      <div class="trust-pillar">
-        <div class="trust-pillar-icon">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <div class="trust-rating-card">
+        <div>
+          <div class="trust-rating-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="trust-rating-num">4.9<span>★</span></div>
+          <div class="trust-rating-sub">Average Rating</div>
         </div>
-        <div class="trust-pillar-title">NO MIDDLEMEN. EVER.</div>
-        <p class="trust-pillar-body">Every job is handled by C4. Not subcontractors, not strangers. You know who's showing up and they know exactly what you need. Consistent people, consistent quality.</p>
-      </div>
-      <div class="trust-pillar">
-        <div class="trust-pillar-icon">
-          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.12 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.62a16 16 0 0 0 6 6l.93-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16c.1.31.17.63.19.95z"/></svg>
+        <div>
+          <div class="trust-rating-divider"></div>
+          <div class="trust-jobs-num">500+</div>
+          <div class="trust-jobs-label">Jobs Completed</div>
         </div>
-        <div class="trust-pillar-title">SAME-DAY RESPONSE.</div>
-        <p class="trust-pillar-body">Book online and get confirmed instantly. Have a question? We respond same day. No waiting 3 days for a callback. Real people, real communication.</p>
       </div>
     </div>
-    <div class="trust-stat-bar">
-      <div class="trust-stat">
-        <div class="trust-stat-num">500+</div>
-        <div class="trust-stat-label">Jobs Completed</div>
+    <div class="trust-features">
+      <div class="trust-feat">
+        <div class="trust-feat-num">01</div>
+        <div class="trust-feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="trust-feat-title">ON TIME. EVERY TIME.</div>
+        <p class="trust-feat-body">Confirmation 24 hours before. We show up when we say. No waiting, no excuses.</p>
       </div>
-      <div class="trust-stat">
-        <div class="trust-stat-num">4.9★</div>
-        <div class="trust-stat-label">Avg Rating</div>
+      <div class="trust-feat">
+        <div class="trust-feat-num">02</div>
+        <div class="trust-feat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="trust-feat-title">GUARANTEED WORK.</div>
+        <p class="trust-feat-body">Not happy? We come back and fix it. No charge, no argument. Period.</p>
       </div>
-      <div class="trust-stat">
-        <div class="trust-stat-num">100%</div>
-        <div class="trust-stat-label">No Subcontractors</div>
+      <div class="trust-feat">
+        <div class="trust-feat-num">03</div>
+        <div class="trust-feat-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="trust-feat-title">NO MIDDLEMEN.</div>
+        <p class="trust-feat-body">C4 handles every job. Not subcontractors, not strangers. Same crew every time.</p>
       </div>
-      <div class="trust-stat">
-        <div class="trust-stat-num">&lt;2hr</div>
-        <div class="trust-stat-label">Response Time</div>
+      <div class="trust-feat">
+        <div class="trust-feat-num">04</div>
+        <div class="trust-feat-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.12 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.62a16 16 0 0 0 6 6l.93-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16c.1.31.17.63.19.95z"/></svg></div>
+        <div class="trust-feat-title">SAME-DAY RESPONSE.</div>
+        <p class="trust-feat-body">Book and get confirmed instantly. Questions answered same day. Real people, always.</p>
       </div>
     </div>
   </div>
