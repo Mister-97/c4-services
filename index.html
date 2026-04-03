@@ -3,169 +3,175 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>C4 Services — One Company. Every Service.</title>
+<title>C4 Services — Book Local Services Online</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#ffffff;--bg2:#f8f8f8;--bg3:#f2f2f2;
-  --red:#c41e3a;--red2:#a01830;--red-glow:rgba(196,30,58,0.12);
-  --dark:#111111;--text:#2a2a2a;--muted:#666666;
-  --border:#e5e5e5;--radius:12px;
+  --red:#c41e3a;--red2:#a01830;--red-light:rgba(196,30,58,0.08);
+  --bg:#ffffff;--bg2:#f7f7f7;--bg3:#f0f0f0;
+  --dark:#1a1a1a;--text:#3a3a3a;--muted:#717171;--light:#b0b0b0;
+  --border:#e8e8e8;--shadow:0 2px 16px rgba(0,0,0,0.08);--radius:10px;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--dark);font-family:'Inter',sans-serif;overflow-x:hidden}
 
-/* NAV */
-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-.nav-inner{max-width:1280px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-logo img{height:44px;width:auto}
-.nav-logo-text{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.06em;color:var(--dark);line-height:1}
-.nav-logo-text span{color:var(--red)}
-.nav-links{display:flex;gap:2px;list-style:none}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;padding:6px 14px;border-radius:100px;transition:color .2s,background .2s}
-.nav-links a:hover,.nav-links a.active{color:var(--dark);background:var(--bg2)}
-.nav-right{display:flex;align-items:center;gap:12px}
-.btn-red{background:var(--red);color:#fff;border:none;padding:10px 22px;border-radius:100px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;letter-spacing:.04em;transition:background .2s,transform .15s;display:inline-block;text-transform:uppercase;font-family:'Inter',sans-serif}
-.btn-red:hover{background:var(--red2);transform:translateY(-1px)}
-.btn-outline{background:transparent;color:var(--dark);border:1.5px solid var(--border);padding:10px 22px;border-radius:100px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;letter-spacing:.04em;transition:border-color .2s,background .2s;display:inline-block;text-transform:uppercase;font-family:'Inter',sans-serif}
-.btn-outline:hover{border-color:var(--red);color:var(--red);background:rgba(196,30,58,0.04)}
-.btn-large{padding:15px 36px;font-size:14px}
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
-.hamburger span{width:22px;height:2px;background:var(--dark);border-radius:2px;transition:all .3s;display:block}
-.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+/* ─── NAV ─── */
+nav{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1400px;margin:0 auto;padding:0 28px;height:62px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0}
+.nav-logo img{height:38px;width:auto}
+.nav-logo-text{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.06em;color:var(--dark);line-height:1}
+.nav-logo-text em{color:var(--red);font-style:normal}
+.nav-search{flex:1;max-width:480px;position:relative;display:flex}
+.nav-search input{width:100%;background:var(--bg2);border:1.5px solid var(--border);border-radius:100px;padding:9px 44px 9px 18px;font-size:14px;color:var(--dark);font-family:'Inter',sans-serif;outline:none;transition:border-color .2s}
+.nav-search input:focus{border-color:var(--dark)}
+.nav-search input::placeholder{color:var(--light)}
+.nav-search-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:var(--dark);border:none;border-radius:100px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.nav-search-btn svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.nav-links{display:flex;gap:4px;list-style:none;margin-left:auto}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;padding:6px 12px;border-radius:8px;transition:color .2s,background .2s;white-space:nowrap}
+.nav-links a:hover{color:var(--dark);background:var(--bg2)}
+.btn-nav-book{background:var(--red);color:#fff;border:none;padding:9px 20px;border-radius:100px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;letter-spacing:.03em;transition:background .2s;white-space:nowrap;flex-shrink:0}
+.btn-nav-book:hover{background:var(--red2)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0}
+.hamburger span{width:20px;height:2px;background:var(--dark);border-radius:2px;display:block}
+.mobile-nav{display:none;position:fixed;inset:0;background:#fff;z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:28px}
 .mobile-nav.open{display:flex}
-.mobile-nav a{color:var(--dark);text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:38px;letter-spacing:.08em;transition:color .2s}
+.mobile-nav a{color:var(--dark);text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:.08em}
 .mobile-nav a:hover{color:var(--red)}
-.mobile-close{position:absolute;top:24px;right:28px;background:none;border:none;color:var(--muted);font-size:26px;cursor:pointer}
+.mobile-close{position:absolute;top:22px;right:26px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--muted)}
 
-/* HERO */
-#hero{position:relative;padding:100px 24px 96px;overflow:hidden;background:var(--bg);text-align:center}
-.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,0.07) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;opacity:1}
-.hero-glow{position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:700px;height:500px;border-radius:50%;background:radial-gradient(ellipse,rgba(196,30,58,0.1) 0%,transparent 70%);pointer-events:none}
-.hero-inner{position:relative;z-index:2;max-width:860px;margin:0 auto}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(196,30,58,0.08);border:1px solid rgba(196,30,58,0.2);border-radius:100px;padding:6px 16px;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--red);text-transform:uppercase;margin-bottom:24px}
-.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--red);animation:pulse-dot 2s ease-in-out infinite;flex-shrink:0}
-@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
-.hero-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,9vw,120px);line-height:.88;letter-spacing:.02em;margin-bottom:24px;color:var(--dark)}
-.hero-headline .red{color:var(--red)}
-.hero-sub{color:var(--muted);font-size:18px;line-height:1.75;max-width:560px;margin:0 auto 40px}
-.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:64px}
-.hero-stats{display:flex;gap:0;justify-content:center;border:1px solid var(--border);border-radius:16px;overflow:hidden;max-width:640px;margin:0 auto;background:#fff}
-.hero-stat{flex:1;padding:20px 16px;text-align:center;border-right:1px solid var(--border)}
-.hero-stat:last-child{border-right:none}
-.hero-stat-val{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--red);letter-spacing:.04em;line-height:1}
-.hero-stat-lbl{font-size:11px;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;margin-top:4px}
+/* ─── HERO ─── */
+#hero{position:relative;height:580px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-video-wrap{position:absolute;inset:0;z-index:0}
+.hero-video-wrap video{width:100%;height:100%;object-fit:cover;display:block}
+.hero-video-wrap iframe{width:100%;height:100%;border:none;pointer-events:none;transform:scale(1.15)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.65) 100%);z-index:1}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 24px;width:100%;max-width:860px}
+.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:14px}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,7.5vw,96px);line-height:.9;letter-spacing:.02em;color:#fff;margin-bottom:28px}
+.hero-title em{color:var(--red);font-style:normal}
+.hero-search-bar{background:#fff;border-radius:100px;display:flex;align-items:center;padding:6px 6px 6px 22px;gap:12px;max-width:620px;margin:0 auto 24px;box-shadow:0 8px 32px rgba(0,0,0,0.25)}
+.hero-search-bar input{flex:1;border:none;outline:none;font-size:15px;color:var(--dark);font-family:'Inter',sans-serif;background:transparent}
+.hero-search-bar input::placeholder{color:var(--light)}
+.hero-search-bar button{background:var(--red);color:#fff;border:none;border-radius:100px;padding:11px 26px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;flex-shrink:0;transition:background .2s}
+.hero-search-bar button:hover{background:var(--red2)}
+.hero-cats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.hero-cat{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);backdrop-filter:blur(6px);color:#fff;padding:7px 16px;border-radius:100px;font-size:12px;font-weight:600;cursor:pointer;transition:background .2s,border-color .2s;text-decoration:none}
+.hero-cat:hover,.hero-cat.active{background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.5)}
+.hero-cat svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
-/* SERVICES GRID */
-#services{padding:96px 24px;background:var(--bg2)}
-.section-inner{max-width:1280px;margin:0 auto}
-.section-header{text-align:center;margin-bottom:56px}
-.section-tag{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:10px;display:block}
-.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,5vw,62px);letter-spacing:.04em;line-height:1;color:var(--dark)}
-.section-sub{color:var(--muted);font-size:16px;line-height:1.75;max-width:540px;margin:12px auto 0}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.service-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s;cursor:pointer;text-decoration:none;display:flex;flex-direction:column}
-.service-card:hover{border-color:var(--red);transform:translateY(-5px);box-shadow:0 12px 40px rgba(196,30,58,0.1)}
-.service-card-img{height:200px;background:var(--bg3);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
-.service-card-img svg{width:64px;height:64px;stroke:var(--red);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;opacity:.7}
-.service-card-img-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(0,0,0,0.04))}
-.service-card-body{padding:24px;flex:1;display:flex;flex-direction:column}
-.service-card-name{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.05em;color:var(--dark);margin-bottom:6px}
-.service-card-price{font-size:13px;color:var(--red);font-weight:700;margin-bottom:10px;letter-spacing:.02em}
-.service-card-desc{font-size:14px;color:var(--muted);line-height:1.65;flex:1;margin-bottom:20px}
-.service-card-footer{display:flex;align-items:center;justify-content:space-between}
-.service-card-tag{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:var(--bg2);padding:4px 10px;border-radius:100px;border:1px solid var(--border)}
+/* ─── BROWSE ─── */
+#browse{padding:52px 28px 80px;max-width:1400px;margin:0 auto}
+.browse-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;gap:16px;flex-wrap:wrap}
+.browse-filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter-pill{background:var(--bg2);border:1.5px solid var(--border);color:var(--text);padding:7px 16px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;border:1.5px solid transparent;background:var(--bg2)}
+.filter-pill:hover{border-color:var(--dark);background:#fff}
+.filter-pill.active{background:var(--dark);color:#fff;border-color:var(--dark)}
+.browse-count{font-size:13px;color:var(--muted);white-space:nowrap}
 
-/* HOW IT WORKS */
-#howto{padding:96px 24px;background:#fff}
-.steps-timeline{display:flex;align-items:flex-start;gap:0;margin-top:64px;position:relative;max-width:900px;margin-left:auto;margin-right:auto}
-.step-col{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative}
-.step-connector{position:absolute;top:29px;left:50%;right:-50%;height:2px;background:linear-gradient(90deg,var(--red),rgba(196,30,58,0.15));z-index:0}
-.step-col:last-child .step-connector{display:none}
-.step-num{width:58px;height:58px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.04em;color:#fff;position:relative;z-index:1;margin-bottom:24px;box-shadow:0 4px 20px rgba(196,30,58,0.3)}
-.step-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.06em;margin-bottom:10px;color:var(--dark)}
-.step-body{font-size:14px;color:var(--muted);line-height:1.7;max-width:220px}
+/* ─── GIG CARDS ─── */
+.gigs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.gig-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:box-shadow .25s,transform .25s,border-color .25s}
+.gig-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.1);transform:translateY(-3px);border-color:#ccc}
+.gig-thumb{height:180px;position:relative;overflow:hidden;background:var(--bg3)}
+.gig-thumb-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.gig-thumb-bg svg{width:56px;height:56px;stroke:rgba(0,0,0,0.18);fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.gig-cat-badge{position:absolute;top:10px;left:10px;background:rgba(255,255,255,0.92);font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:100px;color:var(--dark)}
+.gig-body{padding:14px 16px 18px;flex:1;display:flex;flex-direction:column}
+.gig-name{font-size:15px;font-weight:700;color:var(--dark);margin-bottom:5px;line-height:1.3}
+.gig-desc{font-size:13px;color:var(--muted);line-height:1.55;flex:1;margin-bottom:12px}
+.gig-meta{display:flex;align-items:center;gap:5px;margin-bottom:14px}
+.gig-stars{display:flex;gap:2px}
+.gig-stars svg{width:12px;height:12px;fill:var(--red)}
+.gig-rating{font-size:12px;font-weight:700;color:var(--dark)}
+.gig-reviews{font-size:12px;color:var(--muted)}
+.gig-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);padding-top:12px}
+.gig-price{font-size:13px;color:var(--muted);font-weight:500}
+.gig-price strong{font-size:17px;font-weight:800;color:var(--dark)}
+.btn-book-gig{background:var(--red);color:#fff;border:none;border-radius:100px;padding:8px 18px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;text-decoration:none;display:inline-block}
+.btn-book-gig:hover{background:var(--red2)}
 
-/* TRUST BAR */
-.trust-bar{background:var(--dark);padding:32px 24px}
-.trust-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.trust-item{display:flex;align-items:center;gap:14px}
-.trust-icon{width:44px;height:44px;background:rgba(196,30,58,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.trust-icon svg{width:20px;height:20px;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.trust-title{font-size:13px;font-weight:700;color:#fff;margin-bottom:2px}
-.trust-sub{font-size:12px;color:rgba(255,255,255,0.5)}
+/* ─── HOW IT WORKS ─── */
+#howto{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:64px 28px}
+.howto-inner{max-width:900px;margin:0 auto;text-align:center}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:10px;display:block}
+.howto-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,4.5vw,52px);letter-spacing:.04em;color:var(--dark);margin-bottom:48px}
+.howto-steps{display:flex;align-items:flex-start;gap:0;position:relative}
+.howto-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;padding:0 16px}
+.howto-connector{position:absolute;top:22px;left:50%;right:-50%;height:2px;background:var(--border);z-index:0}
+.howto-step:last-child .howto-connector{display:none}
+.howto-num{width:46px;height:46px;border-radius:50%;background:var(--dark);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:22px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;margin-bottom:18px;flex-shrink:0}
+.howto-step-title{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:7px}
+.howto-step-body{font-size:13px;color:var(--muted);line-height:1.65;max-width:180px}
 
-/* REVIEWS */
-#reviews{padding:96px 24px;background:var(--bg2)}
-.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
-.review-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column}
-.review-stars{display:flex;gap:3px;margin-bottom:16px}
-.review-stars svg{width:14px;height:14px;fill:var(--red)}
-.review-text{font-size:14px;color:var(--text);line-height:1.75;margin-bottom:22px;flex:1}
-.review-author{display:flex;align-items:center;gap:12px}
-.review-avatar{width:38px;height:38px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0}
+/* ─── REVIEWS ─── */
+#reviews{padding:72px 28px;max-width:1400px;margin:0 auto}
+.reviews-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:36px;flex-wrap:wrap;gap:16px}
+.reviews-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,4vw,46px);letter-spacing:.04em;color:var(--dark)}
+.reviews-score{display:flex;align-items:center;gap:10px}
+.reviews-score-num{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--red);line-height:1;letter-spacing:.02em}
+.reviews-score-stars{display:flex;gap:3px;margin-bottom:4px}
+.reviews-score-stars svg{width:16px;height:16px;fill:var(--red)}
+.reviews-score-count{font-size:12px;color:var(--muted)}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.review-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px}
+.review-top{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.review-avatar{width:36px;height:36px;border-radius:50%;background:var(--dark);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0}
 .review-name{font-size:13px;font-weight:700;color:var(--dark)}
-.review-handle{font-size:11px;color:var(--muted)}
-.review-badge{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);background:rgba(196,30,58,0.08);border:1px solid rgba(196,30,58,0.18);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.review-service{font-size:11px;color:var(--muted)}
+.review-stars-sm{display:flex;gap:2px;margin-left:auto}
+.review-stars-sm svg{width:12px;height:12px;fill:var(--red)}
+.review-text{font-size:14px;color:var(--text);line-height:1.7}
 
-/* FINAL CTA */
-#cta-final{background:var(--dark);text-align:center;padding:112px 24px;position:relative;overflow:hidden}
-.cta-glow{position:absolute;bottom:-100px;left:50%;transform:translateX(-50%);width:600px;height:400px;border-radius:50%;background:radial-gradient(ellipse,rgba(196,30,58,0.2) 0%,transparent 70%);pointer-events:none}
-.cta-inner{position:relative;z-index:2;max-width:720px;margin:0 auto}
-.cta-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(50px,7vw,88px);letter-spacing:.04em;line-height:.92;margin-bottom:20px;color:#fff}
-.cta-title .red{color:var(--red)}
-.cta-sub{color:rgba(255,255,255,0.55);font-size:16px;line-height:1.75;max-width:500px;margin:0 auto 44px}
-.btn-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.btn-red-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.25);padding:15px 36px;border-radius:100px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;letter-spacing:.04em;transition:border-color .2s,background .2s;display:inline-block;text-transform:uppercase;font-family:'Inter',sans-serif}
-.btn-red-outline:hover{border-color:#fff;background:rgba(255,255,255,0.07)}
-
-/* FOOTER */
-footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:60px 24px 28px}
-.footer-inner{max-width:1280px;margin:0 auto}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
-.footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.footer-logo img{height:36px}
-.footer-logo-text{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.06em;color:#fff}
-.footer-logo-text span{color:var(--red)}
-.footer-tagline{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;max-width:260px;margin-bottom:20px}
-.footer-contact-line{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:7px;display:flex;align-items:center;gap:8px}
-.footer-contact-line svg{width:14px;height:14px;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-.footer-col-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:18px}
-.footer-links{list-style:none;display:flex;flex-direction:column;gap:11px}
-.footer-links a{font-size:14px;color:rgba(255,255,255,0.45);text-decoration:none;transition:color .2s}
+/* ─── FOOTER ─── */
+footer{background:var(--dark);padding:52px 28px 28px}
+.footer-inner{max-width:1400px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:44px}
+.footer-logo-wrap{display:flex;align-items:center;gap:9px;margin-bottom:14px}
+.footer-logo-wrap img{height:32px;filter:brightness(0) invert(1);opacity:.9}
+.footer-logo-text{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.06em;color:#fff}
+.footer-logo-text em{color:var(--red);font-style:normal}
+.footer-tagline{font-size:13px;color:rgba(255,255,255,0.38);line-height:1.75;max-width:260px;margin-bottom:18px}
+.footer-contact{font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:7px;display:flex;align-items:center;gap:8px}
+.footer-contact svg{width:13px;height:13px;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.footer-col-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:16px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:14px;color:rgba(255,255,255,0.38);text-decoration:none;transition:color .2s}
 .footer-links a:hover{color:#fff}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:22px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.25);gap:16px;flex-wrap:wrap}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:22px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.22);gap:16px;flex-wrap:wrap}
 
-/* RESPONSIVE */
+/* ─── HIDDEN (filter) ─── */
+.gig-card.hidden{display:none}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1200px){.gigs-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:1024px){
-  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-search{max-width:320px}
+  .gigs-grid{grid-template-columns:repeat(2,1fr)}
   .footer-top{grid-template-columns:1fr 1fr}
-  .trust-inner{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:768px){
-  .nav-links,.btn-red.nav-btn{display:none}
+  .nav-links,.btn-nav-book,.nav-search{display:none}
   .hamburger{display:flex}
-  .services-grid{grid-template-columns:1fr}
+  .nav-logo-text{font-size:20px}
+  #hero{height:480px}
+  .hero-title{font-size:clamp(44px,10vw,72px)}
+  .gigs-grid{grid-template-columns:repeat(2,1fr)}
   .reviews-grid{grid-template-columns:1fr}
-  .steps-timeline{flex-direction:column;align-items:center;gap:36px}
-  .step-connector{display:none}
-  .hero-stats{flex-direction:column;border-radius:12px}
-  .hero-stat{border-right:none;border-bottom:1px solid var(--border)}
-  .hero-stat:last-child{border-bottom:none}
+  .howto-steps{flex-direction:column;align-items:center;gap:28px}
+  .howto-connector{display:none}
 }
 @media(max-width:540px){
-  .trust-inner{grid-template-columns:1fr}
+  .gigs-grid{grid-template-columns:1fr}
   .footer-top{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;text-align:center}
+  .hero-search-bar{flex-direction:column;border-radius:16px;padding:12px;gap:8px}
+  .hero-search-bar button{width:100%;border-radius:10px}
 }
-
-/* SUCCESS TOAST */
-.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--dark);color:#fff;padding:14px 28px;border-radius:100px;font-size:14px;font-weight:600;border:1px solid rgba(255,255,255,0.1);transition:transform .4s ease,opacity .4s ease;opacity:0;z-index:999;white-space:nowrap}
-.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 </style>
 </head>
 <body>
@@ -174,21 +180,23 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:60
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <img src="./c4-logo.png" alt="C4 Services" onerror="this.style.display='none'">
-      <div class="nav-logo-text"><span>C4</span> Services</div>
+      <img src="./c4-logo.png" alt="C4 Services">
+      <div class="nav-logo-text"><em>C4</em> Services</div>
     </a>
+    <div class="nav-search">
+      <input type="text" id="navSearchInput" placeholder="Search services..." autocomplete="off">
+      <button class="nav-search-btn" onclick="doSearch()">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </div>
     <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="#services">Services</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#browse">Services</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <div class="nav-right">
-      <a href="#services" class="btn-red nav-btn">Book a Service</a>
-      <button class="hamburger" id="hamburger" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+    <a href="#browse" class="btn-nav-book">Book a Service</a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -196,156 +204,188 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:60
 <div class="mobile-nav" id="mobileNav">
   <button class="mobile-close" id="mobileClose">&#10005;</button>
   <a href="index.html">Home</a>
-  <a href="#services" id="mobileServices">Services</a>
+  <a href="#browse" id="mobileServices">Services</a>
   <a href="#reviews" id="mobileReviews">Reviews</a>
   <a href="contact.html">Contact</a>
-  <a href="#services" class="btn-red" style="font-family:'Inter',sans-serif;font-size:14px;border-radius:100px;margin-top:8px">Book a Service</a>
+  <a href="#browse" class="btn-nav-book" style="margin-top:8px;padding:12px 32px;border-radius:100px;font-size:15px">Book a Service</a>
 </div>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-dots"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-inner">
-    <div class="hero-badge">
-      <div class="hero-badge-dot"></div>
-      Serving the Area — Book Online Today
+  <div class="hero-video-wrap">
+    <!-- Drop your video file at ./videos/hero.mp4 — or swap src with a YouTube embed below -->
+    <video autoplay muted loop playsinline poster="">
+      <source src="./videos/hero.mp4" type="video/mp4">
+    </video>
+    <!-- Fallback solid background if no video -->
+    <style>#hero{background:#1a1a1a}</style>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Powered by C4 Services</div>
+    <h1 class="hero-title">ONE COMPANY.<br><em>EVERY SERVICE.</em></h1>
+    <div class="hero-search-bar">
+      <input type="text" id="heroSearchInput" placeholder="What do you need done today?" autocomplete="off">
+      <button onclick="doSearch()">Search</button>
     </div>
-    <h1 class="hero-headline">ONE COMPANY.<br><span class="red">EVERY SERVICE.</span></h1>
-    <p class="hero-sub">Landscaping. Detailing. Photography. Bouncy houses. Snowplowing. Whatever you need — C4 handles it. One call, fully done.</p>
-    <div class="hero-btns">
-      <a href="#services" class="btn-red btn-large">Browse Services</a>
-      <a href="contact.html" class="btn-outline btn-large">Contact Us</a>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-val">500+</div>
-        <div class="hero-stat-lbl">Jobs Done</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-val">4.9</div>
-        <div class="hero-stat-lbl">Avg Rating</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-val">6+</div>
-        <div class="hero-stat-lbl">Services</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-val">100%</div>
-        <div class="hero-stat-lbl">Insured</div>
-      </div>
+    <div class="hero-cats">
+      <a href="#browse" class="hero-cat" onclick="filterGigs('outdoor')">
+        <svg viewBox="0 0 24 24"><path d="M12 22V12M12 12C12 12 7 9 4 4c3 1 6 3 8 8zM12 12c0 0 5-3 8-8-3 1-6 3-8 8z"/></svg>
+        Landscaping
+      </a>
+      <a href="#browse" class="hero-cat" onclick="filterGigs('events')">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Events
+      </a>
+      <a href="#browse" class="hero-cat" onclick="filterGigs('auto')">
+        <svg viewBox="0 0 24 24"><path d="M7 17m-2 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0"/><path d="M17 17m-2 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0"/><path d="M5 17H3v-6l2-5h11l4 5v6h-2M5 17h12"/></svg>
+        Auto
+      </a>
+      <a href="#browse" class="hero-cat" onclick="filterGigs('creative')">
+        <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        Photography
+      </a>
+      <a href="#browse" class="hero-cat" onclick="filterGigs('seasonal')">
+        <svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg>
+        Snowplowing
+      </a>
     </div>
   </div>
 </section>
 
-<!-- SERVICES GRID -->
-<section id="services">
-  <div class="section-inner">
-    <div class="section-header">
-      <span class="section-tag">What We Do</span>
-      <h2 class="section-title">PICK YOUR SERVICE</h2>
-      <p class="section-sub">Every job handled by C4 — no subcontractors, no middlemen. Just us, showing up and getting it done.</p>
+<!-- BROWSE / GIG GRID -->
+<section id="browse">
+  <div style="max-width:1400px;margin:0 auto;padding:52px 28px 80px">
+    <div class="browse-bar">
+      <div class="browse-filters">
+        <button class="filter-pill active" onclick="filterGigs('all',this)">All Services</button>
+        <button class="filter-pill" onclick="filterGigs('outdoor',this)">Outdoor</button>
+        <button class="filter-pill" onclick="filterGigs('events',this)">Events</button>
+        <button class="filter-pill" onclick="filterGigs('auto',this)">Auto</button>
+        <button class="filter-pill" onclick="filterGigs('creative',this)">Creative</button>
+        <button class="filter-pill" onclick="filterGigs('seasonal',this)">Seasonal</button>
+      </div>
+      <div class="browse-count" id="browseCount">6 services available</div>
     </div>
-    <div class="services-grid">
+
+    <div class="gigs-grid" id="gigsGrid">
 
       <!-- Landscaping -->
-      <a href="services/landscaping.html" class="service-card">
-        <div class="service-card-img" style="background:#edf4ec">
-          <svg viewBox="0 0 24 24"><path d="M12 22V12M12 12C12 12 7 9 4 4c3 1 6 3 8 8zM12 12c0 0 5-3 8-8-3 1-6 3-8 8z"/><path d="M5 22h14"/></svg>
-          <div class="service-card-img-overlay"></div>
+      <a href="services/landscaping.html" class="gig-card" data-cat="outdoor" data-name="landscaping yard mowing trimming cleanup">
+        <div class="gig-thumb" style="background:#dff0db">
+          <div class="gig-thumb-bg"><svg viewBox="0 0 24 24"><path d="M12 22V12M12 12C12 12 7 9 4 4c3 1 6 3 8 8zM12 12c0 0 5-3 8-8-3 1-6 3-8 8z"/><path d="M5 22h14"/></svg></div>
+          <span class="gig-cat-badge">Outdoor</span>
         </div>
-        <div class="service-card-body">
-          <div class="service-card-name">Landscaping</div>
-          <div class="service-card-price">Starting at $75</div>
-          <p class="service-card-desc">Mowing, trimming, cleanups, mulching, and full yard maintenance. We make your property look its best.</p>
-          <div class="service-card-footer">
-            <span class="service-card-tag">Outdoor</span>
-            <span class="btn-red" style="font-size:12px;padding:8px 18px">Book Now</span>
+        <div class="gig-body">
+          <div class="gig-name">Landscaping &amp; Yard Care</div>
+          <p class="gig-desc">Mowing, edging, cleanups, mulching, and full yard maintenance — done right.</p>
+          <div class="gig-meta">
+            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <span class="gig-rating">5.0</span><span class="gig-reviews">(83 reviews)</span>
+          </div>
+          <div class="gig-footer">
+            <div class="gig-price">From <strong>$75</strong></div>
+            <span class="btn-book-gig">Book</span>
           </div>
         </div>
       </a>
 
       <!-- Bouncy House -->
-      <a href="services/bouncy-house.html" class="service-card">
-        <div class="service-card-img" style="background:#fdf0f0">
-          <svg viewBox="0 0 24 24"><path d="M3 18V9a9 9 0 0 1 18 0v9"/><path d="M21 19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1h18v1z"/><path d="M8 9h8M12 6v6"/></svg>
-          <div class="service-card-img-overlay"></div>
+      <a href="services/bouncy-house.html" class="gig-card" data-cat="events" data-name="bouncy house inflatable party rental birthday">
+        <div class="gig-thumb" style="background:#fde8e8">
+          <div class="gig-thumb-bg"><svg viewBox="0 0 24 24"><path d="M3 18V9a9 9 0 0 1 18 0v9"/><path d="M21 19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1h18v1z"/><path d="M8 9h8M12 6v6"/></svg></div>
+          <span class="gig-cat-badge">Events</span>
         </div>
-        <div class="service-card-body">
-          <div class="service-card-name">Bouncy House Rental</div>
-          <div class="service-card-price">Starting at $150</div>
-          <p class="service-card-desc">Delivery, setup, and pickup included. Perfect for birthdays, block parties, and backyard events.</p>
-          <div class="service-card-footer">
-            <span class="service-card-tag">Events</span>
-            <span class="btn-red" style="font-size:12px;padding:8px 18px">Book Now</span>
+        <div class="gig-body">
+          <div class="gig-name">Bouncy House Rental</div>
+          <p class="gig-desc">Delivery, setup, and pickup included. Birthdays, block parties, backyard events.</p>
+          <div class="gig-meta">
+            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <span class="gig-rating">4.9</span><span class="gig-reviews">(61 reviews)</span>
+          </div>
+          <div class="gig-footer">
+            <div class="gig-price">From <strong>$150</strong></div>
+            <span class="btn-book-gig">Book</span>
           </div>
         </div>
       </a>
 
       <!-- Photography -->
-      <a href="services/photography.html" class="service-card">
-        <div class="service-card-img" style="background:#f0f2fd">
-          <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-          <div class="service-card-img-overlay"></div>
+      <a href="services/photography.html" class="gig-card" data-cat="creative" data-name="photography photos portraits events real estate">
+        <div class="gig-thumb" style="background:#e8eafb">
+          <div class="gig-thumb-bg"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+          <span class="gig-cat-badge">Creative</span>
         </div>
-        <div class="service-card-body">
-          <div class="service-card-name">Photography</div>
-          <div class="service-card-price">Starting at $200</div>
-          <p class="service-card-desc">Events, portraits, real estate, and more. Professional shots delivered fast, edited and ready to use.</p>
-          <div class="service-card-footer">
-            <span class="service-card-tag">Creative</span>
-            <span class="btn-red" style="font-size:12px;padding:8px 18px">Book Now</span>
+        <div class="gig-body">
+          <div class="gig-name">Professional Photography</div>
+          <p class="gig-desc">Events, portraits, real estate. Edited gallery delivered within 5 business days.</p>
+          <div class="gig-meta">
+            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <span class="gig-rating">4.9</span><span class="gig-reviews">(47 reviews)</span>
+          </div>
+          <div class="gig-footer">
+            <div class="gig-price">From <strong>$200</strong></div>
+            <span class="btn-book-gig">Book</span>
           </div>
         </div>
       </a>
 
-      <!-- Chair & Table Rentals -->
-      <a href="services/chairs-tables.html" class="service-card">
-        <div class="service-card-img" style="background:#fdf5ec">
-          <svg viewBox="0 0 24 24"><path d="M4 3v18M20 3v18M4 8h16M4 16h16"/></svg>
-          <div class="service-card-img-overlay"></div>
+      <!-- Chairs & Tables -->
+      <a href="services/chairs-tables.html" class="gig-card" data-cat="events" data-name="chairs tables rental event furniture delivery">
+        <div class="gig-thumb" style="background:#fef3e2">
+          <div class="gig-thumb-bg"><svg viewBox="0 0 24 24"><path d="M4 3v18M20 3v18M4 8h16M4 16h16"/></svg></div>
+          <span class="gig-cat-badge">Events</span>
         </div>
-        <div class="service-card-body">
-          <div class="service-card-name">Chair &amp; Table Rentals</div>
-          <div class="service-card-price">Starting at $50</div>
-          <p class="service-card-desc">Folding chairs, banquet tables, and more. We deliver and pick up — you just enjoy the event.</p>
-          <div class="service-card-footer">
-            <span class="service-card-tag">Events</span>
-            <span class="btn-red" style="font-size:12px;padding:8px 18px">Book Now</span>
+        <div class="gig-body">
+          <div class="gig-name">Chair &amp; Table Rentals</div>
+          <p class="gig-desc">Folding chairs, banquet tables, delivered and picked up. You just show up.</p>
+          <div class="gig-meta">
+            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <span class="gig-rating">5.0</span><span class="gig-reviews">(39 reviews)</span>
+          </div>
+          <div class="gig-footer">
+            <div class="gig-price">From <strong>$50</strong></div>
+            <span class="btn-book-gig">Book</span>
           </div>
         </div>
       </a>
 
       <!-- Snowplowing -->
-      <a href="services/snowplowing.html" class="service-card">
-        <div class="service-card-img" style="background:#eef4fb">
-          <svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg>
-          <div class="service-card-img-overlay"></div>
+      <a href="services/snowplowing.html" class="gig-card" data-cat="seasonal" data-name="snowplowing snow removal driveway winter plowing">
+        <div class="gig-thumb" style="background:#e4f0fb">
+          <div class="gig-thumb-bg"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg></div>
+          <span class="gig-cat-badge">Seasonal</span>
         </div>
-        <div class="service-card-body">
-          <div class="service-card-name">Snowplowing</div>
-          <div class="service-card-price">Starting at $45</div>
-          <p class="service-card-desc">Driveways, walkways, and commercial lots cleared fast. Available for one-time or seasonal contracts.</p>
-          <div class="service-card-footer">
-            <span class="service-card-tag">Seasonal</span>
-            <span class="btn-red" style="font-size:12px;padding:8px 18px">Book Now</span>
+        <div class="gig-body">
+          <div class="gig-name">Snowplowing &amp; Removal</div>
+          <p class="gig-desc">Driveways, walkways, and lots cleared fast. One-time or seasonal contracts.</p>
+          <div class="gig-meta">
+            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <span class="gig-rating">4.8</span><span class="gig-reviews">(55 reviews)</span>
+          </div>
+          <div class="gig-footer">
+            <div class="gig-price">From <strong>$45</strong></div>
+            <span class="btn-book-gig">Book</span>
           </div>
         </div>
       </a>
 
       <!-- Mobile Detailing -->
-      <a href="services/detailing.html" class="service-card">
-        <div class="service-card-img" style="background:#f7f0fb">
-          <svg viewBox="0 0 24 24"><path d="M7 17m-2 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0"/><path d="M17 17m-2 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0"/><path d="M5 17H3v-6l2-5h11l4 5v6h-2M5 17h12"/><path d="M5 11h14"/></svg>
-          <div class="service-card-img-overlay"></div>
+      <a href="services/detailing.html" class="gig-card" data-cat="auto" data-name="mobile detailing car wash interior exterior detail">
+        <div class="gig-thumb" style="background:#ede8f5">
+          <div class="gig-thumb-bg"><svg viewBox="0 0 24 24"><path d="M7 17m-2 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0"/><path d="M17 17m-2 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0"/><path d="M5 17H3v-6l2-5h11l4 5v6h-2M5 17h12"/><path d="M5 11h14"/></svg></div>
+          <span class="gig-cat-badge">Auto</span>
         </div>
-        <div class="service-card-body">
-          <div class="service-card-name">Mobile Detailing</div>
-          <div class="service-card-price">Starting at $80</div>
-          <p class="service-card-desc">Full interior and exterior detail at your location. We come to you — no need to drop off your car.</p>
-          <div class="service-card-footer">
-            <span class="service-card-tag">Auto</span>
-            <span class="btn-red" style="font-size:12px;padding:8px 18px">Book Now</span>
+        <div class="gig-body">
+          <div class="gig-name">Mobile Car Detailing</div>
+          <p class="gig-desc">Full interior and exterior detail at your location. We come to you.</p>
+          <div class="gig-meta">
+            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <span class="gig-rating">4.9</span><span class="gig-reviews">(72 reviews)</span>
+          </div>
+          <div class="gig-footer">
+            <div class="gig-price">From <strong>$80</strong></div>
+            <span class="btn-book-gig">Book</span>
           </div>
         </div>
       </a>
@@ -356,131 +396,80 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:60
 
 <!-- HOW IT WORKS -->
 <section id="howto">
-  <div class="section-inner">
-    <div class="section-header">
-      <span class="section-tag">The Process</span>
-      <h2 class="section-title">3 STEPS TO DONE</h2>
-    </div>
-    <div class="steps-timeline">
-      <div class="step-col">
-        <div class="step-connector"></div>
-        <div class="step-num">1</div>
-        <div class="step-title">BROWSE &amp; PICK</div>
-        <p class="step-body">Choose from 6+ services. View pricing, what's included, and available dates.</p>
+  <div class="howto-inner">
+    <span class="section-label">How It Works</span>
+    <h2 class="howto-title">BOOKED IN UNDER 3 MINUTES</h2>
+    <div class="howto-steps">
+      <div class="howto-step">
+        <div class="howto-connector"></div>
+        <div class="howto-num">1</div>
+        <div class="howto-step-title">Pick a Service</div>
+        <p class="howto-step-body">Browse services, filter by category, and click the one you need.</p>
       </div>
-      <div class="step-col">
-        <div class="step-connector"></div>
-        <div class="step-num">2</div>
-        <div class="step-title">BOOK &amp; PAY</div>
-        <p class="step-body">Fill out the booking form and pay securely online. Instant confirmation sent to your email.</p>
+      <div class="howto-step">
+        <div class="howto-connector"></div>
+        <div class="howto-num">2</div>
+        <div class="howto-step-title">Choose Your Package</div>
+        <p class="howto-step-body">Select Basic, Standard, or Premium. Pick your date and fill in your details.</p>
       </div>
-      <div class="step-col">
-        <div class="step-connector"></div>
-        <div class="step-num">3</div>
-        <div class="step-title">WE SHOW UP</div>
-        <p class="step-body">C4 arrives on time, handles everything, and leaves the job done right. Guaranteed.</p>
+      <div class="howto-step">
+        <div class="howto-connector"></div>
+        <div class="howto-num">3</div>
+        <div class="howto-step-title">Pay &amp; Confirm</div>
+        <p class="howto-step-body">Secure checkout via Stripe. You'll get a confirmation email instantly.</p>
+      </div>
+      <div class="howto-step">
+        <div class="howto-connector"></div>
+        <div class="howto-num">4</div>
+        <div class="howto-step-title">C4 Shows Up</div>
+        <p class="howto-step-body">We arrive on time and handle everything. Job done, guaranteed.</p>
       </div>
     </div>
   </div>
 </section>
-
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <div class="trust-inner">
-    <div class="trust-item">
-      <div class="trust-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-      </div>
-      <div>
-        <div class="trust-title">Fully Insured</div>
-        <div class="trust-sub">Every job covered</div>
-      </div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      </div>
-      <div>
-        <div class="trust-title">Same-Day Response</div>
-        <div class="trust-sub">Fast booking confirmation</div>
-      </div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon">
-        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      </div>
-      <div>
-        <div class="trust-title">4.9 Star Rating</div>
-        <div class="trust-sub">Based on 200+ reviews</div>
-      </div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon">
-        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
-      <div>
-        <div class="trust-title">500+ Happy Clients</div>
-        <div class="trust-sub">And counting</div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- REVIEWS -->
 <section id="reviews">
-  <div class="section-inner">
-    <div class="section-header">
-      <span class="section-tag">What Clients Say</span>
-      <h2 class="section-title">REAL RESULTS.</h2>
-    </div>
-    <div class="reviews-grid">
-      <div class="review-card">
-        <div class="review-stars">
+  <div class="reviews-header">
+    <h2 class="reviews-title">WHAT CLIENTS SAY</h2>
+    <div class="reviews-score">
+      <div class="reviews-score-num">4.9</div>
+      <div>
+        <div class="reviews-score-stars">
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <p class="review-text">"Booked the bouncy house for my son's birthday — C4 showed up on time, set everything up perfectly, and came back to break it all down. Easiest party setup ever."</p>
-        <div class="review-author"><div class="review-avatar">TM</div><div><div class="review-name">Tanya M.</div><div class="review-handle">Bouncy House Rental</div></div><span class="review-badge">Verified</span></div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.27 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <p class="review-text">"My yard looks incredible. C4 did a full cleanup and mulching job in a couple hours. I've tried 3 other landscapers — none came close to this level of detail."</p>
-        <div class="review-author"><div class="review-avatar">DJ</div><div><div class="review-name">Darius J.</div><div class="review-handle">Landscaping</div></div><span class="review-badge">Verified</span></div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <p class="review-text">"Used C4 for event photos AND chair/table rentals for the same party. Having one company handle it all made everything so smooth. The photos came out amazing."</p>
-        <div class="review-author"><div class="review-avatar">KR</div><div><div class="review-name">Keisha R.</div><div class="review-handle">Photography + Rentals</div></div><span class="review-badge">Verified</span></div>
+        <div class="reviews-score-count">Based on 357 reviews</div>
       </div>
     </div>
   </div>
-</section>
-
-<!-- FINAL CTA -->
-<section id="cta-final">
-  <div class="cta-glow"></div>
-  <div class="cta-inner">
-    <span class="section-tag" style="color:rgba(196,30,58,0.9)">Ready to Book?</span>
-    <h2 class="cta-title">STOP WAITING.<br><span class="red">GET IT DONE.</span></h2>
-    <p class="cta-sub">Pick a service, book online, and C4 handles the rest. No calls, no hassle — just results.</p>
-    <div class="btn-row">
-      <a href="#services" class="btn-red btn-large">Browse Services</a>
-      <a href="contact.html" class="btn-red-outline btn-large">Talk to Us</a>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar">TM</div>
+        <div><div class="review-name">Tanya M.</div><div class="review-service">Bouncy House Rental</div></div>
+        <div class="review-stars-sm"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+      </div>
+      <p class="review-text">"Booked the bouncy house for my son's birthday. C4 showed up on time, set everything up, and came back to break it all down. Easiest party setup ever."</p>
+    </div>
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar">DJ</div>
+        <div><div class="review-name">Darius J.</div><div class="review-service">Landscaping</div></div>
+        <div class="review-stars-sm"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+      </div>
+      <p class="review-text">"My yard looks incredible. Full cleanup and mulching in a couple hours. Tried 3 other landscapers before C4 — none came close."</p>
+    </div>
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar">KR</div>
+        <div><div class="review-name">Keisha R.</div><div class="review-service">Photography + Rentals</div></div>
+        <div class="review-stars-sm"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+      </div>
+      <p class="review-text">"Used C4 for event photos AND chair/table rentals for the same party. One company handling everything made the whole day stress-free."</p>
     </div>
   </div>
 </section>
@@ -490,13 +479,13 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:60
   <div class="footer-inner">
     <div class="footer-top">
       <div>
-        <div class="footer-logo">
-          <img src="./c4-logo.png" alt="C4 Services" onerror="this.style.display='none'">
-          <div class="footer-logo-text"><span>C4</span> Services</div>
+        <div class="footer-logo-wrap">
+          <img src="./c4-logo.png" alt="C4 Services">
+          <div class="footer-logo-text"><em>C4</em> Services</div>
         </div>
-        <p class="footer-tagline">One company handling it all. Landscaping, events, detailing, photography, and more.</p>
-        <div class="footer-contact-line"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.12 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.62a16 16 0 0 0 6 6l.93-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16c.1.31.17.63.19.95z"/></svg>(555) 000-0000</div>
-        <div class="footer-contact-line"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@c4services.com</div>
+        <p class="footer-tagline">One company. Every service. Book online and we handle the rest.</p>
+        <div class="footer-contact"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.12 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.62a16 16 0 0 0 6 6l.93-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16c.1.31.17.63.19.95z"/></svg>(555) 000-0000</div>
+        <div class="footer-contact"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@c4services.com</div>
       </div>
       <div>
         <div class="footer-col-title">Services</div>
@@ -513,11 +502,11 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:60
         <div class="footer-col-title">Company</div>
         <ul class="footer-links">
           <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="#">Reviews</a></li>
+          <li><a href="#reviews">Reviews</a></li>
         </ul>
       </div>
       <div>
-        <div class="footer-col-title">Follow Us</div>
+        <div class="footer-col-title">Follow</div>
         <ul class="footer-links">
           <li><a href="#">Instagram</a></li>
           <li><a href="#">Facebook</a></li>
@@ -527,30 +516,52 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:60
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 C4 Services. All rights reserved.</span>
-      <span>Built for the people who get things done.</span>
+      <span>Secure payments by Stripe.</span>
     </div>
   </div>
 </footer>
 
-<!-- SUCCESS TOAST -->
-<div class="toast" id="toast">Booking confirmed! Check your email.</div>
-
 <script>
 // Mobile nav
-const hamburger = document.getElementById('hamburger')
-const mobileNav = document.getElementById('mobileNav')
-const mobileClose = document.getElementById('mobileClose')
-hamburger.addEventListener('click', () => mobileNav.classList.add('open'))
-mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'))
-document.querySelectorAll('#mobileNav a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')))
+document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileNav').classList.add('open'))
+document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open'))
+document.querySelectorAll('#mobileNav a').forEach(a => a.addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open')))
 
-// Success toast from Stripe redirect
-if (new URLSearchParams(location.search).get('booked') === '1') {
-  const t = document.getElementById('toast')
-  t.classList.add('show')
-  setTimeout(() => t.classList.remove('show'), 5000)
-  history.replaceState({}, '', '/')
+// Filter gigs by category
+function filterGigs(cat, btn) {
+  const cards = document.querySelectorAll('.gig-card')
+  let count = 0
+  cards.forEach(card => {
+    const show = cat === 'all' || card.dataset.cat === cat
+    card.classList.toggle('hidden', !show)
+    if (show) count++
+  })
+  document.getElementById('browseCount').textContent = count + ' service' + (count !== 1 ? 's' : '') + ' available'
+  if (btn) {
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'))
+    btn.classList.add('active')
+  }
+  document.getElementById('browse').scrollIntoView({behavior:'smooth'})
 }
+
+// Search
+function doSearch() {
+  const q = (document.getElementById('heroSearchInput')?.value || document.getElementById('navSearchInput')?.value || '').toLowerCase().trim()
+  if (!q) return
+  const cards = document.querySelectorAll('.gig-card')
+  let count = 0
+  cards.forEach(card => {
+    const match = card.dataset.name.includes(q)
+    card.classList.toggle('hidden', !match)
+    if (match) count++
+  })
+  document.getElementById('browseCount').textContent = count + ' result' + (count !== 1 ? 's' : '') + ' for "' + q + '"'
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'))
+  document.getElementById('browse').scrollIntoView({behavior:'smooth'})
+}
+
+document.getElementById('heroSearchInput')?.addEventListener('keydown', e => { if(e.key==='Enter') doSearch() })
+document.getElementById('navSearchInput')?.addEventListener('keydown', e => { if(e.key==='Enter') doSearch() })
 </script>
 </body>
 </html>
