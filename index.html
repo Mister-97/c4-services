@@ -184,6 +184,15 @@ footer{background:var(--dark);padding:52px 28px 28px}
 .footer-links a:hover{color:#fff}
 .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:22px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.22);gap:16px;flex-wrap:wrap}
 
+/* ─── ANIMATIONS ─── */
+@keyframes heroUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.hero-eyebrow{animation:heroUp .55s ease both}
+.hero-title{animation:heroUp .55s .1s ease both}
+.hero-search-bar{animation:heroUp .55s .2s ease both}
+.hero-cats{animation:heroUp .55s .3s ease both}
+.anim{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}
+.anim.visible{opacity:1;transform:none}
+
 /* ─── HIDDEN (filter) ─── */
 .gig-card.hidden{display:none}
 
@@ -834,6 +843,19 @@ function doSearch() {
 
 document.getElementById('heroSearchInput')?.addEventListener('keydown', e => { if(e.key==='Enter') doSearch() })
 document.getElementById('navSearchInput')?.addEventListener('keydown', e => { if(e.key==='Enter') doSearch() })
+
+// Scroll animations
+const animObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); animObs.unobserve(e.target) } })
+}, { threshold: 0.08 })
+
+document.querySelectorAll('.gig-card, .howto-step, .trust-feat, .trust-big-card, .trust-rating-card, .review-card').forEach((el) => {
+  el.classList.add('anim')
+  const siblings = Array.from(el.parentNode.children).filter(c => c.classList && (c.classList.contains('gig-card') || c.classList.contains('howto-step') || c.classList.contains('trust-feat') || c.classList.contains('review-card')))
+  const idx = siblings.indexOf(el)
+  el.style.transitionDelay = (idx * 0.08) + 's'
+  animObs.observe(el)
+})
 </script>
 </body>
 </html>

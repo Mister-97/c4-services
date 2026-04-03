@@ -35,18 +35,22 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);backdrop
 .mobile-close{position:absolute;top:24px;right:28px;background:none;border:none;color:var(--muted);font-size:26px;cursor:pointer}
 
 /* SERVICE HERO */
-.svc-hero{background:var(--bg2);padding:80px 24px 72px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
-.svc-hero-glow{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:400px;border-radius:50%;background:radial-gradient(ellipse,rgba(196,30,58,0.08) 0%,transparent 70%);pointer-events:none}
-.svc-hero-inner{position:relative;z-index:2;max-width:720px;margin:0 auto}
-.svc-breadcrumb{font-size:12px;color:var(--muted);margin-bottom:18px}
+.svc-hero{background:var(--bg2);border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;min-height:500px;overflow:hidden;position:relative}
+.svc-hero-content{padding:72px 52px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.svc-hero-img{position:relative;overflow:hidden}
+.svc-hero-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 6s ease}
+.svc-hero-img:hover img{transform:scale(1.04)}
+.svc-hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--bg2) 0%,transparent 35%);pointer-events:none}
+.svc-breadcrumb{font-size:12px;color:var(--muted);margin-bottom:20px}
 .svc-breadcrumb a{color:var(--muted);text-decoration:none}
 .svc-breadcrumb a:hover{color:var(--red)}
-.svc-icon{width:72px;height:72px;background:rgba(196,30,58,0.08);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 22px}
-.svc-icon svg{width:36px;height:36px;stroke:var(--red);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.svc-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,80px);letter-spacing:.04em;line-height:.9;margin-bottom:18px;color:var(--dark)}
+.svc-icon{width:64px;height:64px;background:rgba(196,30,58,0.08);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.svc-icon svg{width:32px;height:32px;stroke:var(--red);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.svc-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,5.5vw,76px);letter-spacing:.04em;line-height:.9;margin-bottom:16px;color:var(--dark)}
 .svc-title span{color:var(--red)}
-.svc-sub{color:var(--muted);font-size:16px;line-height:1.75;max-width:520px;margin:0 auto 32px}
-.svc-hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.svc-sub{color:var(--muted);font-size:16px;line-height:1.75;max-width:480px;margin-bottom:32px}
+.svc-hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:900px){.svc-hero{grid-template-columns:1fr;min-height:auto}.svc-hero-content{padding:52px 28px}.svc-hero-img{height:260px}.svc-hero-img::after{background:linear-gradient(to bottom,transparent 0%,var(--bg2) 85%)}}
 
 /* CONTENT */
 .svc-body{max-width:1100px;margin:0 auto;padding:80px 24px;display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:start}
@@ -130,7 +134,7 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
 </div>
 
 <div class="svc-hero">
-  <div class="svc-hero-glow"></div>
+  <div class="svc-hero-content">
   <div class="svc-hero-inner">
     <div class="svc-breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="../index.html#services">Services</a> &rsaquo; MOBILE DETAILING</div>
     <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M7 17m-2 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0"/><path d="M17 17m-2 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0"/><path d="M5 17H3v-6l2-5h11l4 5v6h-2M5 17h12"/><path d="M5 11h14"/></svg></div>
@@ -141,6 +145,8 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
       <a href="../contact.html" class="btn-outline" style="padding:13px 32px;font-size:14px">Ask a Question</a>
     </div>
   </div>
+  </div>
+  <div class="svc-hero-img"><img src="https://images.pexels.com/photos/4870702/pexels-photo-4870702.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&fit=crop" alt="Mobile Detailing"></div>
 </div>
 
 <div class="svc-body">
