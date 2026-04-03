@@ -78,6 +78,8 @@ nav{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid va
 .gig-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:box-shadow .25s,transform .25s,border-color .25s}
 .gig-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.1);transform:translateY(-3px);border-color:#ccc}
 .gig-thumb{height:180px;position:relative;overflow:hidden;background:var(--bg3)}
+.gig-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.gig-card:hover .gig-thumb img{transform:scale(1.04)}
 .gig-thumb-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
 .gig-thumb-bg svg{width:56px;height:56px;stroke:rgba(0,0,0,0.18);fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
 .gig-cat-badge{position:absolute;top:10px;left:10px;background:rgba(255,255,255,0.92);font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:100px;color:var(--dark)}
@@ -96,36 +98,42 @@ nav{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid va
 .btn-book-gig:hover{background:var(--red2)}
 
 /* ─── HOW IT WORKS ─── */
-#howto{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:64px 28px}
+#howto{background:var(--dark);border-top:none;border-bottom:none;padding:72px 28px;position:relative;overflow:hidden}
+#howto::before{content:'';position:absolute;inset:0;background-image:url("https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1600&q=60&fit=crop");background-size:cover;background-position:center;opacity:0.07;pointer-events:none}
+#howto::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(196,30,58,0.08) 0%,transparent 60%);pointer-events:none}
 .howto-inner{max-width:900px;margin:0 auto;text-align:center}
 .section-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:10px;display:block}
-.howto-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,4.5vw,52px);letter-spacing:.04em;color:var(--dark);margin-bottom:48px}
+.howto-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,4.5vw,52px);letter-spacing:.04em;color:#fff;margin-bottom:48px}
 .howto-steps{display:flex;align-items:flex-start;gap:0;position:relative}
 .howto-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;padding:0 16px}
-.howto-connector{position:absolute;top:22px;left:50%;right:-50%;height:2px;background:var(--border);z-index:0}
+.howto-connector{position:absolute;top:22px;left:50%;right:-50%;height:2px;background:rgba(255,255,255,0.15);z-index:0}
 .howto-step:last-child .howto-connector{display:none}
-.howto-num{width:46px;height:46px;border-radius:50%;background:var(--dark);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:22px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;margin-bottom:18px;flex-shrink:0}
-.howto-step-title{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:7px}
-.howto-step-body{font-size:13px;color:var(--muted);line-height:1.65;max-width:180px}
+.howto-num{width:46px;height:46px;border-radius:50%;background:var(--red);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:22px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;margin-bottom:18px;flex-shrink:0;box-shadow:0 0 20px rgba(196,30,58,0.4)}
+.howto-step-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:7px}
+.howto-step-body{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.65;max-width:180px}
 
-/* ─── REVIEWS ─── */
-#reviews{padding:72px 28px;max-width:1400px;margin:0 auto}
-.reviews-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:36px;flex-wrap:wrap;gap:16px}
-.reviews-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,4vw,46px);letter-spacing:.04em;color:var(--dark)}
-.reviews-score{display:flex;align-items:center;gap:10px}
-.reviews-score-num{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--red);line-height:1;letter-spacing:.02em}
-.reviews-score-stars{display:flex;gap:3px;margin-bottom:4px}
-.reviews-score-stars svg{width:16px;height:16px;fill:var(--red)}
-.reviews-score-count{font-size:12px;color:var(--muted)}
-.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.review-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px}
-.review-top{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.review-avatar{width:36px;height:36px;border-radius:50%;background:var(--dark);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0}
-.review-name{font-size:13px;font-weight:700;color:var(--dark)}
-.review-service{font-size:11px;color:var(--muted)}
-.review-stars-sm{display:flex;gap:2px;margin-left:auto}
-.review-stars-sm svg{width:12px;height:12px;fill:var(--red)}
-.review-text{font-size:14px;color:var(--text);line-height:1.7}
+/* ─── TRUST SECTION ─── */
+#trust{background:var(--dark);padding:80px 28px;position:relative;overflow:hidden}
+#trust::before{content:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:800px;height:500px;border-radius:50%;background:radial-gradient(ellipse,rgba(196,30,58,0.12) 0%,transparent 70%);pointer-events:none}
+.trust-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.trust-top{text-align:center;margin-bottom:60px}
+.trust-eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:14px;display:block}
+.trust-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5.5vw,72px);letter-spacing:.03em;color:#fff;line-height:.95;margin-bottom:18px}
+.trust-headline em{color:var(--red);font-style:normal}
+.trust-sub{font-size:16px;color:rgba(255,255,255,0.5);max-width:520px;margin:0 auto;line-height:1.75}
+.trust-pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-bottom:2px}
+.trust-pillar{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:40px 36px;position:relative;overflow:hidden;transition:background .3s}
+.trust-pillar:hover{background:rgba(255,255,255,0.05)}
+.trust-pillar::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--red);opacity:0;transition:opacity .3s}
+.trust-pillar:hover::before{opacity:1}
+.trust-pillar-icon{width:52px;height:52px;border-radius:12px;background:rgba(196,30,58,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:22px}
+.trust-pillar-icon svg{width:26px;height:26px;stroke:var(--red);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.trust-pillar-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.04em;color:#fff;margin-bottom:12px;line-height:1}
+.trust-pillar-body{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.8;max-width:340px}
+.trust-stat-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.trust-stat{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:28px 24px;text-align:center}
+.trust-stat-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4vw,52px);color:var(--red);letter-spacing:.02em;line-height:1;margin-bottom:6px}
+.trust-stat-label{font-size:12px;color:rgba(255,255,255,0.4);font-weight:500;letter-spacing:.04em;text-transform:uppercase}
 
 /* ─── FOOTER ─── */
 footer{background:var(--dark);padding:52px 28px 28px}
@@ -161,7 +169,8 @@ footer{background:var(--dark);padding:52px 28px 28px}
   #hero{height:480px}
   .hero-title{font-size:clamp(44px,10vw,72px)}
   .gigs-grid{grid-template-columns:repeat(2,1fr)}
-  .reviews-grid{grid-template-columns:1fr}
+  .trust-pillars{grid-template-columns:1fr}
+  .trust-stat-bar{grid-template-columns:repeat(2,1fr)}
   .howto-steps{flex-direction:column;align-items:center;gap:28px}
   .howto-connector{display:none}
 }
@@ -192,7 +201,7 @@ footer{background:var(--dark);padding:52px 28px 28px}
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="#browse">Services</a></li>
-      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#trust">Why C4</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <a href="#browse" class="btn-nav-book">Book a Service</a>
@@ -205,7 +214,7 @@ footer{background:var(--dark);padding:52px 28px 28px}
   <button class="mobile-close" id="mobileClose">&#10005;</button>
   <a href="index.html">Home</a>
   <a href="#browse" id="mobileServices">Services</a>
-  <a href="#reviews" id="mobileReviews">Reviews</a>
+  <a href="#trust" id="mobileTrust">Why C4</a>
   <a href="contact.html">Contact</a>
   <a href="#browse" class="btn-nav-book" style="margin-top:8px;padding:12px 32px;border-radius:100px;font-size:15px">Book a Service</a>
 </div>
@@ -264,16 +273,17 @@ footer{background:var(--dark);padding:52px 28px 28px}
         <button class="filter-pill" onclick="filterGigs('auto',this)">Auto</button>
         <button class="filter-pill" onclick="filterGigs('creative',this)">Creative</button>
         <button class="filter-pill" onclick="filterGigs('seasonal',this)">Seasonal</button>
+        <button class="filter-pill" onclick="filterGigs('digital',this)">Digital</button>
       </div>
-      <div class="browse-count" id="browseCount">6 services available</div>
+      <div class="browse-count" id="browseCount">10 services available</div>
     </div>
 
     <div class="gigs-grid" id="gigsGrid">
 
       <!-- Landscaping -->
       <a href="services/landscaping.html" class="gig-card" data-cat="outdoor" data-name="landscaping yard mowing trimming cleanup">
-        <div class="gig-thumb" style="background:#dff0db">
-          <div class="gig-thumb-bg"><svg viewBox="0 0 24 24"><path d="M12 22V12M12 12C12 12 7 9 4 4c3 1 6 3 8 8zM12 12c0 0 5-3 8-8-3 1-6 3-8 8z"/><path d="M5 22h14"/></svg></div>
+        <div class="gig-thumb">
+          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80&fit=crop" alt="Landscaping">
           <span class="gig-cat-badge">Outdoor</span>
         </div>
         <div class="gig-body">
@@ -292,8 +302,8 @@ footer{background:var(--dark);padding:52px 28px 28px}
 
       <!-- Bouncy House -->
       <a href="services/bouncy-house.html" class="gig-card" data-cat="events" data-name="bouncy house inflatable party rental birthday">
-        <div class="gig-thumb" style="background:#fde8e8">
-          <div class="gig-thumb-bg"><svg viewBox="0 0 24 24"><path d="M3 18V9a9 9 0 0 1 18 0v9"/><path d="M21 19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1h18v1z"/><path d="M8 9h8M12 6v6"/></svg></div>
+        <div class="gig-thumb">
+          <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80&fit=crop" alt="Bouncy House Rental">
           <span class="gig-cat-badge">Events</span>
         </div>
         <div class="gig-body">
@@ -312,8 +322,8 @@ footer{background:var(--dark);padding:52px 28px 28px}
 
       <!-- Photography -->
       <a href="services/photography.html" class="gig-card" data-cat="creative" data-name="photography photos portraits events real estate">
-        <div class="gig-thumb" style="background:#e8eafb">
-          <div class="gig-thumb-bg"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+        <div class="gig-thumb">
+          <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&q=80&fit=crop" alt="Photography">
           <span class="gig-cat-badge">Creative</span>
         </div>
         <div class="gig-body">
@@ -332,8 +342,8 @@ footer{background:var(--dark);padding:52px 28px 28px}
 
       <!-- Chairs & Tables -->
       <a href="services/chairs-tables.html" class="gig-card" data-cat="events" data-name="chairs tables rental event furniture delivery">
-        <div class="gig-thumb" style="background:#fef3e2">
-          <div class="gig-thumb-bg"><svg viewBox="0 0 24 24"><path d="M4 3v18M20 3v18M4 8h16M4 16h16"/></svg></div>
+        <div class="gig-thumb">
+          <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=600&q=80&fit=crop" alt="Chair and Table Rentals">
           <span class="gig-cat-badge">Events</span>
         </div>
         <div class="gig-body">
@@ -352,8 +362,8 @@ footer{background:var(--dark);padding:52px 28px 28px}
 
       <!-- Snowplowing -->
       <a href="services/snowplowing.html" class="gig-card" data-cat="seasonal" data-name="snowplowing snow removal driveway winter plowing">
-        <div class="gig-thumb" style="background:#e4f0fb">
-          <div class="gig-thumb-bg"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg></div>
+        <div class="gig-thumb">
+          <img src="https://images.unsplash.com/photo-1547754980-3df97fed72a8?w=600&q=80&fit=crop" alt="Snowplowing">
           <span class="gig-cat-badge">Seasonal</span>
         </div>
         <div class="gig-body">
@@ -372,8 +382,8 @@ footer{background:var(--dark);padding:52px 28px 28px}
 
       <!-- Mobile Detailing -->
       <a href="services/detailing.html" class="gig-card" data-cat="auto" data-name="mobile detailing car wash interior exterior detail">
-        <div class="gig-thumb" style="background:#ede8f5">
-          <div class="gig-thumb-bg"><svg viewBox="0 0 24 24"><path d="M7 17m-2 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0"/><path d="M17 17m-2 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0"/><path d="M5 17H3v-6l2-5h11l4 5v6h-2M5 17h12"/><path d="M5 11h14"/></svg></div>
+        <div class="gig-thumb">
+          <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=600&q=80&fit=crop" alt="Mobile Detailing">
           <span class="gig-cat-badge">Auto</span>
         </div>
         <div class="gig-body">
@@ -385,6 +395,86 @@ footer{background:var(--dark);padding:52px 28px 28px}
           </div>
           <div class="gig-footer">
             <div class="gig-price">From <strong>$80</strong></div>
+            <span class="btn-book-gig">Book</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- SEO / Google My Business -->
+      <a href="services/seo.html" class="gig-card" data-cat="digital" data-name="seo google my business local search ranking optimization">
+        <div class="gig-thumb">
+          <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efbc07?w=600&q=80&fit=crop" alt="SEO and Google My Business">
+          <span class="gig-cat-badge">Digital</span>
+        </div>
+        <div class="gig-body">
+          <div class="gig-name">SEO &amp; Google My Business</div>
+          <p class="gig-desc">Get found locally. We set up and optimize your GMB, build citations, and boost your search rankings.</p>
+          <div class="gig-meta">
+            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <span class="gig-rating">5.0</span><span class="gig-reviews">(28 reviews)</span>
+          </div>
+          <div class="gig-footer">
+            <div class="gig-price">From <strong>$150</strong></div>
+            <span class="btn-book-gig">Book</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Video Editing -->
+      <a href="services/video-editing.html" class="gig-card" data-cat="digital" data-name="video editing reels promo clips social media youtube">
+        <div class="gig-thumb">
+          <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&q=80&fit=crop" alt="Video Editing">
+          <span class="gig-cat-badge">Digital</span>
+        </div>
+        <div class="gig-body">
+          <div class="gig-name">Video Editing</div>
+          <p class="gig-desc">Reels, promo videos, event recaps, YouTube content. Fast turnaround, clean cuts, ready to post.</p>
+          <div class="gig-meta">
+            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <span class="gig-rating">4.9</span><span class="gig-reviews">(41 reviews)</span>
+          </div>
+          <div class="gig-footer">
+            <div class="gig-price">From <strong>$100</strong></div>
+            <span class="btn-book-gig">Book</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Graphic Design -->
+      <a href="services/graphic-design.html" class="gig-card" data-cat="digital" data-name="graphic design logo flyer branding business card">
+        <div class="gig-thumb">
+          <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80&fit=crop" alt="Graphic Design">
+          <span class="gig-cat-badge">Digital</span>
+        </div>
+        <div class="gig-body">
+          <div class="gig-name">Graphic Design</div>
+          <p class="gig-desc">Logos, flyers, business cards, social graphics, and merch. Delivered print and digital ready.</p>
+          <div class="gig-meta">
+            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <span class="gig-rating">4.9</span><span class="gig-reviews">(33 reviews)</span>
+          </div>
+          <div class="gig-footer">
+            <div class="gig-price">From <strong>$75</strong></div>
+            <span class="btn-book-gig">Book</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Ecommerce Setup -->
+      <a href="services/ecom.html" class="gig-card" data-cat="digital" data-name="ecommerce shopify online store setup website shop">
+        <div class="gig-thumb">
+          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&q=80&fit=crop" alt="E-Commerce Setup">
+          <span class="gig-cat-badge">Digital</span>
+        </div>
+        <div class="gig-body">
+          <div class="gig-name">E-Commerce Setup</div>
+          <p class="gig-desc">Shopify, Square, or custom. Full store build — products, payments, shipping, and launch ready.</p>
+          <div class="gig-meta">
+            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <span class="gig-rating">5.0</span><span class="gig-reviews">(19 reviews)</span>
+          </div>
+          <div class="gig-footer">
+            <div class="gig-price">From <strong>$300</strong></div>
             <span class="btn-book-gig">Book</span>
           </div>
         </div>
@@ -428,48 +518,61 @@ footer{background:var(--dark);padding:52px 28px 28px}
   </div>
 </section>
 
-<!-- REVIEWS -->
-<section id="reviews">
-  <div class="reviews-header">
-    <h2 class="reviews-title">WHAT CLIENTS SAY</h2>
-    <div class="reviews-score">
-      <div class="reviews-score-num">4.9</div>
-      <div>
-        <div class="reviews-score-stars">
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+<!-- TRUST SECTION -->
+<section id="trust">
+  <div class="trust-inner">
+    <div class="trust-top">
+      <span class="trust-eyebrow">Why C4</span>
+      <h2 class="trust-headline">WE DON'T JUST SHOW UP.<br><em>WE SHOW OUT.</em></h2>
+      <p class="trust-sub">Other companies cancel, ghost, or send randoms. C4 is built different — same crew, same standard, every single time.</p>
+    </div>
+    <div class="trust-pillars">
+      <div class="trust-pillar">
+        <div class="trust-pillar-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
-        <div class="reviews-score-count">Based on 357 reviews</div>
+        <div class="trust-pillar-title">ON TIME. EVERY TIME.</div>
+        <p class="trust-pillar-body">You'll get a confirmation 24 hours before your job. We show up when we say — no waiting around, no last-minute excuses. Your time is valuable and we treat it that way.</p>
+      </div>
+      <div class="trust-pillar">
+        <div class="trust-pillar-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="trust-pillar-title">SATISFACTION GUARANTEED.</div>
+        <p class="trust-pillar-body">If the job isn't done right, we come back and fix it — no charge, no argument. We stand behind every single service we deliver. That's not a policy, that's a promise.</p>
+      </div>
+      <div class="trust-pillar">
+        <div class="trust-pillar-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="trust-pillar-title">NO MIDDLEMEN. EVER.</div>
+        <p class="trust-pillar-body">Every job is handled by C4 — not subcontractors, not strangers. You know who's showing up, and they know exactly what you need. Consistent people, consistent quality.</p>
+      </div>
+      <div class="trust-pillar">
+        <div class="trust-pillar-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.12 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.62a16 16 0 0 0 6 6l.93-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16c.1.31.17.63.19.95z"/></svg>
+        </div>
+        <div class="trust-pillar-title">SAME-DAY RESPONSE.</div>
+        <p class="trust-pillar-body">Book online and get confirmed instantly. Have a question? We respond same day — no waiting 3 days for a callback. Real communication from real people who want your business.</p>
       </div>
     </div>
-  </div>
-  <div class="reviews-grid">
-    <div class="review-card">
-      <div class="review-top">
-        <div class="review-avatar">TM</div>
-        <div><div class="review-name">Tanya M.</div><div class="review-service">Bouncy House Rental</div></div>
-        <div class="review-stars-sm"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+    <div class="trust-stat-bar">
+      <div class="trust-stat">
+        <div class="trust-stat-num">500+</div>
+        <div class="trust-stat-label">Jobs Completed</div>
       </div>
-      <p class="review-text">"Booked the bouncy house for my son's birthday. C4 showed up on time, set everything up, and came back to break it all down. Easiest party setup ever."</p>
-    </div>
-    <div class="review-card">
-      <div class="review-top">
-        <div class="review-avatar">DJ</div>
-        <div><div class="review-name">Darius J.</div><div class="review-service">Landscaping</div></div>
-        <div class="review-stars-sm"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+      <div class="trust-stat">
+        <div class="trust-stat-num">4.9★</div>
+        <div class="trust-stat-label">Avg Rating</div>
       </div>
-      <p class="review-text">"My yard looks incredible. Full cleanup and mulching in a couple hours. Tried 3 other landscapers before C4 — none came close."</p>
-    </div>
-    <div class="review-card">
-      <div class="review-top">
-        <div class="review-avatar">KR</div>
-        <div><div class="review-name">Keisha R.</div><div class="review-service">Photography + Rentals</div></div>
-        <div class="review-stars-sm"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+      <div class="trust-stat">
+        <div class="trust-stat-num">100%</div>
+        <div class="trust-stat-label">No Subcontractors</div>
       </div>
-      <p class="review-text">"Used C4 for event photos AND chair/table rentals for the same party. One company handling everything made the whole day stress-free."</p>
+      <div class="trust-stat">
+        <div class="trust-stat-num">&lt;2hr</div>
+        <div class="trust-stat-label">Response Time</div>
+      </div>
     </div>
   </div>
 </section>
@@ -502,7 +605,7 @@ footer{background:var(--dark);padding:52px 28px 28px}
         <div class="footer-col-title">Company</div>
         <ul class="footer-links">
           <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#trust">Why C4</a></li>
         </ul>
       </div>
       <div>
