@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta property="og:title" content="Cleaning Services — C4 Services">
+<meta property="og:image" content="https://mister-97.github.io/c4-services/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cleaning Services — C4 Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--red:#c41e3a;--red2:#a01830;--dark:#1a1a1a}
+html,body{height:100%;background:var(--dark);font-family:'Inter',sans-serif;overflow:hidden}
+
+.redirect-wrap{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:32px 24px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+/* Background glow */
+.redirect-wrap::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 60%, rgba(196,30,58,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 20% 20%, rgba(196,30,58,0.08) 0%, transparent 60%);
+  pointer-events:none;
+}
+
+/* Big watermark */
+.redirect-wrap::after{
+  content:'C4';
+  position:absolute;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(240px,40vw,480px);
+  color:rgba(255,255,255,0.025);
+  line-height:1;
+  pointer-events:none;
+  user-select:none;
+  bottom:-60px;
+  right:-20px;
+}
+
+.brand-tag{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.35);
+  margin-bottom:32px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.brand-tag::before,.brand-tag::after{content:'';flex:1;max-width:40px;height:1px;background:rgba(255,255,255,0.15)}
+
+.redirect-heading{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(36px,6vw,72px);
+  letter-spacing:.04em;
+  color:#fff;
+  line-height:1;
+  margin-bottom:12px;
+}
+.redirect-heading em{color:var(--red);font-style:normal}
+
+.redirect-sub{
+  font-size:16px;
+  color:rgba(255,255,255,0.45);
+  margin-bottom:48px;
+  line-height:1.6;
+}
+
+/* Discount code box */
+.code-box{
+  background:var(--red);
+  border-radius:18px;
+  padding:32px 48px;
+  margin-bottom:52px;
+  position:relative;
+  z-index:1;
+  box-shadow:0 0 60px rgba(196,30,58,0.35), 0 8px 32px rgba(0,0,0,0.4);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{box-shadow:0 0 60px rgba(196,30,58,0.35),0 8px 32px rgba(0,0,0,0.4)}50%{box-shadow:0 0 90px rgba(196,30,58,0.55),0 8px 32px rgba(0,0,0,0.4)}}
+
+.code-label{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.65);
+  margin-bottom:10px;
+}
+.code-value{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(42px,7vw,72px);
+  letter-spacing:.08em;
+  color:#fff;
+  line-height:1;
+  margin-bottom:10px;
+}
+.code-desc{
+  font-size:14px;
+  font-weight:600;
+  color:rgba(255,255,255,0.8);
+  letter-spacing:.03em;
+}
+
+/* Countdown */
+.countdown-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  position:relative;
+  z-index:1;
+}
+.countdown-text{
+  font-size:13px;
+  color:rgba(255,255,255,0.35);
+  letter-spacing:.05em;
+}
+.countdown-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:48px;
+  color:rgba(255,255,255,0.6);
+  line-height:1;
+  width:60px;
+  text-align:center;
+}
+.progress-track{
+  width:220px;
+  height:3px;
+  background:rgba(255,255,255,0.1);
+  border-radius:100px;
+  overflow:hidden;
+}
+.progress-fill{
+  height:100%;
+  background:var(--red);
+  border-radius:100px;
+  width:100%;
+  transform-origin:left;
+  animation:drain 3s linear forwards;
+}
+@keyframes drain{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+
+.destination{
+  font-size:12px;
+  color:rgba(255,255,255,0.2);
+  margin-top:8px;
+  letter-spacing:.03em;
+}
+
+@media(max-width:480px){
+  .code-box{padding:26px 32px;border-radius:14px}
+}
+</style>
+</head>
+<body>
+
+<div class="redirect-wrap">
+  <div class="brand-tag">C4 Services Partner</div>
+
+  <h1 class="redirect-heading">CLEANING<br><em>SERVICES</em></h1>
+  <p class="redirect-sub">Taking you to our trusted cleaning partner.<br>Before you go — grab this exclusive deal.</p>
+
+  <div class="code-box">
+    <div class="code-label">Your Exclusive Discount Code</div>
+    <div class="code-value">C4MAGIC</div>
+    <div class="code-desc">Save 5% on your first cleaning order</div>
+  </div>
+
+  <div class="countdown-wrap">
+    <div class="countdown-text">Redirecting in</div>
+    <div class="countdown-num" id="countNum">3</div>
+    <div class="progress-track"><div class="progress-fill"></div></div>
+    <div class="destination">magicfresh.cleaning</div>
+  </div>
+</div>
+
+<script>
+let n = 3;
+const el = document.getElementById('countNum');
+const interval = setInterval(() => {
+  n--;
+  el.textContent = n;
+  if (n <= 0) {
+    clearInterval(interval);
+    window.location.href = 'https://magicfresh.cleaning';
+  }
+}, 1000);
+</script>
+</body>
+</html>
