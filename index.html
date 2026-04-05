@@ -96,6 +96,10 @@ nav{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid va
 .gig-thumb-bg svg{width:56px;height:56px;stroke:rgba(0,0,0,0.18);fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
 .gig-cat-badge{position:absolute;top:10px;left:10px;background:rgba(255,255,255,0.92);font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:100px;color:var(--dark)}
 .gig-partner-badge{position:absolute;top:10px;right:10px;background:linear-gradient(135deg,#c9a227,#f0cc5a,#a87c1a);font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:4px 11px;border-radius:100px;color:#3a2600;box-shadow:0 2px 8px rgba(180,140,0,0.35)}
+.gig-coming-badge{position:absolute;top:10px;right:10px;background:#1a1a1a;font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:4px 11px;border-radius:100px;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.gig-card.gig-coming-soon{cursor:default;opacity:.75;pointer-events:none}
+.gig-card.gig-coming-soon:hover{transform:none;box-shadow:none;border-color:var(--border)}
+.btn-notify-gig{display:inline-flex;align-items:center;gap:5px;background:#f3f4f6;color:#6b7280;border-radius:100px;padding:7px 16px;font-size:12px;font-weight:700;letter-spacing:.02em}
 .gig-promo-strip{display:flex;align-items:center;gap:6px;background:#fffbea;border:1px solid #f0e080;border-radius:6px;padding:5px 10px;margin:8px 0 12px;font-size:11px;font-weight:700;color:#7a5c00;letter-spacing:.02em}
 .gig-promo-strip svg{width:12px;height:12px;fill:#c9a227;flex-shrink:0}
 .gig-body{padding:14px 16px 18px;flex:1;display:flex;flex-direction:column}
@@ -362,7 +366,7 @@ footer{background:var(--dark);padding:52px 28px 28px}
         <button class="filter-pill" onclick="filterGigs('digital',this)">Digital</button>
         <button class="filter-pill" onclick="filterGigs('home',this)">Home</button>
       </div>
-      <div class="browse-count" id="browseCount">11 services available</div>
+      <div class="browse-count" id="browseCount">12 services available</div>
     </div>
 
     <div class="carousel-hint">
@@ -371,27 +375,7 @@ footer{background:var(--dark);padding:52px 28px 28px}
     </div>
     <div class="gigs-grid" id="gigsGrid">
 
-      <!-- Landscaping -->
-      <a href="services/landscaping.html" class="gig-card" data-cat="outdoor" data-name="landscaping yard mowing trimming cleanup">
-        <div class="gig-thumb">
-          <img src="https://images.pexels.com/photos/6728919/pexels-photo-6728919.jpeg?w=600&h=400&fit=crop" alt="Landscaping">
-          <span class="gig-cat-badge">Outdoor</span>
-        </div>
-        <div class="gig-body">
-          <div class="gig-name">Landscaping &amp; Yard Care</div>
-          <p class="gig-desc">Mowing, edging, cleanups, mulching, and full yard maintenance — done right.</p>
-          <div class="gig-meta">
-            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-            <span class="gig-rating">5.0</span><span class="gig-reviews">(83 reviews)</span>
-          </div>
-          <div class="gig-footer">
-            <div class="gig-price">From <strong>$75</strong></div>
-            <span class="btn-book-gig">Book</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Bouncy House -->
+      <!-- 1. Bouncy House -->
       <a href="https://pureplayrentals.com" target="_blank" rel="noopener" class="gig-card" data-cat="events" data-name="bouncy house inflatable party rental birthday">
         <div class="gig-thumb">
           <img src="https://images.pexels.com/photos/35649390/pexels-photo-35649390.jpeg?w=600&h=400&fit=crop" alt="Bouncy House Rental">
@@ -400,6 +384,7 @@ footer{background:var(--dark);padding:52px 28px 28px}
         <div class="gig-body">
           <div class="gig-name">Bouncy House Rental</div>
           <p class="gig-desc">Delivery, setup, and pickup included. Birthdays, block parties, backyard events.</p>
+          <div class="gig-promo-strip"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Use code C4PLAY · Save 20%</div>
           <div class="gig-meta">
             <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <span class="gig-rating">4.9</span><span class="gig-reviews">(61 reviews)</span>
@@ -411,27 +396,7 @@ footer{background:var(--dark);padding:52px 28px 28px}
         </div>
       </a>
 
-      <!-- Photography -->
-      <a href="services/photography.html" class="gig-card" data-cat="creative" data-name="photography photos portraits events real estate">
-        <div class="gig-thumb">
-          <img src="https://images.pexels.com/photos/30697993/pexels-photo-30697993.jpeg?w=600&h=400&fit=crop" alt="Photography">
-          <span class="gig-cat-badge">Creative</span>
-        </div>
-        <div class="gig-body">
-          <div class="gig-name">Professional Photography</div>
-          <p class="gig-desc">Events, portraits, real estate. Edited gallery delivered within 5 business days.</p>
-          <div class="gig-meta">
-            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-            <span class="gig-rating">4.9</span><span class="gig-reviews">(47 reviews)</span>
-          </div>
-          <div class="gig-footer">
-            <div class="gig-price">From <strong>$200</strong></div>
-            <span class="btn-book-gig">Book</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Chairs & Tables -->
+      <!-- 2. Chairs & Tables -->
       <a href="services/chairs-tables.html" class="gig-card" data-cat="events" data-name="chairs tables rental event furniture delivery">
         <div class="gig-thumb">
           <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=600&q=80&fit=crop" alt="Chair and Table Rentals">
@@ -451,7 +416,48 @@ footer{background:var(--dark);padding:52px 28px 28px}
         </div>
       </a>
 
-      <!-- Snowplowing -->
+      <!-- 3. Photography -->
+      <a href="services/photography.html" class="gig-card" data-cat="creative" data-name="photography photos portraits events real estate">
+        <div class="gig-thumb">
+          <img src="https://images.pexels.com/photos/30697993/pexels-photo-30697993.jpeg?w=600&h=400&fit=crop" alt="Photography">
+          <span class="gig-cat-badge">Creative</span>
+        </div>
+        <div class="gig-body">
+          <div class="gig-name">Professional Photography</div>
+          <p class="gig-desc">Events, portraits, real estate. On-site shooting and printed photos available.</p>
+          <div class="gig-meta">
+            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <span class="gig-rating">4.9</span><span class="gig-reviews">(47 reviews)</span>
+          </div>
+          <div class="gig-footer">
+            <div class="gig-price">From <strong>$200</strong></div>
+            <span class="btn-book-gig">Book</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 4. Landscaping — Coming Soon -->
+      <div class="gig-card gig-coming-soon" data-cat="outdoor" data-name="landscaping yard mowing trimming cleanup">
+        <div class="gig-thumb">
+          <img src="https://images.pexels.com/photos/6728919/pexels-photo-6728919.jpeg?w=600&h=400&fit=crop" alt="Landscaping">
+          <span class="gig-cat-badge">Outdoor</span>
+          <span class="gig-coming-badge">Coming Soon</span>
+        </div>
+        <div class="gig-body">
+          <div class="gig-name">Landscaping &amp; Yard Care</div>
+          <p class="gig-desc">Mowing, edging, cleanups, mulching, and full yard maintenance — launching next year.</p>
+          <div class="gig-meta">
+            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <span class="gig-rating">5.0</span><span class="gig-reviews">(83 reviews)</span>
+          </div>
+          <div class="gig-footer">
+            <div class="gig-price">From <strong>$75</strong></div>
+            <span class="btn-notify-gig">Notify Me</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Snowplowing -->
       <a href="services/snowplowing.html" class="gig-card" data-cat="seasonal" data-name="snowplowing snow removal driveway winter plowing">
         <div class="gig-thumb">
           <img src="https://images.pexels.com/photos/27306437/pexels-photo-27306437.jpeg?w=600&h=400&fit=crop" alt="Snowplowing">
@@ -471,111 +477,33 @@ footer{background:var(--dark);padding:52px 28px 28px}
         </div>
       </a>
 
-      <!-- Mobile Detailing -->
-      <a href="services/detailing.html" class="gig-card" data-cat="auto" data-name="mobile detailing car wash interior exterior detail">
+      <!-- 6. Mobile Detailing — Coming Soon -->
+      <div class="gig-card gig-coming-soon" data-cat="auto" data-name="mobile detailing car wash interior exterior detail">
         <div class="gig-thumb">
           <img src="https://images.pexels.com/photos/4870702/pexels-photo-4870702.jpeg?w=600&h=400&fit=crop" alt="Mobile Detailing">
           <span class="gig-cat-badge">Auto</span>
+          <span class="gig-coming-badge">Coming Soon</span>
         </div>
         <div class="gig-body">
           <div class="gig-name">Mobile Car Detailing</div>
-          <p class="gig-desc">Full interior and exterior detail at your location. We come to you.</p>
+          <p class="gig-desc">Full interior and exterior detail at your location. C4 partner launching soon.</p>
           <div class="gig-meta">
             <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <span class="gig-rating">4.9</span><span class="gig-reviews">(72 reviews)</span>
           </div>
           <div class="gig-footer">
             <div class="gig-price">From <strong>$80</strong></div>
-            <span class="btn-book-gig">Book</span>
+            <span class="btn-notify-gig">Notify Me</span>
           </div>
         </div>
-      </a>
+      </div>
 
-      <!-- SEO / Google My Business -->
-      <a href="services/seo.html" class="gig-card" data-cat="digital" data-name="seo google my business local search ranking optimization">
-        <div class="gig-thumb">
-          <img src="https://images.pexels.com/photos/13628541/pexels-photo-13628541.jpeg?w=600&h=400&fit=crop" alt="SEO and Google My Business">
-          <span class="gig-cat-badge">Digital</span>
-        </div>
-        <div class="gig-body">
-          <div class="gig-name">SEO &amp; Google My Business</div>
-          <p class="gig-desc">Get found locally. We set up and optimize your GMB, build citations, and boost your search rankings.</p>
-          <div class="gig-meta">
-            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-            <span class="gig-rating">5.0</span><span class="gig-reviews">(28 reviews)</span>
-          </div>
-          <div class="gig-footer">
-            <div class="gig-price">From <strong>$150</strong></div>
-            <span class="btn-book-gig">Book</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Video Editing -->
-      <a href="services/video-editing.html" class="gig-card" data-cat="digital" data-name="video editing reels promo clips social media youtube">
-        <div class="gig-thumb">
-          <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&q=80&fit=crop" alt="Video Editing">
-          <span class="gig-cat-badge">Digital</span>
-        </div>
-        <div class="gig-body">
-          <div class="gig-name">Video Editing</div>
-          <p class="gig-desc">Reels, promo videos, event recaps, YouTube content. Fast turnaround, clean cuts, ready to post.</p>
-          <div class="gig-meta">
-            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-            <span class="gig-rating">4.9</span><span class="gig-reviews">(41 reviews)</span>
-          </div>
-          <div class="gig-footer">
-            <div class="gig-price">From <strong>$100</strong></div>
-            <span class="btn-book-gig">Book</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Graphic Design -->
-      <a href="services/graphic-design.html" class="gig-card" data-cat="digital" data-name="graphic design logo flyer branding business card">
-        <div class="gig-thumb">
-          <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80&fit=crop" alt="Graphic Design">
-          <span class="gig-cat-badge">Digital</span>
-        </div>
-        <div class="gig-body">
-          <div class="gig-name">Graphic Design</div>
-          <p class="gig-desc">Logos, flyers, business cards, social graphics, and merch. Delivered print and digital ready.</p>
-          <div class="gig-meta">
-            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-            <span class="gig-rating">4.9</span><span class="gig-reviews">(33 reviews)</span>
-          </div>
-          <div class="gig-footer">
-            <div class="gig-price">From <strong>$75</strong></div>
-            <span class="btn-book-gig">Book</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Ecommerce Setup -->
-      <a href="services/ecom.html" class="gig-card" data-cat="digital" data-name="ecommerce shopify online store setup website shop">
-        <div class="gig-thumb">
-          <img src="https://images.pexels.com/photos/7054753/pexels-photo-7054753.jpeg?w=600&h=400&fit=crop" alt="E-Commerce Setup">
-          <span class="gig-cat-badge">Digital</span>
-        </div>
-        <div class="gig-body">
-          <div class="gig-name">E-Commerce Setup</div>
-          <p class="gig-desc">Shopify, Square, or custom. Full store build — products, payments, shipping, and launch ready.</p>
-          <div class="gig-meta">
-            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-            <span class="gig-rating">5.0</span><span class="gig-reviews">(19 reviews)</span>
-          </div>
-          <div class="gig-footer">
-            <div class="gig-price">From <strong>$300</strong></div>
-            <span class="btn-book-gig">Book</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Roadside Assistance -->
+      <!-- 7. Roadside Assistance -->
       <a href="services/roadside.html" class="gig-card" data-cat="auto" data-name="roadside assistance towing flat tire jump start lockout battery">
         <div class="gig-thumb">
           <img src="https://images.pexels.com/photos/17429096/pexels-photo-17429096.jpeg?w=600&h=400&fit=crop" alt="Roadside Assistance">
           <span class="gig-cat-badge">Auto</span>
+          <span class="gig-partner-badge">C4 Partner</span>
         </div>
         <div class="gig-body">
           <div class="gig-name">Roadside Assistance</div>
@@ -591,7 +519,7 @@ footer{background:var(--dark);padding:52px 28px 28px}
         </div>
       </a>
 
-      <!-- Cleaning Services -->
+      <!-- 8. Cleaning Services -->
       <a href="services/cleaning.html" class="gig-card" data-cat="home" data-name="cleaning house deep clean maid service residential commercial">
         <div class="gig-thumb">
           <img src="https://images.pexels.com/photos/9462313/pexels-photo-9462313.jpeg?w=600&h=400&fit=crop" alt="Cleaning Services">
@@ -612,6 +540,89 @@ footer{background:var(--dark);padding:52px 28px 28px}
           </div>
         </div>
       </a>
+
+      <!-- 9. Video Editing — C4 Partner -->
+      <a href="services/video-editing.html" class="gig-card" data-cat="digital" data-name="video editing reels promo clips social media youtube">
+        <div class="gig-thumb">
+          <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&q=80&fit=crop" alt="Video Editing">
+          <span class="gig-cat-badge">Digital</span>
+          <span class="gig-partner-badge">C4 Partner</span>
+        </div>
+        <div class="gig-body">
+          <div class="gig-name">Video Editing</div>
+          <p class="gig-desc">Reels, promo videos, event recaps, YouTube content. Fast turnaround, clean cuts, ready to post.</p>
+          <div class="gig-meta">
+            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <span class="gig-rating">4.9</span><span class="gig-reviews">(41 reviews)</span>
+          </div>
+          <div class="gig-footer">
+            <div class="gig-price">From <strong>$100</strong></div>
+            <span class="btn-book-gig">Book</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 10. Graphic Design — C4 Partner -->
+      <a href="services/graphic-design.html" class="gig-card" data-cat="digital" data-name="graphic design logo flyer branding business card">
+        <div class="gig-thumb">
+          <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80&fit=crop" alt="Graphic Design">
+          <span class="gig-cat-badge">Digital</span>
+          <span class="gig-partner-badge">C4 Partner</span>
+        </div>
+        <div class="gig-body">
+          <div class="gig-name">Graphic Design</div>
+          <p class="gig-desc">Logos, flyers, business cards, social graphics, and merch. Delivered print and digital ready.</p>
+          <div class="gig-meta">
+            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <span class="gig-rating">4.9</span><span class="gig-reviews">(33 reviews)</span>
+          </div>
+          <div class="gig-footer">
+            <div class="gig-price">From <strong>$75</strong></div>
+            <span class="btn-book-gig">Book</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 11. SEO & Google My Business -->
+      <a href="services/seo.html" class="gig-card" data-cat="digital" data-name="seo google my business local search ranking optimization">
+        <div class="gig-thumb">
+          <img src="https://images.pexels.com/photos/13628541/pexels-photo-13628541.jpeg?w=600&h=400&fit=crop" alt="SEO and Google My Business">
+          <span class="gig-cat-badge">Digital</span>
+        </div>
+        <div class="gig-body">
+          <div class="gig-name">SEO &amp; Google My Business</div>
+          <p class="gig-desc">Get found locally. We set up and optimize your GMB, build citations, and boost your search rankings.</p>
+          <div class="gig-meta">
+            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <span class="gig-rating">5.0</span><span class="gig-reviews">(28 reviews)</span>
+          </div>
+          <div class="gig-footer">
+            <div class="gig-price">From <strong>$150</strong></div>
+            <span class="btn-book-gig">Book</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 12. Trailer Rentals — Coming Soon -->
+      <div class="gig-card gig-coming-soon" data-cat="events" data-name="trailer rental car hauler utility trailer open closed">
+        <div class="gig-thumb">
+          <img src="https://images.pexels.com/photos/1178448/pexels-photo-1178448.jpeg?w=600&h=400&fit=crop" alt="Trailer Rentals">
+          <span class="gig-cat-badge">Rentals</span>
+          <span class="gig-coming-badge">Coming Soon</span>
+        </div>
+        <div class="gig-body">
+          <div class="gig-name">Trailer Rentals</div>
+          <p class="gig-desc">Car haulers, open and closed utility trailers. Perfect for moving, hauling, and more.</p>
+          <div class="gig-meta">
+            <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <span class="gig-rating">5.0</span><span class="gig-reviews">(0 reviews)</span>
+          </div>
+          <div class="gig-footer">
+            <div class="gig-price">Coming Soon</div>
+            <span class="btn-notify-gig">Notify Me</span>
+          </div>
+        </div>
+      </div>
 
     </div>
     <div class="scroll-dots" id="scrollDots"></div>
