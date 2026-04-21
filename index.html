@@ -366,7 +366,7 @@ footer{background:var(--dark);padding:52px 28px 28px}
         <button class="filter-pill" onclick="filterGigs('digital',this)">Digital</button>
         <button class="filter-pill" onclick="filterGigs('home',this)">Home</button>
       </div>
-      <div class="browse-count" id="browseCount">12 services available</div>
+      <div class="browse-count" id="browseCount">8 services available</div>
     </div>
 
     <div class="carousel-hint">
@@ -424,7 +424,7 @@ footer{background:var(--dark);padding:52px 28px 28px}
         </div>
         <div class="gig-body">
           <div class="gig-name">Professional Photography</div>
-          <p class="gig-desc">Events, portraits, real estate. On-site shooting and printed photos available.</p>
+          <p class="gig-desc">We come to your event, shoot on-site, and print photos on the spot. Packages or individual prints available.</p>
           <div class="gig-meta">
             <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <span class="gig-rating">4.9</span><span class="gig-reviews">(47 reviews)</span>
@@ -498,26 +498,26 @@ footer{background:var(--dark);padding:52px 28px 28px}
         </div>
       </div>
 
-      <!-- 7. Roadside Assistance -->
-      <a href="services/roadside.html" class="gig-card" data-cat="auto" data-name="roadside assistance towing flat tire jump start lockout battery">
+      <!-- 7. Roadside Assistance — Coming Soon -->
+      <div class="gig-card gig-coming-soon" data-cat="auto" data-name="roadside assistance towing flat tire jump start lockout battery">
         <div class="gig-thumb">
           <img src="https://images.pexels.com/photos/17429096/pexels-photo-17429096.jpeg?w=600&h=400&fit=crop" alt="Roadside Assistance">
           <span class="gig-cat-badge">Auto</span>
-          <span class="gig-partner-badge">C4 Partner</span>
+          <span class="gig-coming-badge">Coming Soon</span>
         </div>
         <div class="gig-body">
           <div class="gig-name">Roadside Assistance</div>
-          <p class="gig-desc">Flat tire, dead battery, lockout, or jump start — we come to you fast.</p>
+          <p class="gig-desc">Flat tire, dead battery, lockout, jump start, and towing. C4 partner launching soon.</p>
           <div class="gig-meta">
             <div class="gig-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <span class="gig-rating">5.0</span><span class="gig-reviews">(31 reviews)</span>
           </div>
           <div class="gig-footer">
-            <div class="gig-price">From <strong>$75</strong></div>
-            <span class="btn-book-gig">Book</span>
+            <div class="gig-price">Coming Soon</div>
+            <span class="btn-notify-gig">Notify Me</span>
           </div>
         </div>
-      </a>
+      </div>
 
       <!-- 8. Cleaning Services -->
       <a href="services/cleaning.html" class="gig-card" data-cat="home" data-name="cleaning house deep clean maid service residential commercial">
@@ -802,7 +802,7 @@ function filterGigs(cat, btn) {
   cards.forEach(card => {
     const show = cat === 'all' || card.dataset.cat === cat
     card.classList.toggle('hidden', !show)
-    if (show) count++
+    if (show && !card.classList.contains('gig-coming-soon')) count++
   })
   document.getElementById('browseCount').textContent = count + ' service' + (count !== 1 ? 's' : '') + ' available'
   if (btn) {
