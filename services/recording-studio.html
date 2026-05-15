@@ -297,7 +297,7 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
           Estimated total: <strong id="totalAmt" style="color:var(--dark)"></strong>
         </div>
         <button type="submit" class="btn-book">Proceed to Payment</button>
-        <p class="booking-note">Secure checkout powered by Stripe. A deposit is charged to confirm your booking.</p>
+        <p class="booking-note">Secure checkout powered by Stripe. 50% deposit charged now, remainder due at the session.</p>
       </form>
     </div>
   </div>
@@ -334,8 +334,9 @@ function updateTotal() {
   const hours = parseInt(hoursInput.value) || 1
   const rate = currentRate === 'weekend' ? WEEKEND_RATE : WEEKDAY_RATE
   const total = rate * hours
+  const deposit = Math.ceil(total * 0.5)
   totalDisplay.style.display = 'block'
-  totalAmt.textContent = `$${total} (${hours} hr${hours > 1 ? 's' : ''} × $${rate})`
+  totalAmt.textContent = `$${total} total — $${deposit} due today (50% deposit)`
 }
 
 // Auto-detect rate when date is picked
