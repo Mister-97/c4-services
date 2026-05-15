@@ -178,15 +178,16 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
       <p class="form-sub">We'll get back to you as soon as possible — usually within a few hours.</p>
       <form id="contactForm">
         <div class="form-row">
-          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="John" required></div>
-          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Smith" required></div>
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" name="first-name" placeholder="John" required></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" name="last-name" placeholder="Smith" required></div>
         </div>
-        <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="you@email.com" required></div>
-        <div class="form-group"><label class="form-label">Phone (optional)</label><input class="form-input" type="tel" placeholder="(773) 584-7821"></div>
+        <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" name="email" placeholder="you@email.com" required></div>
+        <div class="form-group"><label class="form-label">Phone (optional)</label><input class="form-input" type="tel" name="phone" placeholder="(773) 584-7821"></div>
         <div class="form-group">
           <label class="form-label">Service of Interest</label>
-          <select class="form-input">
+          <select class="form-input" name="service">
             <option value="">Select a service...</option>
+            <option>Recording Studio</option>
             <option>Landscaping</option>
             <option>Bouncy House Rental</option>
             <option>Photography</option>
@@ -196,7 +197,7 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
             <option>General / Other</option>
           </select>
         </div>
-        <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" placeholder="Tell us what you need..." required></textarea></div>
+        <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" name="message" placeholder="Tell us what you need..." required></textarea></div>
         <button type="submit" class="btn-submit">Send Message</button>
       </form>
       <div class="form-success" id="formSuccess">
@@ -219,10 +220,29 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
 document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileNav').classList.add('open'))
 document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open'))
 
-document.getElementById('contactForm').addEventListener('submit', function(e) {
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault()
-  this.style.display = 'none'
-  document.getElementById('formSuccess').classList.add('show')
+  const btn = this.querySelector('.btn-submit')
+  btn.textContent = 'Sending...'
+  btn.disabled = true
+  const data = Object.fromEntries(new FormData(this))
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    if (res.ok) {
+      this.style.display = 'none'
+      document.getElementById('formSuccess').classList.add('show')
+    } else {
+      throw new Error('Failed')
+    }
+  } catch {
+    btn.textContent = 'Send Message'
+    btn.disabled = false
+    alert('Something went wrong. Please email us directly at info@c4services.com or call (773) 584-7821.')
+  }
 })
 </script>
 </body>

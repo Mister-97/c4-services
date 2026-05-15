@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://c4-services.vercel.app/sitemap.xml

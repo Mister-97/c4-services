@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found — C4 Services</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --red: #c41e3a; --dark: #111111; }
+    body { font-family: 'Inter', sans-serif; background: #f8f8f8; color: var(--dark); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; }
+    .num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(100px, 20vw, 160px); letter-spacing: .04em; line-height: 1; color: #e8e8e8; }
+    h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.8rem, 5vw, 3rem); letter-spacing: .04em; margin-bottom: 12px; margin-top: -12px; }
+    h1 span { color: var(--red); }
+    p { font-size: 1rem; color: #666; max-width: 380px; margin: 0 auto 32px; line-height: 1.7; }
+    .btns { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .btn { display: inline-block; background: var(--red); color: #fff; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px; padding: 12px 28px; border-radius: 100px; text-decoration: none; letter-spacing: .05em; text-transform: uppercase; transition: opacity .2s; }
+    .btn:hover { opacity: .85; }
+    .btn-outline { background: transparent; border: 1.5px solid #ddd; color: var(--dark); }
+    .btn-outline:hover { border-color: var(--red); color: var(--red); opacity: 1; }
+  </style>
+</head>
+<body>
+  <div class="num">404</div>
+  <h1>Page <span>Not Found</span></h1>
+  <p>That page doesn't exist or was moved. Head back home and find what you need.</p>
+  <div class="btns">
+    <a href="/" class="btn">Back to Home</a>
+    <a href="/contact.html" class="btn btn-outline">Contact Us</a>
+  </div>
+</body>
+</html>

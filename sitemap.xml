@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://c4-services.vercel.app/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://c4-services.vercel.app/contact.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://c4-services.vercel.app/services/recording-studio.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://c4-services.vercel.app/services/photography.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://c4-services.vercel.app/services/cleaning.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://c4-services.vercel.app/services/video-editing.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://c4-services.vercel.app/services/graphic-design.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://c4-services.vercel.app/services/seo.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://c4-services.vercel.app/services/snowplowing.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://c4-services.vercel.app/services/chairs-tables.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://c4-services.vercel.app/services/bouncy-house.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://c4-services.vercel.app/services/landscaping.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://c4-services.vercel.app/services/detailing.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://c4-services.vercel.app/services/roadside.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+</urlset>
