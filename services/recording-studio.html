@@ -78,7 +78,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);backdrop
 
 .engineers-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:48px}
 .engineer-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius);padding:18px 20px;display:flex;align-items:center;gap:14px}
-.engineer-avatar{width:44px;height:44px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:18px;color:#fff;letter-spacing:.04em}
+.engineer-avatar{width:52px;height:52px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:18px;color:#fff;letter-spacing:.04em;overflow:hidden}
+.engineer-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top}
 .engineer-name{font-weight:700;font-size:14px;color:var(--dark);margin-bottom:2px}
 .engineer-role{font-size:12px;color:var(--muted)}
 @media(max-width:600px){.engineers-grid{grid-template-columns:1fr}}
@@ -193,11 +194,11 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <h2 class="svc-section-title">CHOOSE YOUR ENGINEER</h2>
     <div class="engineers-grid">
       <div class="engineer-card">
-        <div class="engineer-avatar">CH</div>
+        <div class="engineer-avatar"><img src="../engineer-chubbs.png" alt="Chubbs"></div>
         <div><div class="engineer-name">Chubbs</div><div class="engineer-role">Mix & Recording Engineer</div></div>
       </div>
       <div class="engineer-card">
-        <div class="engineer-avatar">NG</div>
+        <div class="engineer-avatar"><img src="../engineer-neil-gang.png" alt="Neil Gang"></div>
         <div><div class="engineer-name">Neil Gang</div><div class="engineer-role">Producer & Engineer</div></div>
       </div>
       <div class="engineer-card">
