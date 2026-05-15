@@ -1,0 +1,7 @@
+{
+  "name": "c4-services",
+  "version": "1.0.0",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}

@@ -107,8 +107,15 @@ textarea.form-input{resize:vertical;min-height:80px}
 .btn-book{width:100%;background:var(--red);color:#fff;border:none;padding:15px;border-radius:100px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.05em;text-transform:uppercase;font-family:'Inter',sans-serif;transition:background .2s,transform .15s;margin-top:8px}
 .btn-book:hover{background:var(--red2);transform:translateY(-1px)}
 .booking-note{font-size:11px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.6}
-.rate-indicator{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--muted);background:var(--bg2);border:1px solid var(--border);border-radius:100px;padding:4px 12px;margin-top:8px}
-.rate-indicator.weekend{color:var(--red);border-color:rgba(196,30,58,0.25);background:rgba(196,30,58,0.05)}
+.rate-toggle{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:4px}
+.rate-opt{border:1.5px solid var(--border);border-radius:8px;padding:10px 12px;cursor:pointer;transition:border-color .2s,background .2s;text-align:center;user-select:none}
+.rate-opt:hover{border-color:#bbb}
+.rate-opt.active{border-color:var(--red);background:rgba(196,30,58,0.04)}
+.rate-opt-label{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px}
+.rate-opt.active .rate-opt-label{color:var(--red)}
+.rate-opt-price{font-size:18px;font-weight:800;color:var(--dark)}
+.rate-opt.active .rate-opt-price{color:var(--red)}
+.rate-opt-days{font-size:11px;color:var(--muted)}
 
 footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40px 24px 24px}
 .footer-bottom-simple{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.25);gap:16px;flex-wrap:wrap}
@@ -240,15 +247,29 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
       <p class="booking-sub">Pick your date and hours. Weekdays $65/hr · Weekends $75/hr.</p>
       <form id="bookingForm">
         <div class="form-row">
-          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="John" required></div>
-          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Smith" required></div>
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" id="firstNameInput" placeholder="John" required></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" id="lastNameInput" placeholder="Smith" required></div>
         </div>
         <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" id="emailInput" placeholder="you@email.com" required></div>
-        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(555) 000-0000" required></div>
+        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" id="phoneInput" placeholder="(555) 000-0000" required></div>
+        <div class="form-group">
+          <label class="form-label">Rate</label>
+          <div class="rate-toggle">
+            <div class="rate-opt active" id="rateWeekday" onclick="selectRate('weekday')">
+              <span class="rate-opt-label">Weekday</span>
+              <div class="rate-opt-price">$65<span style="font-size:12px;font-weight:400;color:var(--muted)">/hr</span></div>
+              <div class="rate-opt-days">Mon – Fri</div>
+            </div>
+            <div class="rate-opt" id="rateWeekend" onclick="selectRate('weekend')">
+              <span class="rate-opt-label">Weekend</span>
+              <div class="rate-opt-price">$75<span style="font-size:12px;font-weight:400;color:var(--muted)">/hr</span></div>
+              <div class="rate-opt-days">Sat – Sun</div>
+            </div>
+          </div>
+        </div>
         <div class="form-group">
           <label class="form-label">Session Date</label>
           <input class="form-input" type="date" id="dateInput" required>
-          <div id="rateIndicator" class="rate-indicator" style="display:none"></div>
         </div>
         <div class="form-group">
           <label class="form-label">Hours Needed</label>
@@ -271,8 +292,8 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
             <option value="No Engineer">Book without Engineer</option>
           </select>
         </div>
-        <div class="form-group"><label class="form-label">Notes (optional)</label><textarea class="form-input" placeholder="What are you recording? Any special requests or gear needs?"></textarea></div>
-        <div id="totalDisplay" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:12px;font-size:13px;color:var(--muted);display:none">
+        <div class="form-group"><label class="form-label">Notes (optional)</label><textarea class="form-input" id="notesInput" placeholder="What are you recording? Any special requests or gear needs?"></textarea></div>
+        <div id="totalDisplay" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:12px;font-size:13px;color:var(--muted)">
           Estimated total: <strong id="totalAmt" style="color:var(--dark)"></strong>
         </div>
         <button type="submit" class="btn-book">Proceed to Payment</button>
@@ -290,59 +311,91 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
 </footer>
 
 <script>
-const STRIPE_LINK = 'https://buy.stripe.com/REPLACE_RECORDING_STUDIO'
 const WEEKDAY_RATE = 65
 const WEEKEND_RATE = 75
+let currentRate = 'weekday'
 
 document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileNav').classList.add('open'))
 document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open'))
 
 const dateInput = document.getElementById('dateInput')
 const hoursInput = document.getElementById('hoursInput')
-const rateIndicator = document.getElementById('rateIndicator')
 const totalDisplay = document.getElementById('totalDisplay')
 const totalAmt = document.getElementById('totalAmt')
 
-function isWeekend(dateStr) {
-  if (!dateStr) return false
-  const d = new Date(dateStr + 'T12:00:00')
-  return d.getDay() === 0 || d.getDay() === 6
+function selectRate(type) {
+  currentRate = type
+  document.getElementById('rateWeekday').classList.toggle('active', type === 'weekday')
+  document.getElementById('rateWeekend').classList.toggle('active', type === 'weekend')
+  updateTotal()
 }
 
 function updateTotal() {
-  const date = dateInput.value
   const hours = parseInt(hoursInput.value) || 1
-  if (!date) { rateIndicator.style.display = 'none'; totalDisplay.style.display = 'none'; return }
-  const weekend = isWeekend(date)
-  const rate = weekend ? WEEKEND_RATE : WEEKDAY_RATE
+  const rate = currentRate === 'weekend' ? WEEKEND_RATE : WEEKDAY_RATE
   const total = rate * hours
-
-  rateIndicator.style.display = 'inline-flex'
-  rateIndicator.className = 'rate-indicator' + (weekend ? ' weekend' : '')
-  rateIndicator.textContent = weekend ? `Weekend rate: $${WEEKEND_RATE}/hr` : `Weekday rate: $${WEEKDAY_RATE}/hr`
-
   totalDisplay.style.display = 'block'
   totalAmt.textContent = `$${total} (${hours} hr${hours > 1 ? 's' : ''} × $${rate})`
 }
 
-dateInput.addEventListener('change', updateTotal)
+// Auto-detect rate when date is picked
+dateInput.addEventListener('change', function() {
+  if (!this.value) return
+  const day = new Date(this.value + 'T12:00:00').getDay()
+  selectRate(day === 0 || day === 6 ? 'weekend' : 'weekday')
+})
+
 hoursInput.addEventListener('change', updateTotal)
+updateTotal()
 
 // Set min date to tomorrow
 const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1)
 dateInput.min = tomorrow.toISOString().split('T')[0]
 
-document.getElementById('bookingForm').addEventListener('submit', function(e) {
+document.getElementById('bookingForm').addEventListener('submit', async function(e) {
   e.preventDefault()
-  const email = document.getElementById('emailInput').value
-  const date = dateInput.value
-  const hours = hoursInput.value
+  const btn = this.querySelector('.btn-book')
+  btn.textContent = 'Processing...'
+  btn.disabled = true
+
+  const hours = parseInt(hoursInput.value) || 1
+  const rate = currentRate === 'weekend' ? WEEKEND_RATE : WEEKDAY_RATE
+  const totalAmount = rate * hours
+  const depositAmount = Math.ceil(totalAmount * 0.5)
   const engineer = document.getElementById('engineerInput').value
-  const weekend = isWeekend(date)
-  const rate = weekend ? WEEKEND_RATE : WEEKDAY_RATE
-  const ref = `studio_${date}_${hours}hr_${engineer.replace(/\s/g,'')}`
-  const params = new URLSearchParams({ prefilled_email: email, client_reference_id: ref })
-  window.location.href = `${STRIPE_LINK}?${params.toString()}`
+  const dateStr = dateInput.value
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December']
+  const d = new Date(dateStr + 'T12:00:00')
+  const eventDate = dateStr ? `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}` : ''
+
+  try {
+    const res = await fetch('/api/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        firstName: document.getElementById('firstNameInput').value,
+        lastName: document.getElementById('lastNameInput').value,
+        email: document.getElementById('emailInput').value,
+        phone: document.getElementById('phoneInput').value,
+        address: 'C4 Services Recording Studio',
+        eventDate,
+        rentalItem: `Recording Studio — ${hours}hr ${currentRate} session (Engineer: ${engineer})`,
+        depositAmount,
+        totalAmount,
+        notes: document.getElementById('notesInput').value || '',
+      }),
+    })
+    const data = await res.json()
+    if (data.url) {
+      window.location.href = data.url
+    } else {
+      throw new Error(data.error || 'Checkout failed')
+    }
+  } catch (err) {
+    alert('Something went wrong: ' + err.message + '\nPlease call us at (773) 584-7821.')
+    btn.textContent = 'Proceed to Payment'
+    btn.disabled = false
+  }
 })
 
 function toggleFaq(btn) {
