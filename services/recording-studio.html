@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta property="og:title" content="Recording Studio — C4 Services">
+<meta property="og:description" content="Professional recording studio in Chicago. Book by the hour with your choice of engineer. $65/hr weekdays, $75/hr weekends.">
+<meta property="og:image" content="https://mister-97.github.io/c4-services/recording-studio.png">
+<meta property="og:image:width" content="1456">
+<meta property="og:image:height" content="816">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mister-97.github.io/c4-services/services/recording-studio.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mister-97.github.io/c4-services/recording-studio.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recording Studio — C4 Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#ffffff;--bg2:#f8f8f8;--bg3:#f2f2f2;--red:#c41e3a;--red2:#a01830;--dark:#111111;--text:#2a2a2a;--muted:#666666;--border:#e5e5e5;--radius:12px;}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--dark);font-family:'Inter',sans-serif;overflow-x:hidden}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo img{height:44px;width:auto}
+.nav-logo-text{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.06em;color:var(--dark);line-height:1}
+.nav-logo-text span{color:var(--red)}
+.nav-links{display:flex;gap:2px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;padding:6px 14px;border-radius:100px;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--dark);background:var(--bg2)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.btn-red{background:var(--red);color:#fff;border:none;padding:10px 22px;border-radius:100px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;letter-spacing:.04em;transition:background .2s,transform .15s;display:inline-block;text-transform:uppercase;font-family:'Inter',sans-serif}
+.btn-red:hover{background:var(--red2);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--dark);border:1.5px solid var(--border);padding:10px 22px;border-radius:100px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;letter-spacing:.04em;transition:border-color .2s;display:inline-block;text-transform:uppercase;font-family:'Inter',sans-serif}
+.btn-outline:hover{border-color:var(--red);color:var(--red)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.hamburger span{width:22px;height:2px;background:var(--dark);border-radius:2px;display:block}
+.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:var(--dark);text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:38px;letter-spacing:.08em;transition:color .2s}
+.mobile-nav a:hover{color:var(--red)}
+.mobile-close{position:absolute;top:24px;right:28px;background:none;border:none;color:var(--muted);font-size:26px;cursor:pointer}
+
+.svc-hero{position:relative;min-height:560px;display:flex;align-items:center;justify-content:center;overflow:hidden;background-size:cover;background-position:center;background-repeat:no-repeat}
+.svc-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.72) 100%);z-index:1;pointer-events:none}
+.svc-hero-content{position:relative;z-index:2;text-align:center;padding:90px 24px;width:100%;max-width:860px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+.svc-breadcrumb{font-size:12px;color:rgba(255,255,255,0.65);margin-bottom:24px}
+.svc-breadcrumb a{color:rgba(255,255,255,0.65);text-decoration:none;transition:color .2s}
+.svc-breadcrumb a:hover{color:#fff}
+.svc-icon{width:64px;height:64px;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.svc-icon svg{width:32px;height:32px;stroke:#fff;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.svc-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,7vw,88px);letter-spacing:.04em;line-height:.9;margin-bottom:18px;color:#fff}
+.svc-title span{color:var(--red)}
+.svc-sub{color:rgba(255,255,255,0.82);font-size:17px;line-height:1.75;max-width:560px;margin-bottom:36px;text-align:center}
+.svc-hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.svc-hero .btn-outline{color:#fff;border-color:rgba(255,255,255,0.45)}
+.svc-hero .btn-outline:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,0.08)}
+@media(max-width:768px){.svc-hero{min-height:480px}.svc-hero-content{padding:70px 20px}}
+
+.svc-body{max-width:1100px;margin:0 auto;padding:80px 24px;display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:start}
+.section-tag{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:10px;display:block}
+.svc-section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,42px);letter-spacing:.04em;line-height:1;margin-bottom:20px;color:var(--dark)}
+.includes-list{list-style:none;display:flex;flex-direction:column;gap:13px;margin-bottom:48px}
+.includes-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--text);line-height:1.6}
+.includes-list li svg{width:18px;height:18px;stroke:var(--red);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:2px}
+
+.pricing-grid{display:flex;flex-direction:column;gap:14px;margin-bottom:48px}
+.pricing-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius);padding:22px 24px;transition:border-color .3s}
+.pricing-card.featured{border-color:var(--red);background:#fff;box-shadow:0 4px 24px rgba(196,30,58,0.08)}
+.pricing-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.pricing-card-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.05em;color:var(--dark)}
+.pricing-badge{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:var(--red);color:#fff;padding:3px 10px;border-radius:100px}
+.pricing-price{font-size:28px;font-weight:800;color:var(--red);margin-bottom:8px;letter-spacing:-.01em}
+.pricing-price span{font-size:13px;color:var(--muted);font-weight:400}
+.pricing-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+.engineers-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:48px}
+.engineer-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius);padding:18px 20px;display:flex;align-items:center;gap:14px}
+.engineer-avatar{width:44px;height:44px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:18px;color:#fff;letter-spacing:.04em}
+.engineer-name{font-weight:700;font-size:14px;color:var(--dark);margin-bottom:2px}
+.engineer-role{font-size:12px;color:var(--muted)}
+@media(max-width:600px){.engineers-grid{grid-template-columns:1fr}}
+
+.faq-list{display:flex;flex-direction:column;gap:3px;margin-bottom:48px}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.faq-q{width:100%;background:var(--bg2);border:none;color:var(--dark);padding:18px 22px;text-align:left;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:background .2s;font-family:'Inter',sans-serif}
+.faq-q:hover{background:var(--bg3)}
+.faq-icon svg{width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s;display:block}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;background:#fff;color:var(--muted);font-size:14px;line-height:1.8;padding:0 22px}
+.faq-item.open .faq-a{max-height:200px;padding:4px 22px 18px}
+.faq-item.open .faq-icon svg{transform:rotate(45deg)}
+
+.booking-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:32px;position:sticky;top:88px}
+.booking-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.05em;margin-bottom:6px;color:var(--dark)}
+.booking-sub{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.55}
+.form-group{margin-bottom:16px}
+.form-label{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--dark);margin-bottom:6px;display:block}
+.form-input{width:100%;background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;padding:11px 14px;font-size:14px;color:var(--dark);font-family:'Inter',sans-serif;transition:border-color .2s;outline:none}
+.form-input:focus{border-color:var(--red)}
+.form-input::placeholder{color:#aaa}
+select.form-input{cursor:pointer}
+textarea.form-input{resize:vertical;min-height:80px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn-book{width:100%;background:var(--red);color:#fff;border:none;padding:15px;border-radius:100px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.05em;text-transform:uppercase;font-family:'Inter',sans-serif;transition:background .2s,transform .15s;margin-top:8px}
+.btn-book:hover{background:var(--red2);transform:translateY(-1px)}
+.booking-note{font-size:11px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.6}
+.rate-indicator{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--muted);background:var(--bg2);border:1px solid var(--border);border-radius:100px;padding:4px 12px;margin-top:8px}
+.rate-indicator.weekend{color:var(--red);border-color:rgba(196,30,58,0.25);background:rgba(196,30,58,0.05)}
+
+footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40px 24px 24px}
+.footer-bottom-simple{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.25);gap:16px;flex-wrap:wrap}
+.footer-bottom-simple a{color:rgba(255,255,255,0.4);text-decoration:none}
+.footer-bottom-simple a:hover{color:#fff}
+
+@media(max-width:1024px){.svc-body{grid-template-columns:1fr}.booking-card{position:static}}
+@media(max-width:768px){.nav-links,.btn-red.nav-btn{display:none}.hamburger{display:flex}.form-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../c4-logo.png" alt="C4 Services" onerror="this.style.display='none'">
+      <div class="nav-logo-text"><span>C4</span> Services</div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../index.html#services">Services</a></li>
+      <li><a href="../index.html#reviews">Reviews</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#book" class="btn-red nav-btn">Book Now</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" id="mobileClose">&#10005;</button>
+  <a href="../index.html">Home</a>
+  <a href="../index.html#services">Services</a>
+  <a href="../contact.html">Contact</a>
+  <a href="#book" class="btn-red" style="font-family:'Inter',sans-serif;font-size:14px;border-radius:100px">Book Now</a>
+</div>
+
+<div class="svc-hero" style="background-image:url('../recording-studio.png')">
+  <div class="svc-hero-overlay"></div>
+  <div class="svc-hero-content">
+    <div class="svc-breadcrumb"><a href="../index.html">Home</a> &rsaquo; <a href="../index.html#services">Services</a> &rsaquo; Recording Studio</div>
+    <div class="svc-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+    </div>
+    <h1 class="svc-title">RECORDING<span> STUDIO</span></h1>
+    <p class="svc-sub">Professional studio time, your engineer of choice, and a sound-treated booth built for results. Book by the hour — weekdays or weekends.</p>
+    <div class="svc-hero-btns">
+      <a href="#book" class="btn-red" style="padding:13px 32px;font-size:14px">Book a Session — From $65/hr</a>
+      <a href="../contact.html" class="btn-outline" style="padding:13px 32px;font-size:14px">Ask a Question</a>
+    </div>
+  </div>
+</div>
+
+<div class="svc-body">
+  <div>
+    <span class="section-tag">What's Included</span>
+    <h2 class="svc-section-title">EVERYTHING IN THE SESSION</h2>
+    <ul class="includes-list">
+      <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Fully equipped studio — dual monitors, pro mixing board, studio monitors</li>
+      <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Isolated vocal booth with professional condenser mic</li>
+      <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Your choice of engineer — Chubbs, Neil Gang, Space, or bring your own</li>
+      <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>DAW session files included — take your project with you</li>
+      <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>High-quality WAV exports delivered same day</li>
+      <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Lounge area with comfortable seating for your crew</li>
+    </ul>
+
+    <span class="section-tag">Pricing</span>
+    <h2 class="svc-section-title">HOURLY RATES</h2>
+    <div class="pricing-grid">
+      <div class="pricing-card featured">
+        <div class="pricing-card-header"><div class="pricing-card-name">Weekday Rate</div><span class="pricing-badge">Mon – Fri</span></div>
+        <div class="pricing-price">$65 <span>/ hour</span></div>
+        <p class="pricing-desc">Full studio access, your choice of engineer, and all session files. Best rate for back-to-back weekday sessions.</p>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card-header"><div class="pricing-card-name">Weekend Rate</div><span class="pricing-badge">Sat – Sun</span></div>
+        <div class="pricing-price">$75 <span>/ hour</span></div>
+        <p class="pricing-desc">Same full studio experience on Saturdays and Sundays. Slots fill fast — book early.</p>
+      </div>
+    </div>
+
+    <span class="section-tag">Meet the Engineers</span>
+    <h2 class="svc-section-title">CHOOSE YOUR ENGINEER</h2>
+    <div class="engineers-grid">
+      <div class="engineer-card">
+        <div class="engineer-avatar">CH</div>
+        <div><div class="engineer-name">Chubbs</div><div class="engineer-role">Mix & Recording Engineer</div></div>
+      </div>
+      <div class="engineer-card">
+        <div class="engineer-avatar">NG</div>
+        <div><div class="engineer-name">Neil Gang</div><div class="engineer-role">Producer & Engineer</div></div>
+      </div>
+      <div class="engineer-card">
+        <div class="engineer-avatar">SP</div>
+        <div><div class="engineer-name">Space</div><div class="engineer-role">Recording Engineer</div></div>
+      </div>
+      <div class="engineer-card">
+        <div class="engineer-avatar" style="background:var(--dark)">—</div>
+        <div><div class="engineer-name">No Engineer</div><div class="engineer-role">Self-engineer your session</div></div>
+      </div>
+    </div>
+
+    <span class="section-tag">FAQs</span>
+    <h2 class="svc-section-title">COMMON QUESTIONS</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What's the minimum booking length?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+        <div class="faq-a">Minimum booking is 1 hour. Most artists book 2–4 hours for a productive session. Discounts available for 5+ hour blocks.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I bring my own beats or tracks?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+        <div class="faq-a">Absolutely. Bring files on a USB, send them ahead via email, or share a link. We'll have everything loaded before your session starts.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How many people can I bring?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+        <div class="faq-a">The lounge comfortably fits a small crew. We ask you keep it to 4 guests max in the control room to keep the session focused.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do you do mixing and mastering separately?<div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+        <div class="faq-a">Yes — mixing and mastering can be added on or booked as a standalone service. Reach out through the contact page for pricing.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOKING FORM -->
+  <div id="book">
+    <div class="booking-card">
+      <div class="booking-title">Book a Session</div>
+      <p class="booking-sub">Pick your date and hours. Weekdays $65/hr · Weekends $75/hr.</p>
+      <form id="bookingForm">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="John" required></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Smith" required></div>
+        </div>
+        <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" id="emailInput" placeholder="you@email.com" required></div>
+        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(555) 000-0000" required></div>
+        <div class="form-group">
+          <label class="form-label">Session Date</label>
+          <input class="form-input" type="date" id="dateInput" required>
+          <div id="rateIndicator" class="rate-indicator" style="display:none"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Hours Needed</label>
+          <select class="form-input" id="hoursInput">
+            <option value="1">1 hour</option>
+            <option value="2" selected>2 hours</option>
+            <option value="3">3 hours</option>
+            <option value="4">4 hours</option>
+            <option value="5">5 hours</option>
+            <option value="6">6 hours</option>
+            <option value="8">8 hours (full day)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Engineer</label>
+          <select class="form-input" id="engineerInput">
+            <option value="Chubbs">Chubbs</option>
+            <option value="Neil Gang">Neil Gang</option>
+            <option value="Space">Space</option>
+            <option value="No Engineer">Book without Engineer</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Notes (optional)</label><textarea class="form-input" placeholder="What are you recording? Any special requests or gear needs?"></textarea></div>
+        <div id="totalDisplay" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:12px;font-size:13px;color:var(--muted);display:none">
+          Estimated total: <strong id="totalAmt" style="color:var(--dark)"></strong>
+        </div>
+        <button type="submit" class="btn-book">Proceed to Payment</button>
+        <p class="booking-note">Secure checkout powered by Stripe. A deposit is charged to confirm your booking.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom-simple">
+    <span>&copy; 2026 C4 Services</span>
+    <div style="display:flex;gap:20px"><a href="../index.html">Home</a><a href="../index.html#services">Services</a><a href="../contact.html">Contact</a></div>
+  </div>
+</footer>
+
+<script>
+const STRIPE_LINK = 'https://buy.stripe.com/REPLACE_RECORDING_STUDIO'
+const WEEKDAY_RATE = 65
+const WEEKEND_RATE = 75
+
+document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileNav').classList.add('open'))
+document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open'))
+
+const dateInput = document.getElementById('dateInput')
+const hoursInput = document.getElementById('hoursInput')
+const rateIndicator = document.getElementById('rateIndicator')
+const totalDisplay = document.getElementById('totalDisplay')
+const totalAmt = document.getElementById('totalAmt')
+
+function isWeekend(dateStr) {
+  if (!dateStr) return false
+  const d = new Date(dateStr + 'T12:00:00')
+  return d.getDay() === 0 || d.getDay() === 6
+}
+
+function updateTotal() {
+  const date = dateInput.value
+  const hours = parseInt(hoursInput.value) || 1
+  if (!date) { rateIndicator.style.display = 'none'; totalDisplay.style.display = 'none'; return }
+  const weekend = isWeekend(date)
+  const rate = weekend ? WEEKEND_RATE : WEEKDAY_RATE
+  const total = rate * hours
+
+  rateIndicator.style.display = 'inline-flex'
+  rateIndicator.className = 'rate-indicator' + (weekend ? ' weekend' : '')
+  rateIndicator.textContent = weekend ? `Weekend rate: $${WEEKEND_RATE}/hr` : `Weekday rate: $${WEEKDAY_RATE}/hr`
+
+  totalDisplay.style.display = 'block'
+  totalAmt.textContent = `$${total} (${hours} hr${hours > 1 ? 's' : ''} × $${rate})`
+}
+
+dateInput.addEventListener('change', updateTotal)
+hoursInput.addEventListener('change', updateTotal)
+
+// Set min date to tomorrow
+const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1)
+dateInput.min = tomorrow.toISOString().split('T')[0]
+
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+  e.preventDefault()
+  const email = document.getElementById('emailInput').value
+  const date = dateInput.value
+  const hours = hoursInput.value
+  const engineer = document.getElementById('engineerInput').value
+  const weekend = isWeekend(date)
+  const rate = weekend ? WEEKEND_RATE : WEEKDAY_RATE
+  const ref = `studio_${date}_${hours}hr_${engineer.replace(/\s/g,'')}`
+  const params = new URLSearchParams({ prefilled_email: email, client_reference_id: ref })
+  window.location.href = `${STRIPE_LINK}?${params.toString()}`
+})
+
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item')
+  document.querySelectorAll('.faq-item.open').forEach(el => { if(el !== item) el.classList.remove('open') })
+  item.classList.toggle('open')
+}
+</script>
+</body>
+</html>
