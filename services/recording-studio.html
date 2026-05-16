@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta property="og:title" content="Recording Studio — C4 Services">
-<meta property="og:description" content="Professional recording studio in Chicago. Book by the hour with your choice of engineer. $65/hr weekdays, $75/hr weekends.">
+<meta property="og:description" content="Professional recording studio in Chicago. Book a time slot with your choice of engineer. Room only $40/hr, $65/hr weekdays, $75/hr weekends.">
 <meta property="og:image" content="https://mister-97.github.io/c4-services/recording-studio.png">
 <meta property="og:image:width" content="1456">
 <meta property="og:image:height" content="816">
@@ -163,7 +163,7 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <h1 class="svc-title">RECORDING<span> STUDIO</span></h1>
     <p class="svc-sub">Professional studio time, your choice of engineer, and a sound-treated booth built for results. Book by the hour on weekdays or weekends.</p>
     <div class="svc-hero-btns">
-      <a href="#book" class="btn-red" style="padding:13px 32px;font-size:14px">Book a Session. From $65/hr</a>
+      <a href="#book" class="btn-red" style="padding:13px 32px;font-size:14px">Book a Session. From $40/hr</a>
       <a href="../contact.html" class="btn-outline" style="padding:13px 32px;font-size:14px">Ask a Question</a>
     </div>
   </div>
@@ -194,6 +194,11 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
         <div class="pricing-card-header"><div class="pricing-card-name">Weekend Rate</div><span class="pricing-badge">Sat – Sun</span></div>
         <div class="pricing-price">$75 <span>/ hour</span></div>
         <p class="pricing-desc">Same full studio experience on Saturdays and Sundays. Slots fill fast so book early.</p>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card-header"><div class="pricing-card-name">Room Only</div><span class="pricing-badge">Any Day</span></div>
+        <div class="pricing-price">$40 <span>/ hour</span></div>
+        <p class="pricing-desc">Studio access without an engineer. Bring your own engineer or self-engineer your session any day of the week.</p>
       </div>
     </div>
 
@@ -244,7 +249,7 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
   <div id="book">
     <div class="booking-card">
       <div class="booking-title">Book a Session</div>
-      <p class="booking-sub">Pick your date and hours. Weekdays $65/hr · Weekends $75/hr.</p>
+      <p class="booking-sub">Pick your date and time slot. Weekdays $65/hr · Weekends $75/hr · Room only $40/hr.</p>
       <form id="bookingForm">
         <div class="form-row">
           <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" id="firstNameInput" placeholder="John" required></div>
@@ -253,44 +258,60 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
         <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" id="emailInput" placeholder="you@email.com" required></div>
         <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" id="phoneInput" placeholder="(555) 000-0000" required></div>
         <div class="form-group">
-          <label class="form-label">Rate</label>
-          <div class="rate-toggle">
-            <div class="rate-opt active" id="rateWeekday" onclick="selectRate('weekday')">
-              <span class="rate-opt-label">Weekday</span>
-              <div class="rate-opt-price">$65<span style="font-size:12px;font-weight:400;color:var(--muted)">/hr</span></div>
-              <div class="rate-opt-days">Mon – Fri</div>
-            </div>
-            <div class="rate-opt" id="rateWeekend" onclick="selectRate('weekend')">
-              <span class="rate-opt-label">Weekend</span>
-              <div class="rate-opt-price">$75<span style="font-size:12px;font-weight:400;color:var(--muted)">/hr</span></div>
-              <div class="rate-opt-days">Sat – Sun</div>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Session Date</label>
-          <input class="form-input" type="date" id="dateInput" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Hours Needed</label>
-          <select class="form-input" id="hoursInput">
-            <option value="1">1 hour</option>
-            <option value="2" selected>2 hours</option>
-            <option value="3">3 hours</option>
-            <option value="4">4 hours</option>
-            <option value="5">5 hours</option>
-            <option value="6">6 hours</option>
-            <option value="8">8 hours (full day)</option>
-          </select>
-        </div>
-        <div class="form-group">
           <label class="form-label">Engineer</label>
-          <select class="form-input" id="engineerInput">
+          <select class="form-input" id="engineerInput" onchange="updateTotal()">
             <option value="Chubbs">Chubbs</option>
             <option value="Neil Gang">Neil Gang</option>
             <option value="Space">Space</option>
-            <option value="No Engineer">Book without Engineer</option>
+            <option value="No Engineer">Room Only (No Engineer) — $40/hr</option>
           </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Session Date</label>
+          <input class="form-input" type="date" id="dateInput" required onchange="updateTotal()">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Start Time</label>
+            <select class="form-input" id="startTimeInput" onchange="updateTotal()">
+              <option value="8:00 AM">8:00 AM</option>
+              <option value="9:00 AM">9:00 AM</option>
+              <option value="10:00 AM">10:00 AM</option>
+              <option value="11:00 AM">11:00 AM</option>
+              <option value="12:00 PM">12:00 PM</option>
+              <option value="1:00 PM">1:00 PM</option>
+              <option value="2:00 PM" selected>2:00 PM</option>
+              <option value="3:00 PM">3:00 PM</option>
+              <option value="4:00 PM">4:00 PM</option>
+              <option value="5:00 PM">5:00 PM</option>
+              <option value="6:00 PM">6:00 PM</option>
+              <option value="7:00 PM">7:00 PM</option>
+              <option value="8:00 PM">8:00 PM</option>
+              <option value="9:00 PM">9:00 PM</option>
+              <option value="10:00 PM">10:00 PM</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">End Time</label>
+            <select class="form-input" id="endTimeInput" onchange="updateTotal()">
+              <option value="9:00 AM">9:00 AM</option>
+              <option value="10:00 AM">10:00 AM</option>
+              <option value="11:00 AM">11:00 AM</option>
+              <option value="12:00 PM">12:00 PM</option>
+              <option value="1:00 PM">1:00 PM</option>
+              <option value="2:00 PM">2:00 PM</option>
+              <option value="3:00 PM">3:00 PM</option>
+              <option value="4:00 PM">4:00 PM</option>
+              <option value="5:00 PM">5:00 PM</option>
+              <option value="6:00 PM" selected>6:00 PM</option>
+              <option value="7:00 PM">7:00 PM</option>
+              <option value="8:00 PM">8:00 PM</option>
+              <option value="9:00 PM">9:00 PM</option>
+              <option value="10:00 PM">10:00 PM</option>
+              <option value="11:00 PM">11:00 PM</option>
+              <option value="12:00 AM (midnight)">12:00 AM (midnight)</option>
+            </select>
+          </div>
         </div>
         <div class="form-group"><label class="form-label">Notes (optional)</label><textarea class="form-input" id="notesInput" placeholder="What are you recording? Any special requests or gear needs?"></textarea></div>
         <div id="totalDisplay" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:12px;font-size:13px;color:var(--muted)">
@@ -313,61 +334,99 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
 <script>
 const WEEKDAY_RATE = 65
 const WEEKEND_RATE = 75
-let currentRate = 'weekday'
+const NO_ENGINEER_RATE = 40
 
 document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileNav').classList.add('open'))
 document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open'))
 
 const dateInput = document.getElementById('dateInput')
-const hoursInput = document.getElementById('hoursInput')
-const totalDisplay = document.getElementById('totalDisplay')
+const startTimeInput = document.getElementById('startTimeInput')
+const endTimeInput = document.getElementById('endTimeInput')
 const totalAmt = document.getElementById('totalAmt')
 
-function selectRate(type) {
-  currentRate = type
-  document.getElementById('rateWeekday').classList.toggle('active', type === 'weekday')
-  document.getElementById('rateWeekend').classList.toggle('active', type === 'weekend')
-  updateTotal()
+// Convert "2:00 PM" style string to fractional hours from midnight
+function timeToHours(t) {
+  if (!t) return 0
+  if (t.includes('midnight')) return 24
+  const [time, meridiem] = t.split(' ')
+  let [h, m] = time.split(':').map(Number)
+  if (meridiem === 'PM' && h !== 12) h += 12
+  if (meridiem === 'AM' && h === 12) h = 0
+  return h + m / 60
+}
+
+function getRate() {
+  const engineer = document.getElementById('engineerInput').value
+  if (engineer === 'No Engineer') return NO_ENGINEER_RATE
+  if (!dateInput.value) return WEEKDAY_RATE
+  const day = new Date(dateInput.value + 'T12:00:00').getDay()
+  return (day === 0 || day === 6) ? WEEKEND_RATE : WEEKDAY_RATE
 }
 
 function updateTotal() {
-  const hours = parseInt(hoursInput.value) || 1
-  const rate = currentRate === 'weekend' ? WEEKEND_RATE : WEEKDAY_RATE
-  const total = rate * hours
+  const start = timeToHours(startTimeInput.value)
+  const end = timeToHours(endTimeInput.value)
+  const hours = end > start ? end - start : 0
+  const rate = getRate()
+  const total = Math.round(rate * hours)
   const deposit = Math.ceil(total * 0.5)
-  totalDisplay.style.display = 'block'
-  totalAmt.textContent = `$${total} total — $${deposit} due today (50% deposit)`
+  if (hours <= 0) {
+    totalAmt.textContent = 'Select a valid time range'
+  } else {
+    const rateLabel = rate === NO_ENGINEER_RATE ? 'Room Only' : (rate === WEEKEND_RATE ? 'Weekend' : 'Weekday')
+    totalAmt.textContent = `${hours}hr @ $${rate}/hr (${rateLabel}) — $${total} total · $${deposit} due today`
+  }
 }
-
-// Auto-detect rate when date is picked
-dateInput.addEventListener('change', function() {
-  if (!this.value) return
-  const day = new Date(this.value + 'T12:00:00').getDay()
-  selectRate(day === 0 || day === 6 ? 'weekend' : 'weekday')
-})
-
-hoursInput.addEventListener('change', updateTotal)
-updateTotal()
 
 // Set min date to tomorrow
 const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1)
 dateInput.min = tomorrow.toISOString().split('T')[0]
 
+updateTotal()
+
 document.getElementById('bookingForm').addEventListener('submit', async function(e) {
   e.preventDefault()
   const btn = this.querySelector('.btn-book')
-  btn.textContent = 'Processing...'
+
+  const start = timeToHours(startTimeInput.value)
+  const end = timeToHours(endTimeInput.value)
+  const hours = end > start ? end - start : 0
+  if (hours <= 0) { alert('Please select a valid time range.'); return }
+
+  if (!dateInput.value) { alert('Please select a session date.'); return }
+
+  btn.textContent = 'Checking availability...'
   btn.disabled = true
 
-  const hours = parseInt(hoursInput.value) || 1
-  const rate = currentRate === 'weekend' ? WEEKEND_RATE : WEEKDAY_RATE
-  const totalAmount = rate * hours
+  // Check availability before creating checkout
+  try {
+    const avRes = await fetch('/api/check-availability', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ date: dateInput.value, startTime: startTimeInput.value, endTime: endTimeInput.value }),
+    })
+    const avData = await avRes.json()
+    if (!avData.available) {
+      alert('Sorry, that time slot is already booked. Please choose a different time.')
+      btn.textContent = 'Proceed to Payment'
+      btn.disabled = false
+      return
+    }
+  } catch (err) {
+    // If availability check fails, let checkout handle it
+  }
+
+  btn.textContent = 'Processing...'
+
+  const rate = getRate()
+  const totalAmount = Math.round(rate * hours)
   const depositAmount = Math.ceil(totalAmount * 0.5)
   const engineer = document.getElementById('engineerInput').value
   const dateStr = dateInput.value
   const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December']
   const d = new Date(dateStr + 'T12:00:00')
   const eventDate = dateStr ? `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}` : ''
+  const timeSlot = `${startTimeInput.value} – ${endTimeInput.value}`
 
   try {
     const res = await fetch('/api/create-checkout', {
@@ -380,10 +439,13 @@ document.getElementById('bookingForm').addEventListener('submit', async function
         phone: document.getElementById('phoneInput').value,
         address: 'C4 Services Recording Studio',
         eventDate,
-        rentalItem: `Recording Studio: ${hours}hr ${currentRate} session with ${engineer}`,
+        rentalItem: `Recording Studio: ${timeSlot} (${hours}hr) with ${engineer}`,
         depositAmount,
         totalAmount,
         notes: document.getElementById('notesInput').value || '',
+        studioDate: dateInput.value,
+        studioStart: startTimeInput.value,
+        studioEnd: endTimeInput.value,
       }),
     })
     const data = await res.json()
