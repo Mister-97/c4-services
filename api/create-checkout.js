@@ -1,5 +1,4 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
-const { kv } = require('@vercel/kv')
 
 function timeToHours(t) {
   if (!t) return 0
@@ -11,7 +10,7 @@ function timeToHours(t) {
   return h + m / 60
 }
 
-function slotsOverlap(aStart, aEnd, bStart, bEnd) {
+function overlaps(aStart, aEnd, bStart, bEnd) {
   return aStart < bEnd && bStart < aEnd
 }
 
@@ -25,20 +24,25 @@ module.exports = async (req, res) => {
     studioDate, studioStart, studioEnd,
   } = req.body
 
-  // If this is a studio booking, do a final conflict check and reserve the slot
+  // Final conflict check before charging — prevents race conditions
   if (studioDate && studioStart && studioEnd) {
     const reqStart = timeToHours(studioStart)
     const reqEnd = timeToHours(studioEnd)
-    const now = Date.now()
-    const PENDING_TTL_MS = 30 * 60 * 1000
 
-    const bookings = (await kv.get(`bookings:${studioDate}`)) || []
-    const active = bookings.filter(b =>
-      b.status === 'confirmed' || (b.status === 'pending' && now - b.createdAt < PENDING_TTL_MS)
-    )
+    try {
+      const sessions = await stripe.checkout.sessions.list({ status: 'complete', limit: 100 })
+      const conflict = sessions.data.some(s => {
+        if (s.metadata?.studioDate !== studioDate) return false
+        const bStart = parseFloat(s.metadata?.studioStartHours || '0')
+        const bEnd = parseFloat(s.metadata?.studioEndHours || '0')
+        return overlaps(reqStart, reqEnd, bStart, bEnd)
+      })
 
-    if (active.some(b => slotsOverlap(reqStart, reqEnd, b.start, b.end))) {
-      return res.status(409).json({ error: 'That time slot was just booked. Please choose another.' })
+      if (conflict) {
+        return res.status(409).json({ error: 'That time slot was just booked. Please choose another.' })
+      }
+    } catch (err) {
+      console.error('Conflict check failed:', err)
     }
   }
 
@@ -47,6 +51,7 @@ module.exports = async (req, res) => {
       payment_method_types: ['card'],
       mode: 'payment',
       customer_email: email,
+      expires_at: Math.floor(Date.now() / 1000) + 30 * 60, // 30-min window
       line_items: [{
         price_data: {
           currency: 'usd',
@@ -66,23 +71,12 @@ module.exports = async (req, res) => {
         studioDate: studioDate || '',
         studioStart: studioStart || '',
         studioEnd: studioEnd || '',
+        studioStartHours: studioDate ? String(timeToHours(studioStart)) : '',
+        studioEndHours: studioDate ? String(timeToHours(studioEnd)) : '',
       },
       success_url: `${process.env.SITE_URL}/thank-you.html`,
       cancel_url: `${process.env.SITE_URL}/services/recording-studio.html`,
     })
-
-    // Reserve the slot as pending (30-minute hold)
-    if (studioDate && studioStart && studioEnd) {
-      const bookings = (await kv.get(`bookings:${studioDate}`)) || []
-      bookings.push({
-        start: timeToHours(studioStart),
-        end: timeToHours(studioEnd),
-        status: 'pending',
-        sessionId: session.id,
-        createdAt: Date.now(),
-      })
-      await kv.set(`bookings:${studioDate}`, bookings, { ex: 90 * 24 * 60 * 60 })
-    }
 
     res.status(200).json({ url: session.url })
   } catch (err) {

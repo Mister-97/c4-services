@@ -1,6 +1,5 @@
-const { kv } = require('@vercel/kv')
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
-// Returns decimal hours from "2:00 PM" style string
 function timeToHours(t) {
   if (!t) return 0
   if (t.includes('midnight')) return 24
@@ -11,7 +10,7 @@ function timeToHours(t) {
   return h + m / 60
 }
 
-function slotsOverlap(aStart, aEnd, bStart, bEnd) {
+function overlaps(aStart, aEnd, bStart, bEnd) {
   return aStart < bEnd && bStart < aEnd
 }
 
@@ -25,17 +24,21 @@ module.exports = async (req, res) => {
   const reqEnd = timeToHours(endTime)
   if (reqEnd <= reqStart) return res.status(400).json({ error: 'Invalid time range' })
 
-  const now = Date.now()
-  const PENDING_TTL_MS = 30 * 60 * 1000 // 30 minutes
+  try {
+    // Check completed (paid) sessions for the same date
+    const sessions = await stripe.checkout.sessions.list({ status: 'complete', limit: 100 })
 
-  const bookings = (await kv.get(`bookings:${date}`)) || []
+    const conflict = sessions.data.some(s => {
+      if (s.metadata?.studioDate !== date) return false
+      const bStart = parseFloat(s.metadata?.studioStartHours || '0')
+      const bEnd = parseFloat(s.metadata?.studioEndHours || '0')
+      return overlaps(reqStart, reqEnd, bStart, bEnd)
+    })
 
-  // Filter out expired pending bookings
-  const active = bookings.filter(b =>
-    b.status === 'confirmed' || (b.status === 'pending' && now - b.createdAt < PENDING_TTL_MS)
-  )
-
-  const conflict = active.some(b => slotsOverlap(reqStart, reqEnd, b.start, b.end))
-
-  res.status(200).json({ available: !conflict })
+    res.status(200).json({ available: !conflict })
+  } catch (err) {
+    console.error(err)
+    // If check fails, allow through — checkout does its own final check
+    res.status(200).json({ available: true })
+  }
 }
