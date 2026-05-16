@@ -213,21 +213,24 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
       <p class="booking-sub">Tell us about your business. You'll be redirected to secure checkout to complete your deposit.</p>
       <form id="bookingForm">
         <div class="form-row">
-          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="John" required></div>
-          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Smith" required></div>
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" id="firstNameInput" placeholder="John" required></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" id="lastNameInput" placeholder="Smith" required></div>
         </div>
         <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" id="emailInput" placeholder="you@email.com" required></div>
-        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(555) 000-0000" required></div>
-        <div class="form-group"><label class="form-label">Business Name</label><input class="form-input" type="text" placeholder="Your Business Name" required></div>
+        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" id="phoneInput" placeholder="(555) 000-0000" required></div>
+        <div class="form-group"><label class="form-label">Business Name</label><input class="form-input" type="text" id="addressInput" placeholder="Your Business Name" required></div>
         <div class="form-group">
           <label class="form-label">Package</label>
-          <select class="form-input" id="packageInput">
-            <option value="starter">Starter — $299 one-time</option>
-            <option value="growth" selected>Growth — $199/month</option>
-            <option value="dominate">Dominate — $399/month</option>
+          <select class="form-input" id="packageInput" onchange="updateDeposit()">
+            <option value="starter|299">Starter — $299 one-time</option>
+            <option value="growth|199" selected>Growth — $199/month</option>
+            <option value="dominate|399">Dominate — $399/month</option>
           </select>
         </div>
-        <div class="form-group"><label class="form-label">Tell us about your business (optional)</label><textarea class="form-input" placeholder="Industry, location, current online presence..."></textarea></div>
+        <div class="form-group"><label class="form-label">Tell us about your business (optional)</label><textarea class="form-input" id="notesInput" placeholder="Industry, location, current online presence..."></textarea></div>
+        <div id="depositDisplay" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:12px;font-size:13px;color:var(--muted)">
+          Deposit due today: <strong id="depositAmt" style="color:var(--dark)">$100</strong> (50% of $199)
+        </div>
         <button type="submit" class="btn-book">Proceed to Payment</button>
         <p class="booking-note">Secure checkout powered by Stripe. You'll be charged a deposit to confirm your project.</p>
       </form>
@@ -243,18 +246,66 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
 </footer>
 
 <script>
-const STRIPE_LINK = 'https://buy.stripe.com/REPLACE_SEO'
-
 document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileNav').classList.add('open'))
 document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open'))
 
-document.getElementById('bookingForm').addEventListener('submit', function(e) {
+const PACKAGES = {
+  'starter|299': { label: 'SEO & Google My Business — Starter', price: 299 },
+  'growth|199': { label: 'SEO & Google My Business — Growth', price: 199 },
+  'dominate|399': { label: 'SEO & Google My Business — Dominate', price: 399 },
+}
+
+function getSelected() {
+  const val = document.getElementById('packageInput').value
+  return PACKAGES[val] || PACKAGES['growth|199']
+}
+
+function updateDeposit() {
+  const pkg = getSelected()
+  const deposit = Math.ceil(pkg.price * 0.5)
+  document.getElementById('depositAmt').textContent = `$${deposit} (50% of $${pkg.price})`
+}
+
+updateDeposit()
+
+document.getElementById('bookingForm').addEventListener('submit', async function(e) {
   e.preventDefault()
-  const email = document.getElementById('emailInput').value
-  const pkg = document.getElementById('packageInput').value
-  const ref = `seo_${pkg}_${Date.now()}`
-  const params = new URLSearchParams({ prefilled_email: email, client_reference_id: ref })
-  window.location.href = `${STRIPE_LINK}?${params.toString()}`
+  const btn = this.querySelector('.btn-book')
+  const pkg = getSelected()
+  const totalAmount = pkg.price
+  const depositAmount = Math.ceil(totalAmount * 0.5)
+
+  btn.textContent = 'Processing...'
+  btn.disabled = true
+
+  try {
+    const res = await fetch('/api/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        firstName: document.getElementById('firstNameInput').value,
+        lastName: document.getElementById('lastNameInput').value,
+        email: document.getElementById('emailInput').value,
+        phone: document.getElementById('phoneInput').value,
+        address: document.getElementById('addressInput').value,
+        eventDate: '',
+        rentalItem: pkg.label,
+        depositAmount,
+        totalAmount,
+        notes: document.getElementById('notesInput').value || '',
+      }),
+    })
+    const data = await res.json()
+    if (data.url) {
+      window.location.href = data.url
+    } else {
+      throw new Error(data.error || 'Checkout failed')
+    }
+  } catch (err) {
+    alert('Something went wrong: ' + err.message + '\nPlease call us at (773) 584-7821.')
+    btn.textContent = 'Proceed to Payment'
+    btn.disabled = false
+  }
 })
 
 function toggleFaq(btn) {

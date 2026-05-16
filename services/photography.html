@@ -211,28 +211,31 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
   <!-- BOOKING FORM -->
   <div id="book">
     <div class="booking-card">
-      <div class="booking-title">Book PHOTO GRAPHY</div>
-      <p class="booking-sub">Fill out the form below. You'll be redirected to secure checkout to complete your deposit.</p>
+      <div class="booking-title">Book Photography</div>
+      <p class="booking-sub">Fill out the form below. 50% deposit due today, remainder at the shoot.</p>
       <form id="bookingForm">
         <div class="form-row">
-          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="John" required></div>
-          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Smith" required></div>
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" id="firstNameInput" placeholder="John" required></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" id="lastNameInput" placeholder="Smith" required></div>
         </div>
         <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" id="emailInput" placeholder="you@email.com" required></div>
-        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(555) 000-0000" required></div>
-        <div class="form-group"><label class="form-label">Service Address</label><input class="form-input" type="text" placeholder="123 Main St, City, State" required></div>
+        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" id="phoneInput" placeholder="(555) 000-0000" required></div>
+        <div class="form-group"><label class="form-label">Location / Address</label><input class="form-input" type="text" id="addressInput" placeholder="123 Main St, City, State" required></div>
         <div class="form-group"><label class="form-label">Preferred Date</label><input class="form-input" type="date" id="dateInput" required></div>
         <div class="form-group">
           <label class="form-label">Package</label>
-          <select class="form-input" id="packageInput">
-            <option value="basic">Basic — $200</option>
-            <option value="standard" selected>Standard — $350</option>
-            <option value="premium">Premium — $600+</option>
+          <select class="form-input" id="packageInput" onchange="updateTotal()">
+            <option value="200">Basic — $200</option>
+            <option value="350" selected>Standard — $350</option>
+            <option value="600">Premium — $600</option>
           </select>
         </div>
-        <div class="form-group"><label class="form-label">Notes (optional)</label><textarea class="form-input" placeholder="Anything we should know? Gate codes, special instructions..."></textarea></div>
+        <div class="form-group"><label class="form-label">Notes (optional)</label><textarea class="form-input" id="notesInput" placeholder="Event type, special requests, gate codes..."></textarea></div>
+        <div style="background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:12px;font-size:13px;color:var(--muted)">
+          Deposit due today: <strong id="depositDisplay" style="color:var(--dark)"></strong>
+        </div>
         <button type="submit" class="btn-book">Proceed to Payment</button>
-        <p class="booking-note">Secure checkout powered by Stripe. You'll be charged the deposit amount to confirm your booking.</p>
+        <p class="booking-note">Secure checkout powered by Stripe. 50% deposit charged now, remainder due at the shoot.</p>
       </form>
     </div>
   </div>
@@ -246,19 +249,61 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
 </footer>
 
 <script>
-const STRIPE_LINK = 'https://buy.stripe.com/REPLACE_PHOTOGRAPHY'
-
 document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileNav').classList.add('open'))
 document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open'))
 
-document.getElementById('bookingForm').addEventListener('submit', function(e) {
+const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1)
+document.getElementById('dateInput').min = tomorrow.toISOString().split('T')[0]
+
+function updateTotal() {
+  const total = parseInt(document.getElementById('packageInput').value) || 0
+  const deposit = Math.ceil(total * 0.5)
+  document.getElementById('depositDisplay').textContent = `$${deposit} (50% of $${total})`
+}
+updateTotal()
+
+document.getElementById('bookingForm').addEventListener('submit', async function(e) {
   e.preventDefault()
-  const email = document.getElementById('emailInput').value
-  const date = document.getElementById('dateInput').value
-  const pkg = document.getElementById('packageInput').value
-  const ref = `photography_${date}_${pkg}`
-  const params = new URLSearchParams({ prefilled_email: email, client_reference_id: ref })
-  window.location.href = `${STRIPE_LINK}?${params.toString()}`
+  const btn = this.querySelector('.btn-book')
+  btn.textContent = 'Processing...'
+  btn.disabled = true
+
+  const totalAmount = parseInt(document.getElementById('packageInput').value)
+  const depositAmount = Math.ceil(totalAmount * 0.5)
+  const dateStr = document.getElementById('dateInput').value
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December']
+  const d = new Date(dateStr + 'T12:00:00')
+  const eventDate = dateStr ? `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}` : ''
+  const packageLabel = document.getElementById('packageInput').options[document.getElementById('packageInput').selectedIndex].text
+
+  try {
+    const res = await fetch('/api/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        firstName: document.getElementById('firstNameInput').value,
+        lastName: document.getElementById('lastNameInput').value,
+        email: document.getElementById('emailInput').value,
+        phone: document.getElementById('phoneInput').value,
+        address: document.getElementById('addressInput').value,
+        eventDate,
+        rentalItem: `Professional Photography — ${packageLabel}`,
+        depositAmount,
+        totalAmount,
+        notes: document.getElementById('notesInput').value || '',
+      }),
+    })
+    const data = await res.json()
+    if (data.url) {
+      window.location.href = data.url
+    } else {
+      throw new Error(data.error || 'Checkout failed')
+    }
+  } catch (err) {
+    alert('Something went wrong: ' + err.message + '\nPlease call us at (773) 584-7821.')
+    btn.textContent = 'Proceed to Payment'
+    btn.disabled = false
+  }
 })
 
 function toggleFaq(btn) {

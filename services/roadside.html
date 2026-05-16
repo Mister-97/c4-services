@@ -213,23 +213,26 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
       <p class="booking-sub">Fill out the form below. You'll be redirected to secure checkout to complete your booking.</p>
       <form id="bookingForm">
         <div class="form-row">
-          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="John" required></div>
-          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Smith" required></div>
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" id="firstNameInput" placeholder="John" required></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" id="lastNameInput" placeholder="Smith" required></div>
         </div>
         <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" id="emailInput" placeholder="you@email.com" required></div>
-        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(555) 000-0000" required></div>
-        <div class="form-group"><label class="form-label">Current Location / Address</label><input class="form-input" type="text" placeholder="123 Main St, City, State" required></div>
+        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" id="phoneInput" placeholder="(555) 000-0000" required></div>
+        <div class="form-group"><label class="form-label">Current Location / Address</label><input class="form-input" type="text" id="addressInput" placeholder="123 Main St, City, State" required></div>
         <div class="form-group">
           <label class="form-label">Service Needed</label>
-          <select class="form-input" id="packageInput">
-            <option value="jump-start">Jump Start — $75</option>
-            <option value="flat-tire" selected>Flat Tire Change — $100</option>
-            <option value="lockout">Lockout Service — $100</option>
-            <option value="fuel">Fuel Delivery — $100</option>
-            <option value="premium">Multiple Issues — $150+</option>
+          <select class="form-input" id="packageInput" onchange="updateDeposit()">
+            <option value="jump-start|75">Jump Start — $75</option>
+            <option value="flat-tire|100" selected>Flat Tire Change — $100</option>
+            <option value="lockout|100">Lockout Service — $100</option>
+            <option value="fuel|100">Fuel Delivery — $100</option>
+            <option value="premium|150">Multiple Issues — $150+</option>
           </select>
         </div>
-        <div class="form-group"><label class="form-label">Notes (optional)</label><textarea class="form-input" placeholder="Vehicle make/model, specific issue, gate codes..."></textarea></div>
+        <div class="form-group"><label class="form-label">Notes (optional)</label><textarea class="form-input" id="notesInput" placeholder="Vehicle make/model, specific issue, gate codes..."></textarea></div>
+        <div id="depositDisplay" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:12px;font-size:13px;color:var(--muted)">
+          Deposit due today: <strong id="depositAmt" style="color:var(--dark)">$50</strong> (50% of $100)
+        </div>
         <button type="submit" class="btn-book">Proceed to Payment</button>
         <p class="booking-note">Secure checkout powered by Stripe. You'll be charged to confirm your booking.</p>
       </form>
@@ -245,18 +248,68 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
 </footer>
 
 <script>
-const STRIPE_LINK = 'https://buy.stripe.com/REPLACE_ROADSIDE'
-
 document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileNav').classList.add('open'))
 document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open'))
 
-document.getElementById('bookingForm').addEventListener('submit', function(e) {
+const PACKAGES = {
+  'jump-start|75': { label: 'Roadside Assistance — Jump Start', price: 75 },
+  'flat-tire|100': { label: 'Roadside Assistance — Flat Tire Change', price: 100 },
+  'lockout|100': { label: 'Roadside Assistance — Lockout Service', price: 100 },
+  'fuel|100': { label: 'Roadside Assistance — Fuel Delivery', price: 100 },
+  'premium|150': { label: 'Roadside Assistance — Multiple Issues', price: 150 },
+}
+
+function getSelected() {
+  const val = document.getElementById('packageInput').value
+  return PACKAGES[val] || PACKAGES['flat-tire|100']
+}
+
+function updateDeposit() {
+  const pkg = getSelected()
+  const deposit = Math.ceil(pkg.price * 0.5)
+  document.getElementById('depositAmt').textContent = `$${deposit} (50% of $${pkg.price})`
+}
+
+updateDeposit()
+
+document.getElementById('bookingForm').addEventListener('submit', async function(e) {
   e.preventDefault()
-  const email = document.getElementById('emailInput').value
-  const pkg = document.getElementById('packageInput').value
-  const ref = `roadside_${pkg}_${Date.now()}`
-  const params = new URLSearchParams({ prefilled_email: email, client_reference_id: ref })
-  window.location.href = `${STRIPE_LINK}?${params.toString()}`
+  const btn = this.querySelector('.btn-book')
+  const pkg = getSelected()
+  const totalAmount = pkg.price
+  const depositAmount = Math.ceil(totalAmount * 0.5)
+
+  btn.textContent = 'Processing...'
+  btn.disabled = true
+
+  try {
+    const res = await fetch('/api/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        firstName: document.getElementById('firstNameInput').value,
+        lastName: document.getElementById('lastNameInput').value,
+        email: document.getElementById('emailInput').value,
+        phone: document.getElementById('phoneInput').value,
+        address: document.getElementById('addressInput').value,
+        eventDate: '',
+        rentalItem: pkg.label,
+        depositAmount,
+        totalAmount,
+        notes: document.getElementById('notesInput').value || '',
+      }),
+    })
+    const data = await res.json()
+    if (data.url) {
+      window.location.href = data.url
+    } else {
+      throw new Error(data.error || 'Checkout failed')
+    }
+  } catch (err) {
+    alert('Something went wrong: ' + err.message + '\nPlease call us at (773) 584-7821.')
+    btn.textContent = 'Proceed to Payment'
+    btn.disabled = false
+  }
 })
 
 function toggleFaq(btn) {
