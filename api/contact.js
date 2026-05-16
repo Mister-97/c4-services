@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
 
   try {
     await resend.emails.send({
-      from: 'C4 Services <no-reply@c4service.co>',
+      from: 'C4 Services <support@c4service.co>',
       to: ['c4mgmtgroup@gmail.com'],
       replyTo: email,
       subject: `New Contact: ${firstName} ${lastName} — ${service || 'General'}`,
