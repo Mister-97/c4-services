@@ -176,7 +176,7 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <ul class="includes-list">
       <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Fully equipped studio with dual monitors, pro mixing board and studio monitors</li>
       <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Isolated vocal booth with professional condenser mic</li>
-      <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Choose your engineer: Chubbs, Neil Gang, Space, or self-engineer</li>
+      <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Choose your engineer: Neil Gang, Space, or self-engineer</li>
       <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>DAW session files included so you can take your project with you</li>
       <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>High-quality WAV exports delivered same day</li>
       <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Lounge area with comfortable seating for your crew</li>
@@ -205,10 +205,6 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <span class="section-tag">Meet the Engineers</span>
     <h2 class="svc-section-title">CHOOSE YOUR ENGINEER</h2>
     <div class="engineers-grid">
-      <div class="engineer-card">
-        <div class="engineer-avatar"><img src="../engineer-chubbs.png" alt="Chubbs"></div>
-        <div><div class="engineer-name">Chubbs</div><div class="engineer-role">Mix & Recording Engineer</div></div>
-      </div>
       <div class="engineer-card">
         <div class="engineer-avatar"><img src="../engineer-neil-gang.png" alt="Neil Gang"></div>
         <div><div class="engineer-name">Neil Gang</div><div class="engineer-role">Producer & Engineer</div></div>
@@ -260,7 +256,6 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
         <div class="form-group">
           <label class="form-label">Engineer</label>
           <select class="form-input" id="engineerInput" onchange="updateTotal()">
-            <option value="Chubbs">Chubbs</option>
             <option value="Neil Gang">Neil Gang</option>
             <option value="Space">Space</option>
             <option value="No Engineer">Room Only (No Engineer) — $40/hr</option>
@@ -317,8 +312,17 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
         <div id="totalDisplay" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:12px;font-size:13px;color:var(--muted)">
           Estimated total: <strong id="totalAmt" style="color:var(--dark)"></strong>
         </div>
+        <div style="background:#fff8f8;border:1.5px solid #f5c6c6;border-radius:8px;padding:14px 16px;margin-bottom:12px;font-size:12.5px;color:#5a1a1a;line-height:1.6">
+          <strong style="display:block;margin-bottom:6px;font-size:13px">Deposit & Liability Policy</strong>
+          The 50% deposit collected at checkout is <strong>non-refundable</strong>. If you need to reschedule, contact us at least 48 hours before your session and we will apply the deposit to your new booking date — no rescheduling fee. Same-day cancellations forfeit the full deposit.<br><br>
+          By proceeding you acknowledge that C4 Services is not liable for damage to, or loss of, any personal equipment, media, or belongings brought into the studio. All studio equipment must be used with reasonable care. The client assumes full responsibility for any damage caused to studio property by the client or their guests, and may be charged the cost of repair or replacement.
+        </div>
+        <label style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text);margin-bottom:14px;cursor:pointer">
+          <input type="checkbox" id="agreeCheck" required style="margin-top:3px;accent-color:var(--red);width:15px;height:15px;flex-shrink:0">
+          <span>I have read and agree to the deposit and liability policy above.</span>
+        </label>
         <button type="submit" class="btn-book">Proceed to Payment</button>
-        <p class="booking-note">Secure checkout powered by Stripe. 50% deposit charged now, remainder due at the session.</p>
+        <p class="booking-note">Secure checkout powered by Stripe. 50% non-refundable deposit charged now, remainder due at the session.</p>
       </form>
     </div>
   </div>
